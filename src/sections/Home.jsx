@@ -5,10 +5,10 @@ import ProfileCard from '../components/ProfileCard';
 import SocialIcons from '../components/SocialIcons';
 import ShinyText from '../components/ShinyText';
 import AnimatedName from '../components/AnimatedName.jsx';
-import { BorderBeam } from '@/components/magicui/border-beam.jsx';
-import { MusicToggle } from '@/components/magicui/music-toggle.jsx';
+import { BorderBeam } from '../components/magicui/border-beam.jsx';
+import { MusicToggle } from '../components/magicui/music-toggle.jsx';
 import Particles from '../components/Particles';
-import { AnimatedThemeToggler } from '@/components/magicui/animated-theme-toggler.jsx';
+import { AnimatedThemeToggler } from '../components/magicui/animated-theme-toggler.jsx';
 
 const Home = () => {
   const typeRef = useRef(null);

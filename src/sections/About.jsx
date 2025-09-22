@@ -4,8 +4,9 @@ import ShinyText from '../components/ShinyText';
 import Particles from '../components/Particles';
 import SocialIcons from '../components/SocialIcons';
 import ScrollReveal from '../components/ScrollReveal';
+import AnimatedName from '../components/AnimatedName';
+import { BorderBeam } from '../components/magicui/border-beam.jsx';
 import BoxReveal from '../components/BoxReveal';
-import { BorderBeam } from '@/components/magicui/border-beam.jsx';
 
 const About = () => {
   const sectionRef = useScrollReveal({ threshold: 0.1 });

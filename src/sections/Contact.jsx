@@ -2,9 +2,9 @@ import React, { useRef, useState } from 'react';
 import SocialWrapper from '../components/SocialWrapper';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { FaPhone, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
-import { Globe } from '@/components/magicui/globe.jsx';
+import { Globe } from '../components/magicui/globe.jsx';
 import Particles from '../components/Particles';
-import { BorderBeam } from '@/components/magicui/border-beam.jsx';
+import { BorderBeam } from '../components/magicui/border-beam.jsx';
 // Removed @emailjs/browser to avoid build-time dependency issues on Vercel
 
 const Contact = () => {
