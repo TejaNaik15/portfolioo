@@ -37,7 +37,7 @@ const Footer = () => {
         {/* link sections */}
         <div className="flex flex-1 flex-col items-start gap-6 md:mx-4 md:flex-row md:gap-16">
           <div className="flex flex-col gap-2 md:gap-3">
-            <h4 className="text-xs font-semibold uppercase tracking-wide text-white/60">Resources</h4>
+            <h4 className="text-xs font-semibold uppercase tracking-wide text-white/60">Quick Links</h4>
             <div className="flex flex-wrap items-start gap-2 text-sm md:flex-col">
               <a className="text-white/70 hover:text-white" href="#home" onClick={(e) => handleSmoothScroll(e, 'home')}>Home</a>
               <a className="text-white/70 hover:text-white" href="#about" onClick={(e) => handleSmoothScroll(e, 'about')}>About</a>
