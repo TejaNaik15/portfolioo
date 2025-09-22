@@ -1,0 +1,174 @@
+@import './styles/theme.css';
+@import './styles/gradient.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Global smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: #888 #333; 
+}
+
+body::-webkit-scrollbar {
+  width: 12px;
+}
+
+body::-webkit-scrollbar-track {
+  background: #333; 
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 6px;
+  border: 3px solid #333;
+}
+
+
+:root { --color-light-blue: #13ADC7; --color-light-purple: #945DD6; }
+
+.name-gradient,
+.typing-gradient {
+  background: linear-gradient(
+    270deg,
+    #00dfd8,
+    #ffffff,
+    #00dfd8
+  );
+  background-size: 300% 300%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 5s ease infinite;
+}
+
+
+.theme-light .name-gradient,
+.theme-light .typing-gradient {
+  -webkit-text-stroke: 1px #00dfd8;
+  text-stroke: 1px #00dfd8;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.transition-opacity-transform {
+  opacity: 0;
+  transform: translateY(20px); 
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animate-reveal {
+  opacity: 1;
+  transform: translateY(0); 
+}
+.typewriter-text {
+  overflow: hidden;
+  white-space: nowrap;
+  display: inline-block;
+  border-right: 0.15em solid #fff; 
+}
+
+
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: #fff; }
+}
+
+@keyframes border-beam-rotate {
+  to { transform: rotate(360deg); }
+}
+
+
+.initial-hidden-reveal {
+  opacity: 0;
+  transform: translateY(20px); 
+  transition: opacity 1s ease-out, transform 1s ease-out; 
+}
+
+
+.animate-visible-reveal {
+  opacity: 1 !important;
+  transform: translateY(0) !important;
+}
+
+
+.transition-opacity-transform {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.animate-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Skills legend theming and truncation */
+.skill-legend-item {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.1);
+}
+.skill-legend-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.skill-legend-label {
+  color: #e5e7eb; /* gray-200 */
+}
+.theme-light .skill-legend-item {
+  background-color: rgba(0, 0, 0, 0.04);
+  border-color: rgba(0, 0, 0, 0.12);
+}
+.theme-light .skill-legend-item:hover {
+  background-color: rgba(0, 0, 0, 0.08);
+}
+.theme-light .skill-legend-label {
+  color: #111827; /* gray-900 */
+}
+
+/* Orbit rings visibility per theme */
+.orbit-surface {
+  --orbitRing: rgba(255, 255, 255, 0.18);
+}
+.theme-light .orbit-surface {
+  --orbitRing: rgba(0, 0, 0, 0.2);
+}
+
+/* Tape color (black in both themes as requested) */
+.tape { color: #000000; }
+
+/* Footer bottom text visibility per theme */
+.footer-bottom { color: rgba(255, 255, 255, 0.7); }
+.theme-light .footer-bottom { color: #111827; }
+
+/* Footer light-mode text overrides */
+.theme-light .site-footer,
+.theme-light .site-footer .plain-text,
+.theme-light .site-footer p,
+.theme-light .site-footer h1,
+.theme-light .site-footer h2,
+.theme-light .site-footer h3,
+.theme-light .site-footer h4,
+.theme-light .site-footer h5,
+.theme-light .site-footer h6,
+.theme-light .site-footer a,
+.theme-light .site-footer small,
+.theme-light .site-footer span,
+.theme-light .site-footer li {
+  color: #000000 !important;
+}
+.theme-light .site-footer a:hover { opacity: 0.8; }

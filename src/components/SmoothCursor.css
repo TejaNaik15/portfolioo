@@ -1,0 +1,5 @@
+.cursor-root{position:fixed;inset:0;pointer-events:none;z-index:50}
+.cursor-dot{position:fixed;left:0;top:0;width:6px;height:6px;margin-left:-3px;margin-top:-3px;border-radius:50%;background:#fff;mix-blend-mode:difference;box-shadow:0 0 8px rgba(255,255,255,.6)}
+.cursor-ring{position:fixed;left:0;top:0;width:28px;height:28px;margin-left:-14px;margin-top:-14px;border-radius:50%;border:1px solid rgba(255,255,255,.6);backdrop-filter:blur(2px);mix-blend-mode:difference;transition:transform .15s ease,opacity .15s ease}
+.cursor-ring.is-down{transform:scale(.8)}
+@media (max-width:768px){.cursor-root{display:none}}

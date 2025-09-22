@@ -1,0 +1,25 @@
+.falling-text-container {
+  position: relative;
+  width: 100%;
+}
+
+.falling-text-target {
+  position: relative;
+  display: block;
+  color: inherit;
+}
+
+.falling-text-target .word {
+  display: inline-block;
+  white-space: pre;
+  user-select: none;
+}
+
+.falling-text-canvas canvas {
+  display: block;
+}
+
+/* highlight style (customize as needed) */
+.falling-text-target .highlighted {
+  color: #00dfd8;
+}
