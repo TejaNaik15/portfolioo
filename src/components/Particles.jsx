@@ -78,18 +78,18 @@ const fragment = /* glsl */ `
 `;
 
 const Particles = ({
-  particleCount = 200,
-  particleSpread = 10,
-  speed = 0.1,
+  particleCount = 400,
+  particleSpread = 15,
+  speed = 0.15,
   particleColors,
-  moveParticlesOnHover = false,
-  particleHoverFactor = 1,
-  alphaParticles = false,
-  particleBaseSize = 100,
-  sizeRandomness = 1,
-  cameraDistance = 20,
+  moveParticlesOnHover = true,
+  particleHoverFactor = 1.2,
+  alphaParticles = true,
+  particleBaseSize = 120,
+  sizeRandomness = 1.2,
+  cameraDistance = 25,
   disableRotation = false,
-  interactive = false,
+  interactive = true,
   className
 }) => {
   const containerRef = useRef(null);

@@ -37,7 +37,19 @@ const Skills = () => {
   return (
     <section id="skills" ref={sectionRef} className="relative min-h-screen bg-primary-dark text-white p-8 flex flex-col items-center justify-center transition-opacity-transform overflow-hidden scroll-mt-28 md:scroll-mt-40">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <Particles className="w-full h-full" alphaParticles={true} particleCount={160} speed={0.1} particleBaseSize={70} sizeRandomness={1} />
+        <Particles 
+          className="w-full h-full" 
+          alphaParticles={true} 
+          particleCount={500} 
+          speed={0.15} 
+          particleSpread={20}
+          particleBaseSize={80} 
+          sizeRandomness={1.2}
+          moveParticlesOnHover={true}
+          particleHoverFactor={1.5}
+          particleColors={['#00dfd8', '#945DD6', '#ffffff']}
+          interactive={true}
+        />
       </div>
 
       <div className="relative z-10 container mx-auto text-center">
