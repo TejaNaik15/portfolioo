@@ -17,6 +17,18 @@ const GooeyNav = ({
   const textRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(initialActiveIndex);
 
+  const handleNavClick = (e, targetId) => {
+    e.preventDefault();
+    const target = document.getElementById(targetId);
+    if (target) {
+      const offsetTop = target.offsetTop;
+      window.scrollTo({
+        top: offsetTop - 80, // Adjust this value based on your header height
+        behavior: 'smooth'
+      });
+    }
+  };
+
   const noise = (n = 1) => n / 2 - Math.random() * n;
 
   const getXY = (distance, pointIndex, totalPoints) => {
@@ -157,7 +169,13 @@ const GooeyNav = ({
         <ul ref={navRef}>
           {items.map((item, index) => (
             <li key={index} className={activeIndex === index ? 'active' : ''}>
-              <a href={item.href} onClick={(e) => handleClick(e, index)} onKeyDown={(e) => handleKeyDown(e, index)}>
+              <a 
+                href={item.href} 
+                onClick={(e) => {
+                  handleClick(e, index);
+                  handleNavClick(e, item.href.substring(1));
+                }} 
+                onKeyDown={(e) => handleKeyDown(e, index)}>
                 {item.icon && <span className="inline-flex mr-2 align-middle">{item.icon}</span>}
                 <span className="align-middle">{item.label}</span>
               </a>

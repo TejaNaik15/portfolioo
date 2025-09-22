@@ -1,6 +1,7 @@
 import React from 'react';
 import { FaLinkedin, FaTwitter, FaGithub, FaInstagram } from 'react-icons/fa';
 import { FiPhone, FiMail, FiMapPin } from 'react-icons/fi';
+import { handleSmoothScroll } from '../utils/smoothScroll';
 
 const tapeSvg = (
   <svg xmlns="http://www.w3.org/2000/svg" width="95" height="80" viewBox="0 0 95 80" fill="none">
@@ -38,12 +39,12 @@ const Footer = () => {
           <div className="flex flex-col gap-2 md:gap-3">
             <h4 className="text-xs font-semibold uppercase tracking-wide text-white/60">Resources</h4>
             <div className="flex flex-wrap items-start gap-2 text-sm md:flex-col">
-              <a className="text-white/70 hover:text-white" href="#home">Home</a>
-              <a className="text-white/70 hover:text-white" href="#about">About</a>
-              <a className="text-white/70 hover:text-white" href="#skills">Skills</a>
-              <a className="text-white/70 hover:text-white" href="#projects">Projects</a>
-              <a className="text-white/70 hover:text-white" href="#education">Education</a>
-              <a className="text-white/70 hover:text-white" href="#contact">Contact</a>
+              <a className="text-white/70 hover:text-white" href="#home" onClick={(e) => handleSmoothScroll(e, 'home')}>Home</a>
+              <a className="text-white/70 hover:text-white" href="#about" onClick={(e) => handleSmoothScroll(e, 'about')}>About</a>
+              <a className="text-white/70 hover:text-white" href="#skills" onClick={(e) => handleSmoothScroll(e, 'skills')}>Skills</a>
+              <a className="text-white/70 hover:text-white" href="#projects" onClick={(e) => handleSmoothScroll(e, 'projects')}>Projects</a>
+              <a className="text-white/70 hover:text-white" href="#education" onClick={(e) => handleSmoothScroll(e, 'education')}>Education</a>
+              <a className="text-white/70 hover:text-white" href="#contact" onClick={(e) => handleSmoothScroll(e, 'contact')}>Contact</a>
             </div>
           </div>
           <div className="flex flex-col gap-2 md:gap-3">
