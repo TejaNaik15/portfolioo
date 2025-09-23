@@ -2,38 +2,29 @@
   color: transparent;
   background: linear-gradient(
     120deg,
-    var(--text-color, #b5b5b5) 40%,
-    var(--shine-color, #ffffff) 50%,
-    var(--text-color, #b5b5b5) 60%
+    var(--text-color, #2d2d2d) 40%,
+    rgba(255, 255, 255, 0.95) 50%,
+    var(--text-color, #2d2d2d) 60%
   );
   background-size: 200% 100%;
   -webkit-background-clip: text;
   background-clip: text;
   display: inline-block;
   animation: shine 5s linear infinite;
-}
-
-:root {
-  --text-color: #b5b5b5;
-  --shine-color: #ffffff;
+  font-weight: 600;
 }
 
 [data-theme="light"] {
   --text-color: #2d2d2d;
-  --shine-color: #13ADC7;
 }
 
 [data-theme="dark"] {
   --text-color: #b5b5b5;
-  --shine-color: #ffffff;
 }
 
 @keyframes shine {
-  0% {
+  to {
     background-position: 200% center;
-  }
-  100% {
-    background-position: -200% center;
   }
 }
 
