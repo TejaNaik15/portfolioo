@@ -26,7 +26,7 @@ const Footer = () => {
         {/* brand and blurb */}
         <div className="flex flex-1 flex-col items-start gap-3">
           <div className="text-2xl font-extrabold tracking-tight">
-            <span className="bg-gradient-to-r from-[#00dfd8] to-[#945DD6] bg-clip-text text-transparent">Teja Naik</span>
+            <span className="name-gradient">Teja Naik</span>
           </div>
           <p className="w-full text-sm text-white/70 md:w-4/5">
             Designing and building delightful web experiences — from motion-rich interactions to performant UIs.
