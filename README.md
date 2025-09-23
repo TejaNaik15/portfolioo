@@ -4,7 +4,7 @@
   <img src="https://your-gif-link.com/portfolio-preview.gif" alt="Portfolio Preview" width="800" />
 </p>
 
-Hi there! 👋 I'm **Teja Tinku**, a Frontend & Full-Stack Developer passionate about creating interactive, visually stunning, and user-friendly web experiences.
+Hi there! 👋 I'm **Teja Naik**, a Frontend & Full-Stack Developer passionate about creating interactive, visually stunning, and user-friendly web experiences.
 
 ---
 
@@ -63,7 +63,7 @@ Copy code
 
 Install dependencies:
 
-```bash
+bash
 npm install
 🎨 Features
 Dark/Light Theme Support 🌗
