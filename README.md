@@ -1,7 +1,7 @@
 # Teja Naik | Portfolio
 
 <p align="center">
-  <img src="https://drive.google.com/file/d/1libsMcnhrI63mIhgtNftINlBdQ30G_Cc/view?usp=sharing" alt="Portfolio Preview" width="800" />
+  <img src="/assets/Screenshot (236).png" alt="Portfolio Preview" width="800" />
 </p>
 
 Hi there! 👋 I'm **Teja Naik**, a Frontend & Full-Stack Developer passionate about creating interactive, visually stunning, and user-friendly web experiences.
