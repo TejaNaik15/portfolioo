@@ -3,65 +3,82 @@ import React, { useEffect, useRef } from 'react';
 const SplineGlobe = () => {
   const canvasRef = useRef(null);
   const splineRef = useRef(null);
+  const appRef = useRef(null);
 
   useEffect(() => {
-    if (!canvasRef.current || splineRef.current) return;
+    const removeWatermarks = () => {
+      // Remove all possible watermark elements
+      const elements = document.querySelectorAll(
+        '[data-spline-watermark], .spline-watermark, #watermark, [class*="watermark"], [style*="watermark"]'
+      );
+      elements.forEach(el => el.remove());
+
+      // Also remove any elements with "Built with Spline" text
+      document.querySelectorAll('*').forEach(el => {
+        if (el.textContent === 'Built with Spline') {
+          el.remove();
+        }
+      });
+    };
 
     const loadSpline = async () => {
       try {
         const { Application } = await import('@splinetool/runtime');
-        splineRef.current = new Application(canvasRef.current);
+        appRef.current = new Application(canvasRef.current);
 
-        // Apply custom styling to the container
-        if (canvasRef.current) {
-          const parent = canvasRef.current.parentElement;
-          if (parent) {
-            parent.style.background = 'transparent';
-          }
-          
-          // Remove Spline watermark
-          const watermarks = document.querySelectorAll('[data-spline-watermark]');
-          watermarks.forEach(watermark => watermark.remove());
-        }
+        // Set up mutation observer to remove watermark as soon as it appears
+        const observer = new MutationObserver((mutations) => {
+          removeWatermarks();
+        });
 
-        // Load and customize the scene
-        await splineRef.current.load('https://prod.spline.design/JF69T2bLQMDBkHX7/scene.splinecode');
-        
-        // Get the scene and modify it
-        const scene = splineRef.current.scene;
-        
-        // Set scene background to transparent
-        if (scene) {
-          scene.background = null;
-          scene.traverse((object) => {
+        observer.observe(document.body, {
+          childList: true,
+          subtree: true
+        });
+
+        // Load the scene
+        await appRef.current.load('https://prod.spline.design/JF69T2bLQMDBkHX7/scene.splinecode');
+
+        // Initial cleanup
+        removeWatermarks();
+
+        // Access the scene and modify materials
+        if (appRef.current.scene) {
+          appRef.current.scene.background = null;
+          appRef.current.scene.traverse((object) => {
             if (object.material) {
-              // Make materials transparent where needed
+              // Apply portfolio theme colors
               object.material.transparent = true;
               
-              // Apply theme colors
+              if (object.material.map) {
+                // Adjust texture properties if present
+                object.material.map.encoding = THREE.sRGBEncoding;
+              }
+
+              // Apply gradient colors
               if (object.material.color) {
-                object.material.color.setStyle('#13ADC7'); // Light blue
+                object.material.color.setStyle('#945DD6'); // Purple base
               }
               if (object.material.emissive) {
-                object.material.emissive.setStyle('#945DD6'); // Purple
+                object.material.emissive.setStyle('#13ADC7'); // Light blue glow
+                object.material.emissiveIntensity = 0.8;
               }
               
-              // Adjust material properties for better visibility
-              if (object.material.opacity !== undefined) {
-                object.material.opacity = 0.8;
-              }
+              // Enhance material properties
+              object.material.metalness = 0.8;
+              object.material.roughness = 0.2;
+              object.material.opacity = 0.9;
             }
           });
         }
 
-        // Remove watermark periodically (some versions of Spline re-add it)
-        const removeWatermark = () => {
-          const watermarks = document.querySelectorAll('[data-spline-watermark], .spline-watermark');
-          watermarks.forEach(watermark => watermark.remove());
+        // Set up periodic cleanup
+        const intervalId = setInterval(removeWatermarks, 100);
+        return () => {
+          clearInterval(intervalId);
+          observer.disconnect();
         };
-        
-        const intervalId = setInterval(removeWatermark, 100);
-        return () => clearInterval(intervalId);
+
       } catch (error) {
         console.error('Error loading Spline:', error);
       }
@@ -70,8 +87,8 @@ const SplineGlobe = () => {
     loadSpline();
 
     return () => {
-      if (splineRef.current) {
-        splineRef.current.dispose();
+      if (appRef.current) {
+        appRef.current.dispose();
       }
     };
   }, []);
@@ -92,6 +109,20 @@ const SplineGlobe = () => {
           borderRadius: '0.5rem'
         }}
       />
+      <style jsx global>{`
+        [data-spline-watermark], 
+        .spline-watermark,
+        #watermark,
+        [class*="watermark"],
+        [style*="watermark"] {
+          display: none !important;
+          opacity: 0 !important;
+          visibility: hidden !important;
+          pointer-events: none !important;
+          position: absolute !important;
+          z-index: -9999 !important;
+        }
+      `}</style>
     </div>
   );
 };
