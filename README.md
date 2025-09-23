@@ -80,6 +80,8 @@ Responsive & Accessible Design 📱
 
 Custom Scrollbars & Gradient Text Animations 🎨
 
+---
+
 💻 Quick Start
 Clone the repo:
 
@@ -94,8 +96,12 @@ Build for production:
 bash
 Copy code
 npm run build
+
+---
 📫 Contact Me
 <p align="center"> <a href="mailto:tinkuteja740@gmail.com"> <img alt="Email" src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /> </a> <a href="https://linkedin.com/in/yourprofile" target="_blank"> <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /> </a> <a href="https://github.com/yourusername" target="_blank"> <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> </a> </p>
+
+---
 💡 Fun Fact
 I love adding fun micro-interactions like smooth cursors, floating buttons, and dynamic light rays to make web experiences delightful. 🎉
 
