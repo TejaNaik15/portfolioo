@@ -1,6 +1,6 @@
 # [Teja Naik | Portfolio](https://portfolioo-two-wheat.vercel.app/)
 
-![Teja Naik Portfolio Preview](public/assets/TEJANAIK.png)
+![Teja Naik Portfolio Preview](public/assets/NAIK.png)
 
 
 Hi there! 👋 I'm **Teja Naik**, a Frontend & Full-Stack Developer passionate about creating interactive, visually stunning, and user-friendly web experiences.
