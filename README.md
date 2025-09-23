@@ -82,34 +82,31 @@ Custom Scrollbars & Gradient Text Animations 🎨
 
 ---
 
-💻 Quick Start
+## 💻 Quick Start
 Clone the repo:
 
-bash
-Copy code
-git clone https://github.com/TejaNaik15/portfolioo.git
-cd portfolioo
-npm install
-npm run dev
-Build for production:
+- **Copy code**
+- **git clone https://github.com/TejaNaik15/portfolioo.git**
+- **cd portfolioo**
+- **npm install**
+- **npm run dev**
+- **Build for production**
 
-bash
-Copy code
-npm run build
+
 
 ---
-📫 Contact Me
+## 📫 Contact Me
 <p align="center"> <a href="mailto:tinkuteja740@gmail.com"> <img alt="Email" src="https://img.shields.io/badge/Email-D14836?style=for-the-badge&logo=gmail&logoColor=white" /> </a> <a href="https://linkedin.com/in/yourprofile" target="_blank"> <img alt="LinkedIn" src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" /> </a> <a href="https://github.com/yourusername" target="_blank"> <img alt="GitHub" src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white" /> </a> </p>
 
 ---
-💡 Fun Fact
+## 💡 Fun Fact
 I love adding fun micro-interactions like smooth cursors, floating buttons, and dynamic light rays to make web experiences delightful. 🎉
+---
 
-⭐ Support
+## ⭐ Support
 If you enjoy this project, give it a ⭐ and share your feedback! 💌
 
 <p align="center"> Made by <strong>Teja Naik</strong> </p>
-🃏 Social Cards Preview
-<p align="center"> <img src="https://your-image-link.com/social-card-1.png" width="200" /> <img src="https://your-image-link.com/social-card-2.png" width="200" /> <img src="https://your-image-link.com/social-card-3.png" width="200" /> </p>
+
 
 
