@@ -5,12 +5,12 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Global smooth scrolling */
+
 html {
   scroll-behavior: smooth;
 }
 
-/* Respect users who prefer reduced motion */
+
 @media (prefers-reduced-motion: reduce) {
   html {
     scroll-behavior: auto;
@@ -118,7 +118,7 @@ body::-webkit-scrollbar-thumb {
   transform: translateY(0);
 }
 
-/* Skills legend theming and truncation */
+
 .skill-legend-item {
   background-color: rgba(255, 255, 255, 0.05);
   border-color: rgba(255, 255, 255, 0.1);
@@ -127,7 +127,7 @@ body::-webkit-scrollbar-thumb {
   background-color: rgba(255, 255, 255, 0.1);
 }
 .skill-legend-label {
-  color: #e5e7eb; /* gray-200 */
+  color: #e5e7eb; 
 }
 .theme-light .skill-legend-item {
   background-color: rgba(0, 0, 0, 0.04);
@@ -137,10 +137,10 @@ body::-webkit-scrollbar-thumb {
   background-color: rgba(0, 0, 0, 0.08);
 }
 .theme-light .skill-legend-label {
-  color: #111827; /* gray-900 */
+  color: #111827; 
 }
 
-/* Orbit rings visibility per theme */
+
 .orbit-surface {
   --orbitRing: rgba(255, 255, 255, 0.18);
 }
@@ -148,14 +148,14 @@ body::-webkit-scrollbar-thumb {
   --orbitRing: rgba(0, 0, 0, 0.2);
 }
 
-/* Tape color (black in both themes as requested) */
+
 .tape { color: #000000; }
 
-/* Footer bottom text visibility per theme */
+
 .footer-bottom { color: rgba(255, 255, 255, 0.7); }
 .theme-light .footer-bottom { color: #111827; }
 
-/* Footer light-mode text overrides */
+
 .theme-light .site-footer,
 .theme-light .site-footer .plain-text,
 .theme-light .site-footer p,
