@@ -1,10 +1,11 @@
-import React, { useRef, useState } from 'react';
+import React, { useRef, useState, Suspense, lazy } from 'react';
 import SocialWrapper from '../components/SocialWrapper';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { FaPhone, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
-import Spline from '@splinetool/react-spline';
 import Particles from '../components/Particles';
 import { BorderBeam } from '../components/magicui/border-beam.jsx';
+
+const Spline = lazy(() => import('@splinetool/react-spline'));
 // Removed @emailjs/browser to avoid build-time dependency issues on Vercel
 
 const Contact = () => {
@@ -73,11 +74,17 @@ const Contact = () => {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
           <div className="relative flex w-full h-[360px] md:h-[460px] items-center justify-center overflow-hidden rounded-lg order-2 md:order-1 bg-gray-800/60 backdrop-blur-sm">
-            <div style={{ width: '100%', height: '100%' }}>
-              <Spline 
-                scene="https://prod.spline.design/JF69T2bLQMDBkHX7/scene.splinecode"
-              />
-            </div>
+            <Suspense fallback={
+              <div className="w-full h-full flex items-center justify-center">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-accent-blue"></div>
+              </div>
+            }>
+              <div style={{ width: '100%', height: '100%' }}>
+                <Spline 
+                  scene="https://prod.spline.design/JF69T2bLQMDBkHX7/scene.splinecode"
+                />
+              </div>
+            </Suspense>
           </div>
           <div className="bg-gray-800/60 backdrop-blur-sm p-6 rounded-lg shadow-lg text-left order-1 md:order-2 w-full">
             <h2 className="text-2xl font-semibold mb-4 text-accent-blue">Send a Message</h2>

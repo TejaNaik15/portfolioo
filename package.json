@@ -25,7 +25,9 @@
     "react-router-dom": "^7.6.3",
     "styled-components": "^6.1.19",
     "tailwindcss": "^3.4.17",
-    "three": "^0.180.0"
+    "three": "^0.180.0",
+    "@splinetool/react-spline": "^2.2.6",
+    "@splinetool/runtime": "^1.0.51"
   },
   "devDependencies": {
     "@eslint/js": "^9.29.0",

@@ -14,12 +14,15 @@ export default defineConfig({
       '@': path.resolve(__dirname, './src'),
     }
   },
-  optimizeDeps: {
-    include: ['@splinetool/runtime']
-  },
   build: {
-    commonjsOptions: {
-      include: [/@splinetool\/runtime/]
+    rollupOptions: {
+      external: ['@splinetool/react-spline', '@splinetool/runtime'],
+      output: {
+        globals: {
+          '@splinetool/react-spline': 'Spline',
+          '@splinetool/runtime': 'SplineRuntime'
+        }
+      }
     }
   }
 })
