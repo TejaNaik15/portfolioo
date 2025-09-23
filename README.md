@@ -1,4 +1,4 @@
-# [Teja Naik | Portfolio](https://portfolioo-two-wheat.vercel.app/)
+# [Teja Naik's | Portfolio](https://portfolioo-two-wheat.vercel.app/)
 
 ![Teja Naik Portfolio Preview](public/assets/NAIK.png)
 
