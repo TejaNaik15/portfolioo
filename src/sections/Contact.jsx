@@ -72,11 +72,15 @@ const Contact = () => {
         </p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto items-start">
-          <div className="relative flex w-full h-[360px] md:h-[460px] items-center justify-center overflow-hidden rounded-lg order-2 md:order-1">
-            <div className="absolute inset-0 bg-gray-800/10 backdrop-blur-[2px] rounded-lg"></div>
-            <div className="relative w-full h-full">
-              <SplineGlobe />
-            </div>
+          <div className="relative flex w-full h-[360px] md:h-[460px] items-center justify-center overflow-hidden rounded-lg order-2 md:order-1" style={{ background: 'transparent' }}>
+            <style>{`
+              .spline-watermark, [data-spline-watermark] {
+                display: none !important;
+                opacity: 0 !important;
+                visibility: hidden !important;
+              }
+            `}</style>
+            <SplineGlobe />
           </div>
           <div className="bg-gray-800/60 backdrop-blur-sm p-6 rounded-lg shadow-lg text-left order-1 md:order-2 w-full">
             <h2 className="text-2xl font-semibold mb-4 text-accent-blue">Send a Message</h2>
