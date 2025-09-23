@@ -15,7 +15,7 @@ const Footer = () => {
   return (
     <footer className="site-footer my-8 mx-auto w-full max-w-6xl px-4 text-white">
       <div className="relative mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 rounded-3xl bg-white/5 px-4 py-10 backdrop-blur-md ring-1 ring-white/10 md:flex-row md:px-8">
-        {/* tape corners */}
+        
         <div className="tape pointer-events-none absolute -top-4 -left-8 hidden h-[36px] w-[80px] scale-75 md:block">
           {tapeSvg}
         </div>
@@ -23,7 +23,7 @@ const Footer = () => {
           {tapeSvg}
         </div>
 
-        {/* brand and blurb */}
+        
         <div className="flex flex-1 flex-col items-start gap-3">
           <div className="text-2xl font-extrabold tracking-tight">
             <span className="name-gradient">Teja Naik</span>
@@ -34,7 +34,7 @@ const Footer = () => {
           <p className="text-xs text-white/60 italic">Thank you for visiting my portfolio — your time means a lot. Keep Rising 🚀</p>
         </div>
 
-        {/* link sections */}
+        
         <div className="flex flex-1 flex-col items-start gap-6 md:mx-4 md:flex-row md:gap-16">
           <div className="flex flex-col gap-2 md:gap-3">
             <h4 className="text-xs font-semibold uppercase tracking-wide text-white/60">Quick Links</h4>
@@ -67,22 +67,22 @@ const Footer = () => {
         </div>
       </div>
 
-      {/* bottom bar */}
+      
       <div className="mx-auto my-3 flex max-w-5xl flex-col items-start justify-between gap-4 px-4 text-sm text-white/70 md:flex-row md:items-center md:px-8">
         <div className="flex flex-col items-start gap-2 sm:flex-row sm:items-center sm:gap-8">
           <p className="footer-bottom whitespace-nowrap">©{year} Teja Naik. All rights reserved.</p>
         </div>
         <div className="flex items-center gap-4">
-          <a href="https://www.linkedin.com/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-white">
+          <a href="https://www.linkedin.com/in/teja-naik-0b3021282" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" className="hover:text-white">
             <FaLinkedin className="h-5 w-5" />
           </a>
-          <a href="https://x.com/" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white">
+          <a href="https://x.com/TEJA_NAIKK" target="_blank" rel="noopener noreferrer" aria-label="Twitter" className="hover:text-white">
             <FaTwitter className="h-5 w-5" />
           </a>
-          <a href="https://github.com/" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-white">
+          <a href="https://github.com/TejaNaik15" target="_blank" rel="noopener noreferrer" aria-label="GitHub" className="hover:text-white">
             <FaGithub className="h-5 w-5" />
           </a>
-          <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white">
+          <a href="https://www.instagram.com/eren_yeager9_" target="_blank" rel="noopener noreferrer" aria-label="Instagram" className="hover:text-white">
             <FaInstagram className="h-5 w-5" />
           </a>
         </div>
