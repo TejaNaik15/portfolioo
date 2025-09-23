@@ -12,6 +12,14 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
-    },
+    }
   },
+  optimizeDeps: {
+    include: ['@splinetool/runtime']
+  },
+  build: {
+    commonjsOptions: {
+      include: [/@splinetool\/runtime/]
+    }
+  }
 })
