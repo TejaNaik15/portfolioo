@@ -13,16 +13,5 @@ export default defineConfig({
     alias: {
       '@': path.resolve(__dirname, './src'),
     }
-  },
-  build: {
-    rollupOptions: {
-      external: ['@splinetool/react-spline', '@splinetool/runtime'],
-      output: {
-        globals: {
-          '@splinetool/react-spline': 'Spline',
-          '@splinetool/runtime': 'SplineRuntime'
-        }
-      }
-    }
   }
 })
