@@ -13,8 +13,8 @@ const tapeSvg = (
 const Footer = () => {
   const year = new Date().getFullYear();
   return (
-    <footer className="site-footer my-8 mx-auto w-full max-w-6xl px-4 text-white">
-      <div className="relative mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 rounded-3xl bg-white/5 px-4 py-10 backdrop-blur-md ring-1 ring-white/10 md:flex-row md:px-8">
+    <footer className="site-footer py-16 w-full px-4 text-white bg-primary-dark">
+      <div className="relative mx-auto flex max-w-5xl flex-col items-center justify-between gap-6 rounded-3xl px-4 py-10 md:flex-row md:px-8">
         
         <div className="tape pointer-events-none absolute -top-4 -left-8 hidden h-[36px] w-[80px] scale-75 md:block">
           {tapeSvg}
