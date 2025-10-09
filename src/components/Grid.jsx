@@ -1,0 +1,280 @@
+import React, { useState } from 'react';
+import { cn } from '../utils/cn';
+import { IoCopyOutline } from 'react-icons/io5';
+import { FaDownload, FaPhone, FaEnvelope } from 'react-icons/fa';
+
+const BentoGrid = ({ className, children }) => {
+  return (
+    <div
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-6 gap-4 mx-auto lg:grid-cols-5 md:grid-row-7 lg:gap-8",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+};
+
+const BentoGridItem = ({
+  id,
+  className,
+  title,
+  description,
+  img,
+  imgClassName,
+  titleClassName,
+  spareImg,
+}) => {
+  const [copied, setCopied] = useState(false);
+  
+  const leftLists = ["NextJs", "ReactJs", "Typescript"];
+  const rightLists = ["Golang", "NodeJs", "Docker"];
+
+  const handleCopy = () => {
+    const text = "tejanaik15@gmail.com";
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleResumeDownload = () => {
+    // Replace with your actual resume URL
+    const resumeUrl = "/assets/Teja_Naik_Resume.pdf";
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = "Teja_Naik_Resume.pdf";
+    link.click();
+  };
+
+  return (
+    <div
+      className={cn(
+        "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+        className
+      )}
+      style={{
+        background: "rgb(4,7,29)",
+        backgroundColor:
+          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+      }}
+    >
+      <div className={`${id === 6 && "flex justify-center"} h-full`}>
+        <div className="absolute size-full">
+          {img && (
+            <img
+              src={img}
+              alt={img}
+              className={cn(imgClassName, "object-cover object-center")}
+            />
+          )}
+        </div>
+        <div
+          className={`absolute -bottom-5 right-0 ${
+            id === 5 && "w-full opacity-80"
+          }`}
+        >
+          {spareImg && (
+            <img
+              src={spareImg}
+              alt={spareImg}
+              className="size-full object-cover object-center"
+            />
+          )}
+        </div>
+
+        <div
+          className={cn(
+            titleClassName,
+            "group-hover/bento:scale-105 transition duration-300 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+          )}
+        >
+          <div className="z-10 font-sans text-sm font-extralight text-[#c1c2d3] md:max-w-32 md:text-xs lg:text-base">
+            {description}
+          </div>
+          <div className="z-10 max-w-96 font-sans text-lg font-bold lg:text-3xl">
+            {title}
+          </div>
+
+          {/* Profile Grid - ID 1 */}
+          {id === 1 && (
+            <div className="flex flex-col items-center justify-center mt-4">
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-accent-blue">
+                <img
+                  src="/assets/teja-naik-photo.jpg" // Replace with your photo path
+                  alt="Teja Naik"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-3 w-full">
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center justify-center gap-2 bg-[#161a31] hover:bg-[#1a1f3a] px-4 py-2 rounded-lg transition-colors"
+                >
+                  <FaEnvelope className="text-accent-blue" />
+                  <span className="text-sm">{copied ? "Email Copied!" : "tejanaik15@gmail.com"}</span>
+                </button>
+                <div className="flex items-center justify-center gap-2 bg-[#161a31] px-4 py-2 rounded-lg">
+                  <FaPhone className="text-accent-blue" />
+                  <span className="text-sm">+91 9876543210</span> {/* Replace with your number */}
+                </div>
+                <button
+                  onClick={handleResumeDownload}
+                  className="flex items-center justify-center gap-2 bg-accent-blue hover:bg-accent-blue/80 px-4 py-2 rounded-lg transition-colors"
+                >
+                  <FaDownload />
+                  <span className="text-sm">Download Resume</span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Globe Grid - ID 2 */}
+          {id === 2 && (
+            <div className="flex items-center justify-center mt-8">
+              <div className="text-center">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-accent-blue to-purple-600 flex items-center justify-center">
+                  <span className="text-2xl">🌍</span>
+                </div>
+                <p className="text-white font-medium">Available across all time zones</p>
+              </div>
+            </div>
+          )}
+
+          {/* Tech Stack Grid - ID 3 */}
+          {id === 3 && (
+            <div className="absolute -right-0 flex w-fit gap-1 lg:-right-0 lg:gap-3">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-3">
+                {leftLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-80 lg:p-3 lg:text-base"
+                  >
+                    {item}
+                  </span>
+                ))}
+                <span className="rounded-lg bg-[#10132e] px-3 py-4 text-center lg:py-3" />
+              </div>
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-3">
+                <span className="rounded-lg bg-[#10132e] px-3 py-4 text-center lg:py-3" />
+                {rightLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-80 lg:p-3 lg:text-base"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Passion Grid - ID 4 */}
+          {id === 4 && (
+            <div className="flex items-center justify-center mt-8">
+              <div className="text-center">
+                <div className="text-4xl mb-4">💻</div>
+                <p className="text-white font-medium">Tech enthusiast with a passion for development</p>
+              </div>
+            </div>
+          )}
+
+          {/* Contact Grid - ID 6 */}
+          {id === 6 && (
+            <div className="relative mt-5">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Do you want to start a project together?
+                </h3>
+              </div>
+              <button
+                onClick={handleCopy}
+                className="flex items-center justify-center gap-2 w-full bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors"
+              >
+                <IoCopyOutline />
+                <span>{copied ? "Email is Copied!" : "Copy my email"}</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const gridItems = [
+  {
+    id: 1,
+    title: "Teja Naik",
+    description: "Full Stack Developer",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 2,
+    title: "I'm flexible across all time zones",
+    description: "Available for remote collaboration",
+    className: "lg:col-span-1 md:col-span-2 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 3,
+    title: "My tech stack",
+    description: "I constantly try to improve",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    imgClassName: "",
+    titleClassName: "justify-center",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 4,
+    title: "Tech enthusiast with a passion for development",
+    description: "Building innovative solutions",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 6,
+    title: "",
+    description: "",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+    img: "",
+    spareImg: "",
+  },
+];
+
+const Grid = () => {
+  return (
+    <section id="about" className="py-20">
+      <BentoGrid className="w-full py-20">
+        {gridItems.map((item, i) => (
+          <BentoGridItem
+            id={item.id}
+            key={i}
+            title={item.title}
+            description={item.description}
+            className={item.className}
+            img={item.img}
+            imgClassName={item.imgClassName}
+            titleClassName={item.titleClassName}
+            spareImg={item.spareImg}
+          />
+        ))}
+      </BentoGrid>
+    </section>
+  );
+};
+
+export default Grid;
