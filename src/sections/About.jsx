@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { cn } from '../utils/cn';
 import { IoCopyOutline } from 'react-icons/io5';
 import { FaDownload, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Particles from '../components/Particles';
@@ -7,10 +6,7 @@ import Particles from '../components/Particles';
 const BentoGrid = ({ className, children }) => {
   return (
     <div
-      className={cn(
-        "grid grid-cols-1 md:grid-cols-6 gap-4 mx-auto lg:grid-cols-5 md:grid-row-7 lg:gap-8",
-        className
-      )}
+      className={`grid grid-cols-1 md:grid-cols-6 gap-4 mx-auto lg:grid-cols-5 md:grid-row-7 lg:gap-8 ${className || ''}`}
     >
       {children}
     </div>
@@ -49,10 +45,7 @@ const BentoGridItem = ({
 
   return (
     <div
-      className={cn(
-        "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
-        className
-      )}
+      className={`row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4 ${className || ''}`}
       style={{
         background: "rgb(4,7,29)",
         backgroundColor:
@@ -84,10 +77,7 @@ const BentoGridItem = ({
         </div>
 
         <div
-          className={cn(
-            titleClassName,
-            "group-hover/bento:scale-105 transition duration-300 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
-          )}
+          className={`group-hover/bento:scale-105 transition duration-300 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10 ${titleClassName || ''}`}
         >
           <div className="z-10 font-sans text-sm font-extralight text-[#c1c2d3] md:max-w-32 md:text-xs lg:text-base">
             {description}
@@ -99,12 +89,8 @@ const BentoGridItem = ({
           {/* Profile Grid - ID 1 */}
           {id === 1 && (
             <div className="flex flex-col items-center justify-center mt-4">
-              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-[#00dfd8]">
-                <img
-                  src="/assets/teja-naik-photo.jpg"
-                  alt="Teja Naik"
-                  className="w-full h-full object-cover"
-                />
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-[#00dfd8] bg-gray-700 flex items-center justify-center">
+                <span className="text-4xl text-white">👤</span>
               </div>
               <div className="flex flex-col gap-3 w-full">
                 <button
@@ -116,7 +102,7 @@ const BentoGridItem = ({
                 </button>
                 <div className="flex items-center justify-center gap-2 bg-[#161a31] px-4 py-2 rounded-lg">
                   <FaPhone className="text-[#00dfd8]" />
-                  <span className="text-sm text-white">+91 9876543210</span>
+                  <span className="text-sm text-white">+91 1234567890</span>
                 </div>
                 <button
                   onClick={handleResumeDownload}
