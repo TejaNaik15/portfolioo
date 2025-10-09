@@ -5,6 +5,7 @@ import Particles from '../components/Particles';
 import { GridGlobe } from '../components/ui/GridGlobe';
 import { BackgroundGradientAnimation } from '../components/ui/GradientBg';
 import MagicButton from '../components/MagicButton';
+import Shuffle from '../components/Shuffle';
 import '../styles/animations.css';
 
 const BentoGrid = ({ className, children }) => {
@@ -358,49 +359,39 @@ const About = () => {
             </div>
           </div>
           
-          {/* Right Side - Tech Stack */}
+          {/* Right Side - About Description */}
           <div 
             className="relative overflow-hidden rounded-3xl border border-white/[0.1] light:border-black/[0.2] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8 bg-[#13162d] light:bg-white"
           >
-            <div className="flex flex-col items-center justify-center">
-              <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-white light:text-black mb-2">My Tech Stack</h3>
-                <p className="text-[#c1c2d3] light:text-gray-600">I constantly try to improve</p>
+            <div className="flex flex-col items-center justify-center text-center">
+              <div className="mb-8">
+                <Shuffle 
+                  text="About Me"
+                  className="text-2xl font-bold text-white light:text-black mb-4"
+                  style={{ fontSize: '1.5rem', fontFamily: 'inherit' }}
+                  duration={0.5}
+                  stagger={0.05}
+                />
               </div>
               
-              <div className="flex gap-6">
-                <div className="flex flex-col gap-4">
-                  {leftLists.map((item, i) => (
-                    <span
-                      key={i}
-                      className="rounded-lg bg-[#10132E] light:bg-gray-200 px-6 py-3 text-center text-white light:text-black border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                  <span className="rounded-lg bg-[#10132e] px-6 py-6 opacity-30" />
-                </div>
+              <div className="space-y-4 max-w-md">
+                <p className="text-white light:text-black leading-relaxed">
+                  I'm a passionate MERN stack developer with a love for creating innovative web solutions. 
+                  Currently exploring the latest technologies and building projects that make a difference.
+                </p>
                 
-                <div className="flex flex-col gap-4">
-                  <span className="rounded-lg bg-[#10132e] px-6 py-6 opacity-30" />
-                  {rightLists.map((item, i) => (
-                    <span
-                      key={i}
-                      className="rounded-lg bg-[#10132E] light:bg-gray-200 px-6 py-3 text-center text-white light:text-black border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
-                    >
-                      {item}
-                    </span>
-                  ))}
-                </div>
+                <p className="text-[#c1c2d3] light:text-gray-600 leading-relaxed">
+                  When I'm not coding, you'll find me learning new frameworks, contributing to open source, 
+                  or brainstorming the next big idea. I believe in clean code, user-centered design, and continuous learning.
+                </p>
+                
+                <p className="text-white light:text-black font-medium">
+                  Available across all time zones for remote collaboration.
+                </p>
               </div>
               
-              {/* Additional Info */}
-              <div className="mt-8 text-center">
-                <p className="text-white light:text-black font-medium">Tech enthusiast with a passion for development</p>
-                <p className="text-[#c1c2d3] light:text-gray-600 mt-2">Available across all time zones</p>
-                <div className="mt-4">
-                  <GridGlobe />
-                </div>
+              <div className="mt-6">
+                <GridGlobe />
               </div>
             </div>
           </div>
