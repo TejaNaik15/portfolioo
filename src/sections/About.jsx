@@ -3,6 +3,8 @@ import { IoCopyOutline } from 'react-icons/io5';
 import { FaDownload, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Particles from '../components/Particles';
 import { GridGlobe } from '../components/ui/GridGlobe';
+import { BackgroundGradientAnimation } from '../components/ui/GradientBg';
+import MagicButton from '../components/MagicButton';
 
 const BentoGrid = ({ className, children }) => {
   return (
@@ -59,7 +61,7 @@ const BentoGridItem = ({
             <img
               src={img}
               alt={img}
-              className={cn(imgClassName, "object-cover object-center")}
+              className={`object-cover object-center ${imgClassName || ''}`}
             />
           )}
         </div>
@@ -171,20 +173,25 @@ const BentoGridItem = ({
 
           {/* Contact Grid - ID 6 */}
           {id === 6 && (
-            <div className="relative mt-5">
-              <div className="text-center mb-6">
-                <h3 className="text-xl font-bold text-white mb-2">
-                  Do you want to start a project together?
-                </h3>
+            <>
+              <BackgroundGradientAnimation>
+                <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center px-4 text-center text-3xl font-bold text-white md:text-4xl lg:text-7xl"></div>
+              </BackgroundGradientAnimation>
+              <div className="relative mt-5 z-10">
+                <div className="text-center mb-6">
+                  <h3 className="text-xl font-bold text-white mb-2">
+                    Do you want to start a project together?
+                  </h3>
+                </div>
+                <MagicButton
+                  title={copied ? "Email is Copied!" : "Copy my email"}
+                  icon={<IoCopyOutline />}
+                  position="left"
+                  otherClasses="!bg-[#161a31]"
+                  handleClick={handleCopy}
+                />
               </div>
-              <button
-                onClick={handleCopy}
-                className="flex items-center justify-center gap-2 w-full bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors"
-              >
-                <IoCopyOutline className="text-white" />
-                <span className="text-white">{copied ? "Email is Copied!" : "Copy my email"}</span>
-              </button>
-            </div>
+            </>
           )}
         </div>
       </div>
