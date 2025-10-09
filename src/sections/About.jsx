@@ -316,7 +316,7 @@ const About = () => {
               <div className="relative" onMouseEnter={handlePhotoHover}>
                 <div className={`w-80 h-80 rounded-full overflow-hidden shadow-2xl transition-transform duration-1000 ${isRotating ? 'rotate-360' : ''}`}>
                   <img
-                    src="/assets/tinku.png"
+                    src="/assets/TINKU.png"
                     alt="Teja Naik"
                     className="w-full h-full object-cover"
                     onError={(e) => {
@@ -339,7 +339,7 @@ const About = () => {
                   onClick={handleEmailCopy}
                   className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
                 >
-                  {emailCopied ? <IoCopyOutline className="text-[#00dfd8]" /> : <FaEnvelope className="text-[#00dfd8]" />}
+                  {emailCopied ? <IoCopyOutline className="text-[#00dfd8] theme-light:text-[#00dfd8]" /> : <FaEnvelope className="text-[#00dfd8] theme-light:text-[#00dfd8]" />}
                   <span className="text-white theme-light:text-black">{emailCopied ? "Email Copied!" : "tinkuteja740@gmail.com"}</span>
                 </button>
                 
@@ -347,7 +347,7 @@ const About = () => {
                   onClick={handlePhoneCopy}
                   className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
                 >
-                  {phoneCopied ? <IoCopyOutline className="text-[#00dfd8]" /> : <FaPhone className="text-[#00dfd8]" />}
+                  {phoneCopied ? <IoCopyOutline className="text-[#00dfd8] theme-light:text-[#00dfd8]" /> : <FaPhone className="text-[#00dfd8] theme-light:text-[#00dfd8]" />}
                   <span className="text-white theme-light:text-black">{phoneCopied ? "Phone Copied!" : "+91 7569474682"}</span>
                 </button>
                 
