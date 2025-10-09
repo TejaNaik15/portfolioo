@@ -89,8 +89,16 @@ const BentoGridItem = ({
           {/* Profile Grid - ID 1 */}
           {id === 1 && (
             <div className="flex flex-col items-center justify-center mt-4">
-              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-[#00dfd8] bg-gray-700 flex items-center justify-center">
-                <span className="text-4xl text-white">👤</span>
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-[#00dfd8]">
+                <img
+                  src="/assets/TEJANAIK.jpg"
+                  alt="Teja Naik"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.target.style.display = 'none';
+                    e.target.parentElement.innerHTML = '<span class="text-4xl text-white flex items-center justify-center h-full">👤</span>';
+                  }}
+                />
               </div>
               <div className="flex flex-col gap-3 w-full">
                 <button

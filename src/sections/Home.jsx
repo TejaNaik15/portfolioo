@@ -74,7 +74,11 @@ const Home = () => {
             <MusicToggle />
           </div>
         </div>
-        <div id="profile-home-slot" className="md:justify-self-end min-h-[360px]" />
+        <div className="md:justify-self-end min-h-[360px]">
+          <div className="w-full max-w-sm">
+            <ProfileCard name="Teja Naik" title="MERN Developer" handle="tejanaik" />
+          </div>
+        </div>
       </div>
     </section>
   );
