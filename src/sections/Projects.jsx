@@ -63,11 +63,11 @@ const projectsData = [
 ];
 
 const getTechIcon = (tech) => {
-  const iconProps = { size: 16, className: 'text-white' };
+  const iconProps = { size: 16 };
   switch (tech.toLowerCase()) {
     case 'react': return <SiReact {...iconProps} color="#61DAFB" />;
     case 'node.js': return <SiNodedotjs {...iconProps} color="#339933" />;
-    case 'express.js': return <SiExpress {...iconProps} color="#ffffff" />;
+    case 'express.js': return <SiExpress {...iconProps} className="text-white theme-light:text-black" />;
     case 'tailwind css': return <SiTailwindcss {...iconProps} color="#06B6D4" />;
     case 'typescript': return <SiTypescript {...iconProps} color="#3178C6" />;
     case 'javascript': return <SiJavascript {...iconProps} color="#F7DF1E" />;
@@ -150,7 +150,7 @@ const Projects = () => {
                     {technologies.map((tech, index) => (
                       <div
                         key={tech}
-                        className="flex size-10 sm:size-12 lg:size-14 items-center justify-center rounded-full border border-white/[0.2] bg-black"
+                        className="flex size-10 sm:size-12 lg:size-14 items-center justify-center rounded-full border border-white/[0.2] bg-black theme-light:bg-white theme-light:border-black/[0.2]"
                         style={{ transform: `translateX(-${1 * index}px)` }}
                         title={tech}
                       >
@@ -164,7 +164,7 @@ const Projects = () => {
                       href={liveDemoLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-accent-blue flex text-base sm:text-lg lg:text-xl font-medium hover:text-white transition-colors"
+                      className="text-accent-blue flex text-base sm:text-lg lg:text-xl font-medium hover:text-white theme-light:hover:text-black transition-colors"
                     >
                       Visit Site
                     </a>

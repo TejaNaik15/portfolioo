@@ -46,6 +46,12 @@
 .theme-light div { color: inherit !important; }
 .theme-light section { color: #0f172a !important; }
 
+/* Project card light mode fixes */
+.theme-light .bg-black { background-color: #ffffff !important; }
+.theme-light .border-white\/\[0\.2\] { border-color: rgba(0, 0, 0, 0.2) !important; }
+.theme-light .text-white { color: #0f172a !important; }
+.theme-light .text-gray-300 { color: #475569 !important; }
+
 
 .theme-light .chroma-info { color: #0f172a; background: rgba(255,255,255,0.72); backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); border-top: 1px solid rgba(0,0,0,0.08); border-radius: 12px; margin: 8px; }
 .theme-light .chroma-info .role, .theme-light .chroma-info .handle { color: #475569; }
