@@ -59,11 +59,11 @@ const SharedProfileCard = () => {
 
       const dx = end.left - start.left;
       const dy = end.top - start.top;
-      const duration = 1.2;
+      const duration = 1.5;
 
-      // Create curved path that stays within viewport
-      const midX = dx * 0.5;
-      const midY = dy * 0.5 - 100; // Arc upward
+      // Create smooth curved path animation
+      const controlX = dx * 0.5 + (dx > 0 ? -150 : 150); // Curve to the side
+      const controlY = dy * 0.3 - 80; // Slight upward arc
       
       const tl = gsap.timeline({
         onComplete: () => {
@@ -74,30 +74,27 @@ const SharedProfileCard = () => {
         }
       });
 
-      // Smooth fade out and in animation with scale
+      // Smooth visible curved movement
       tl.set(ghost, {
-        transformOrigin: 'center center'
+        transformOrigin: 'center center',
+        scale: 1,
+        rotation: 0
       })
       .to(ghost, {
-        opacity: 0,
-        scale: 0.3,
-        rotation: 360,
-        filter: 'brightness(2) blur(5px)',
-        duration: duration * 0.4,
-        ease: 'power2.in'
+        x: controlX,
+        y: controlY,
+        scale: 0.8,
+        rotation: dx > 0 ? 15 : -15,
+        duration: duration * 0.5,
+        ease: 'power2.out'
       })
-      .set(ghost, {
+      .to(ghost, {
         x: dx,
         y: dy,
-        rotation: 0,
-        filter: 'brightness(2) blur(5px)'
-      })
-      .to(ghost, {
-        opacity: 1,
         scale: 1,
-        filter: 'brightness(1) blur(0px)',
-        duration: duration * 0.6,
-        ease: 'back.out(1.7)'
+        rotation: 0,
+        duration: duration * 0.5,
+        ease: 'power2.inOut'
       });
     };
 
