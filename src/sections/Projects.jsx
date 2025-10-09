@@ -99,18 +99,18 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-20 gap-y-24 mt-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16 lg:gap-x-20 lg:gap-y-24 mt-16 max-w-7xl mx-auto">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex w-full items-center justify-center p-6 h-[60rem]"
+              className="flex w-full items-center justify-center p-4 lg:p-6 h-auto lg:h-[60rem]"
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-10 flex h-[32vh] w-full items-center justify-center overflow-hidden sm:h-[36vh] lg:h-[42vh] min-w-[650px]">
+                <div className="relative mb-6 lg:mb-10 flex h-[25vh] w-full items-center justify-center overflow-hidden sm:h-[30vh] lg:h-[42vh] max-w-[90vw] lg:min-w-[650px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
@@ -121,37 +121,37 @@ const Projects = () => {
                   />
                 </div>
                 
-                <div className="w-full min-w-[650px]">
-                  <h1 className="text-2xl font-bold md:text-3xl lg:text-4xl text-white mb-6 leading-tight">
+                <div className="w-full max-w-[90vw] lg:min-w-[650px]">
+                  <h1 className="text-lg font-bold sm:text-xl md:text-2xl lg:text-4xl text-white mb-4 lg:mb-6 leading-tight">
                     {title}
                   </h1>
                   
                   <div
                     className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                      expandedId === id ? 'h-auto' : 'h-28'
+                      expandedId === id ? 'h-auto' : 'h-20 lg:h-28'
                     }`}
                   >
                     <p
-                      className="text-lg font-light lg:text-xl text-gray-300 leading-relaxed"
+                      className="text-sm font-light sm:text-base lg:text-xl text-gray-300 leading-relaxed"
                     >
                       {description}
                     </p>
                   </div>
                   
                   <span
-                    className="text-accent-blue cursor-pointer hover:text-white transition-colors text-lg mb-8 block"
+                    className="text-accent-blue cursor-pointer hover:text-white transition-colors text-sm sm:text-base lg:text-lg mb-4 lg:mb-8 block"
                     onClick={() => handleExpandClick(id)}
                   >
                     {expandedId === id ? 'Show less' : 'More...'}
                   </span>
                   
-                  <div className="mb-6 mt-8 flex items-center justify-between w-full">
+                  <div className="mb-4 lg:mb-6 mt-4 lg:mt-8 flex items-center justify-between w-full">
                   <div className="flex items-center">
                     {technologies.map((tech, index) => (
                       <div
                         key={tech}
-                        className="flex size-12 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:size-14"
-                        style={{ transform: `translateX(-${2 * index}px)` }}
+                        className="flex size-8 sm:size-10 lg:size-14 items-center justify-center rounded-full border border-white/[0.2] bg-black"
+                        style={{ transform: `translateX(-${1.5 * index}px)` }}
                         title={tech}
                       >
                         {getTechIcon(tech)}
@@ -164,11 +164,11 @@ const Projects = () => {
                       href={liveDemoLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-accent-blue flex text-xl font-medium hover:text-white transition-colors"
+                      className="text-accent-blue flex text-sm sm:text-base lg:text-xl font-medium hover:text-white transition-colors"
                     >
                       Visit Site
                     </a>
-                    <FaExternalLinkAlt className="ms-4 text-accent-blue text-lg" />
+                    <FaExternalLinkAlt className="ms-2 lg:ms-4 text-accent-blue text-sm lg:text-lg" />
                   </div>
                   </div>
                 </div>
