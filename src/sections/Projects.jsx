@@ -103,7 +103,7 @@ const Projects = () => {
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex w-full items-center justify-center p-4 md:p-8 lg:p-6 h-auto lg:h-[50rem] mb-8 md:mb-12 lg:mb-6">
+              className="flex w-full items-center justify-center p-4 md:p-8 lg:p-6 h-auto lg:h-[50rem] mb-8 md:mb-12 lg:mb-6"
             >
               <PinContainer
                 title="GitHub"
