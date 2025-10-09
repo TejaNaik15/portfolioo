@@ -94,7 +94,7 @@ const BentoGridItem = ({
             <div className="flex flex-col items-center justify-center mt-4">
               <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-[#00dfd8]">
                 <img
-                  src="/assets/TEJANAIK.jpg"
+                  src="/assets/TEJANAIK.png"
                   alt="Teja Naik"
                   className="w-full h-full object-cover"
                   onError={(e) => {
@@ -289,7 +289,7 @@ const About = () => {
             <div className="relative">
               <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-[#00dfd8] shadow-2xl animate-spin-slow" style={{ animationDuration: '10s' }}>
                 <img
-                  src="/assets/TEJANAIK.jpg"
+                  src="/assets/TEJANAIK.png"
                   alt="Teja Naik"
                   className="w-full h-full object-cover"
                   onError={(e) => {
