@@ -284,109 +284,136 @@ const About = () => {
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[600px]">
           {/* Left Side - Profile Photo and Contact */}
-          <div className="flex flex-col items-center justify-center space-y-8">
-            {/* Rotating Photo */}
-            <div className="relative">
-              <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-[#00dfd8] shadow-2xl animate-spin-slow" style={{ animationDuration: '10s' }}>
-                <img
-                  src="/assets/TEJANAIK.png"
-                  alt="Teja Naik"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gray-700 flex items-center justify-center text-6xl text-white">👤</div>';
-                  }}
-                />
+          <div 
+            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8"
+            style={{
+              background: "rgb(4,7,29)",
+              backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+            }}
+          >
+            <div className="flex flex-col items-center justify-center space-y-8">
+              {/* Rotating Photo */}
+              <div className="relative">
+                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-[#00dfd8] shadow-2xl animate-spin-slow" style={{ animationDuration: '10s' }}>
+                  <img
+                    src="/assets/TEJANAIK.png"
+                    alt="Teja Naik"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.target.style.display = 'none';
+                      e.target.parentElement.innerHTML = '<div class="w-full h-full bg-gray-700 flex items-center justify-center text-6xl text-white">👤</div>';
+                    }}
+                  />
+                </div>
+                <div className="absolute inset-0 rounded-full border-2 border-[#00dfd8] opacity-30 animate-pulse"></div>
               </div>
-              <div className="absolute inset-0 rounded-full border-2 border-[#00dfd8] opacity-30 animate-pulse"></div>
-            </div>
-            
-            {/* Name and Title */}
-            <div className="text-center">
-              <h3 className="text-3xl font-bold text-white mb-2">Teja Naik</h3>
-              <p className="text-xl text-[#c1c2d3]">Full Stack Developer</p>
-            </div>
-            
-            {/* Contact Buttons */}
-            <div className="flex flex-col gap-4 w-full max-w-sm">
-              <button
-                onClick={handleCopy}
-                className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
-              >
-                <FaEnvelope className="text-[#00dfd8]" />
-                <span className="text-white">{copied ? "Email Copied!" : "tejanaik15@gmail.com"}</span>
-              </button>
               
-              <button className="flex items-center justify-center gap-3 bg-[#161a31] px-6 py-3 rounded-lg border border-[#00dfd8]/30">
-                <FaPhone className="text-[#00dfd8]" />
-                <span className="text-white">+91 1234567890</span>
-              </button>
+              {/* Name and Title */}
+              <div className="text-center">
+                <h3 className="text-3xl font-bold text-white mb-2">Teja Naik</h3>
+                <p className="text-xl text-[#c1c2d3]">Full Stack Developer</p>
+              </div>
               
-              <button
-                onClick={handleResumeDownload}
-                className="flex items-center justify-center gap-3 bg-[#00dfd8] hover:bg-[#00dfd8]/80 px-6 py-3 rounded-lg transition-colors"
-              >
-                <FaDownload className="text-white" />
-                <span className="text-white">Download Resume</span>
-              </button>
+              {/* Contact Buttons */}
+              <div className="flex flex-col gap-4 w-full max-w-sm">
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
+                >
+                  <FaEnvelope className="text-[#00dfd8]" />
+                  <span className="text-white">{copied ? "Email Copied!" : "tejanaik15@gmail.com"}</span>
+                </button>
+                
+                <button className="flex items-center justify-center gap-3 bg-[#161a31] px-6 py-3 rounded-lg border border-[#00dfd8]/30">
+                  <FaPhone className="text-[#00dfd8]" />
+                  <span className="text-white">+91 1234567890</span>
+                </button>
+                
+                <button
+                  onClick={handleResumeDownload}
+                  className="flex items-center justify-center gap-3 bg-[#00dfd8] hover:bg-[#00dfd8]/80 px-6 py-3 rounded-lg transition-colors"
+                >
+                  <FaDownload className="text-white" />
+                  <span className="text-white">Download Resume</span>
+                </button>
+              </div>
             </div>
           </div>
           
           {/* Right Side - Tech Stack */}
-          <div className="flex flex-col items-center justify-center">
-            <div className="text-center mb-8">
-              <h3 className="text-2xl font-bold text-white mb-2">My Tech Stack</h3>
-              <p className="text-[#c1c2d3]">I constantly try to improve</p>
-            </div>
-            
-            <div className="flex gap-6">
-              <div className="flex flex-col gap-4">
-                {leftLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="rounded-lg bg-[#10132E] px-6 py-3 text-center text-white border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
-                  >
-                    {item}
-                  </span>
-                ))}
-                <span className="rounded-lg bg-[#10132e] px-6 py-6 opacity-30" />
+          <div 
+            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8"
+            style={{
+              background: "rgb(4,7,29)",
+              backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+            }}
+          >
+            <div className="flex flex-col items-center justify-center">
+              <div className="text-center mb-8">
+                <h3 className="text-2xl font-bold text-white mb-2">My Tech Stack</h3>
+                <p className="text-[#c1c2d3]">I constantly try to improve</p>
               </div>
               
-              <div className="flex flex-col gap-4">
-                <span className="rounded-lg bg-[#10132e] px-6 py-6 opacity-30" />
-                {rightLists.map((item, i) => (
-                  <span
-                    key={i}
-                    className="rounded-lg bg-[#10132E] px-6 py-3 text-center text-white border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
-                  >
-                    {item}
-                  </span>
-                ))}
+              <div className="flex gap-6">
+                <div className="flex flex-col gap-4">
+                  {leftLists.map((item, i) => (
+                    <span
+                      key={i}
+                      className="rounded-lg bg-[#10132E] px-6 py-3 text-center text-white border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                  <span className="rounded-lg bg-[#10132e] px-6 py-6 opacity-30" />
+                </div>
+                
+                <div className="flex flex-col gap-4">
+                  <span className="rounded-lg bg-[#10132e] px-6 py-6 opacity-30" />
+                  {rightLists.map((item, i) => (
+                    <span
+                      key={i}
+                      className="rounded-lg bg-[#10132E] px-6 py-3 text-center text-white border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
               </div>
-            </div>
-            
-            {/* Additional Info */}
-            <div className="mt-8 text-center">
-              <div className="text-4xl mb-4">💻</div>
-              <p className="text-white font-medium">Tech enthusiast with a passion for development</p>
-              <p className="text-[#c1c2d3] mt-2">Available across all time zones</p>
+              
+              {/* Additional Info */}
+              <div className="mt-8 text-center">
+                <div className="text-4xl mb-4">💻</div>
+                <p className="text-white font-medium">Tech enthusiast with a passion for development</p>
+                <p className="text-[#c1c2d3] mt-2">Available across all time zones</p>
+              </div>
             </div>
           </div>
         </div>
         
         {/* Bottom Contact Section */}
         <div className="mt-16 text-center">
-          <div className="bg-gradient-to-r from-[#161a31] to-[#1a1f3a] rounded-2xl p-8 border border-[#00dfd8]/20">
-            <h3 className="text-2xl font-bold text-white mb-4">
-              Do you want to start a project together?
-            </h3>
-            <MagicButton
-              title={copied ? "Email is Copied!" : "Copy my email"}
-              icon={<IoCopyOutline />}
-              position="left"
-              otherClasses="!bg-[#161a31]"
-              handleClick={handleCopy}
-            />
+          <div 
+            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-8"
+            style={{
+              background: "rgb(4,7,29)",
+              backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+            }}
+          >
+            <BackgroundGradientAnimation>
+              <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center px-4 text-center text-3xl font-bold text-white md:text-4xl lg:text-7xl"></div>
+            </BackgroundGradientAnimation>
+            <div className="relative z-10">
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Do you want to start a project together?
+              </h3>
+              <MagicButton
+                title={copied ? "Email is Copied!" : "Copy my email"}
+                icon={<IoCopyOutline />}
+                position="left"
+                otherClasses="!bg-[#161a31]"
+                handleClick={handleCopy}
+              />
+            </div>
           </div>
         </div>
       </div>
