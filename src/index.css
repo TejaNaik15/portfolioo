@@ -172,3 +172,26 @@ body::-webkit-scrollbar-thumb {
   color: #000000 !important;
 }
 .theme-light .site-footer a:hover { opacity: 0.8; }
+
+/* Mobile scroll performance optimizations */
+@media (max-width: 768px) {
+  .will-change-scroll {
+    will-change: transform;
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+  }
+  
+  /* Optimize particle rendering on mobile */
+  canvas {
+    -webkit-transform: translateZ(0);
+    transform: translateZ(0);
+  }
+  
+  /* Reduce motion for better performance */
+  * {
+    animation-duration: 0.5s !important;
+    transition-duration: 0.3s !important;
+  }
+}

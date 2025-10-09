@@ -35,20 +35,20 @@ const Skills = () => {
   const images = useMemo(() => items.map((it) => ({ src: it.img, label: it.name, href: it.url })), [items]);
 
   return (
-    <section id="skills" ref={sectionRef} className="relative min-h-screen bg-primary-dark text-white p-8 flex flex-col items-center justify-center transition-opacity-transform overflow-hidden scroll-mt-28 md:scroll-mt-40">
+    <section id="skills" ref={sectionRef} className="relative min-h-screen bg-primary-dark text-white p-4 md:p-8 flex flex-col items-center justify-center transition-opacity-transform overflow-hidden scroll-mt-28 md:scroll-mt-40 will-change-scroll">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Particles 
           className="w-full h-full" 
           alphaParticles={true} 
-          particleCount={500} 
-          speed={0.15} 
-          particleSpread={20}
-          particleBaseSize={80} 
-          sizeRandomness={1.2}
-          moveParticlesOnHover={true}
-          particleHoverFactor={1.5}
+          particleCount={window.innerWidth <= 768 ? 150 : 500} 
+          speed={0.1} 
+          particleSpread={15}
+          particleBaseSize={window.innerWidth <= 768 ? 50 : 80} 
+          sizeRandomness={1}
+          moveParticlesOnHover={window.innerWidth > 768}
+          particleHoverFactor={1.2}
           particleColors={['#00dfd8', '#945DD6', '#ffffff']}
-          interactive={true}
+          interactive={window.innerWidth > 768}
         />
       </div>
 

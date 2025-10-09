@@ -60,9 +60,17 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="relative min-h-screen bg-primary-dark text-white p-8 flex flex-col items-center justify-center transition-opacity-transform overflow-hidden scroll-mt-28 md:scroll-mt-40">
+    <section id="contact" ref={sectionRef} className="relative min-h-screen bg-primary-dark text-white p-4 md:p-8 flex flex-col items-center justify-center transition-opacity-transform overflow-hidden scroll-mt-28 md:scroll-mt-40 will-change-scroll">
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <Particles className="w-full h-full" alphaParticles={true} particleCount={160} speed={0.1} particleBaseSize={70} sizeRandomness={1} />
+        <Particles 
+          className="w-full h-full" 
+          alphaParticles={true} 
+          particleCount={window.innerWidth <= 768 ? 80 : 160} 
+          speed={0.08} 
+          particleBaseSize={window.innerWidth <= 768 ? 40 : 70} 
+          sizeRandomness={0.8}
+          interactive={false}
+        />
       </div>
       <div className="relative container mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-accent-blue">Contact Me</h1>
