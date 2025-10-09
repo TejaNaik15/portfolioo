@@ -50,6 +50,9 @@ const SharedProfileCard = () => {
         height: `${start.height}px`,
         zIndex: 1000,
         pointerEvents: 'none',
+        willChange: 'transform, opacity, filter',
+        backfaceVisibility: 'hidden',
+        perspective: '1000px'
       });
       (document.querySelector('#root') || document.body).appendChild(ghost);
       container.style.visibility = 'hidden';
@@ -58,10 +61,10 @@ const SharedProfileCard = () => {
       const dx = end.left - start.left;
       const dy = end.top - start.top;
       const distance = Math.hypot(dx, dy);
-      const duration = Math.min(1.2, Math.max(0.6, distance / 900));
+      const duration = Math.min(1.8, Math.max(1.0, distance / 600));
 
       const tl = gsap.timeline({
-        defaults: { ease: 'power1.inOut' },
+        defaults: { ease: 'power2.out' },
         onComplete: () => {
           target.appendChild(container);
           container.style.visibility = '';
@@ -70,17 +73,34 @@ const SharedProfileCard = () => {
         }
       });
 
+      // Add wow factor with scale, rotation, and smooth movement
       tl.fromTo(
         ghost,
-        { opacity: 1, transformOrigin: 'top left' },
+        { 
+          opacity: 1, 
+          transformOrigin: 'center center',
+          scale: 1,
+          rotation: 0,
+          filter: 'brightness(1) saturate(1)'
+        },
         {
           x: dx,
           y: dy,
+          scale: 1.1,
+          rotation: dx > 0 ? 5 : -5, // Slight rotation based on direction
           opacity: 1,
-          duration,
-          ease: 'power1.inOut'
+          filter: 'brightness(1.2) saturate(1.3)',
+          duration: duration * 0.6,
+          ease: 'power2.out'
         }
-      );
+      )
+      .to(ghost, {
+        scale: 1,
+        rotation: 0,
+        filter: 'brightness(1) saturate(1)',
+        duration: duration * 0.4,
+        ease: 'power2.inOut'
+      });
     };
 
     const toAbout = () => flyTo(aboutSlot);
