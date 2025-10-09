@@ -99,11 +99,11 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-10 max-w-none mx-auto px-8">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-24 mt-10 max-w-none mx-auto px-8">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex h-[50rem] w-full items-center justify-center lg:h-[55rem]"
+              className="flex h-[50rem] w-full items-center justify-center lg:h-[55rem] mb-8"
             >
               <PinContainer
                 title="GitHub"
