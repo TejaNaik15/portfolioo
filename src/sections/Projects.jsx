@@ -94,12 +94,12 @@ const Projects = () => {
       </div>
       
       <div className="relative z-10 container mx-auto px-8">
-        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center text-accent-blue relative z-20">
+        <h1 className="text-4xl md:text-5xl font-bold mb-8 text-center text-accent-blue relative z-20">
           A small selection of{' '}
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-8 gap-y-16 lg:gap-x-20 lg:gap-y-24 mt-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-20 lg:gap-x-24 lg:gap-y-28 mt-12 max-w-7xl mx-auto">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
