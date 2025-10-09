@@ -103,14 +103,14 @@ const Projects = () => {
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex h-[45rem] w-full items-center justify-center lg:h-[50rem]"
+              className="flex h-[55rem] w-full items-center justify-center lg:h-[60rem]"
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-6 flex h-[25vh] w-full items-center justify-center overflow-hidden sm:h-[30vh] lg:h-[35vh]">
+                <div className="relative mb-8 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[40vh]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
@@ -121,36 +121,36 @@ const Projects = () => {
                   />
                 </div>
                 
-                <h1 className="text-lg font-bold md:text-xl lg:text-2xl text-white mb-3 leading-tight">
+                <h1 className="text-xl font-bold md:text-2xl lg:text-3xl text-white mb-4 leading-tight">
                   {title}
                 </h1>
                 
                 <div
                   className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                    expandedId === id ? 'h-auto' : 'h-20'
+                    expandedId === id ? 'h-auto' : 'h-24'
                   }`}
                 >
                   <p
-                    className="text-sm font-light lg:text-base text-gray-300 leading-relaxed"
+                    className="text-base font-light lg:text-lg text-gray-300 leading-relaxed"
                   >
                     {description}
                   </p>
                 </div>
                 
                 <span
-                  className="text-accent-blue cursor-pointer hover:text-white transition-colors text-sm mb-4 block"
+                  className="text-accent-blue cursor-pointer hover:text-white transition-colors text-base mb-6 block"
                   onClick={() => handleExpandClick(id)}
                 >
                   {expandedId === id ? 'Show less' : 'More...'}
                 </span>
                 
-                <div className="mb-3 mt-4 flex items-center justify-between">
+                <div className="mb-4 mt-6 flex items-center justify-between">
                   <div className="flex items-center">
                     {technologies.map((tech, index) => (
                       <div
                         key={tech}
-                        className="flex size-9 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:size-11"
-                        style={{ transform: `translateX(-${4 * index}px)` }}
+                        className="flex size-10 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:size-12"
+                        style={{ transform: `translateX(-${3 * index}px)` }}
                         title={tech}
                       >
                         {getTechIcon(tech)}
@@ -163,11 +163,11 @@ const Projects = () => {
                       href={liveDemoLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-accent-blue flex text-base font-medium hover:text-white transition-colors"
+                      className="text-accent-blue flex text-lg font-medium hover:text-white transition-colors"
                     >
                       Visit Site
                     </a>
-                    <FaExternalLinkAlt className="ms-2 text-accent-blue" />
+                    <FaExternalLinkAlt className="ms-3 text-accent-blue text-base" />
                   </div>
                 </div>
               </PinContainer>
