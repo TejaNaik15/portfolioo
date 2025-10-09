@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaPhone, FaDownload } from 'react-icons/fa';
-import Particles from '../components/ui/Particles';
+import Particles from '../components/Particles';
 
 const About = () => {
   const [emailCopied, setEmailCopied] = useState(false);
