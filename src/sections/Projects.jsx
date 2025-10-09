@@ -99,7 +99,7 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-12 mt-10 max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-12 mt-10 max-w-none mx-auto px-8">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
@@ -110,7 +110,7 @@ const Projects = () => {
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-8 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[40vh] max-w-[600px]">
+                <div className="relative mb-8 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[40vh] max-w-[700px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
@@ -121,7 +121,7 @@ const Projects = () => {
                   />
                 </div>
                 
-                <div className="w-full max-w-[600px]">
+                <div className="w-full max-w-[700px]">
                   <h1 className="text-xl font-bold md:text-2xl lg:text-3xl text-white mb-4 leading-tight">
                     {title}
                   </h1>
