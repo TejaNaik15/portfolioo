@@ -5,7 +5,7 @@ import Particles from '../components/Particles';
 import { GridGlobe } from '../components/ui/GridGlobe';
 import { BackgroundGradientAnimation } from '../components/ui/GradientBg';
 import MagicButton from '../components/MagicButton';
-import Shuffle from '../components/Shuffle';
+import TrueFocus from '../components/TrueFocus';
 import '../styles/animations.css';
 
 const BentoGrid = ({ className, children }) => {
@@ -365,12 +365,13 @@ const About = () => {
           >
             <div className="flex flex-col items-center justify-center text-center">
               <div className="mb-8">
-                <Shuffle 
-                  text="About Me"
-                  className="text-2xl font-bold text-white light:text-black mb-4"
-                  style={{ fontSize: '1.5rem', fontFamily: 'inherit' }}
-                  duration={0.5}
-                  stagger={0.05}
+                <TrueFocus 
+                  sentence="About Me"
+                  borderColor="#00dfd8"
+                  glowColor="rgba(0, 223, 216, 0.6)"
+                  animationDuration={0.8}
+                  pauseBetweenAnimations={2}
+                  blurAmount={3}
                 />
               </div>
               
