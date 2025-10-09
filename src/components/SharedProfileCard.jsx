@@ -50,9 +50,8 @@ const SharedProfileCard = () => {
         height: `${start.height}px`,
         zIndex: 1000,
         pointerEvents: 'none',
-        willChange: 'transform, opacity, filter',
-        backfaceVisibility: 'hidden',
-        perspective: '1000px'
+        willChange: 'transform, filter',
+        backfaceVisibility: 'hidden'
       });
       (document.querySelector('#root') || document.body).appendChild(ghost);
       container.style.visibility = 'hidden';
@@ -60,11 +59,13 @@ const SharedProfileCard = () => {
 
       const dx = end.left - start.left;
       const dy = end.top - start.top;
-      const distance = Math.hypot(dx, dy);
-      const duration = Math.min(1.8, Math.max(1.0, distance / 600));
+      const duration = 1.2;
 
+      // Create curved path that stays within viewport
+      const midX = dx * 0.5;
+      const midY = dy * 0.5 - 100; // Arc upward
+      
       const tl = gsap.timeline({
-        defaults: { ease: 'power2.out' },
         onComplete: () => {
           target.appendChild(container);
           container.style.visibility = '';
@@ -73,33 +74,30 @@ const SharedProfileCard = () => {
         }
       });
 
-      // Add wow factor with scale, rotation, and smooth movement
-      tl.fromTo(
-        ghost,
-        { 
-          opacity: 1, 
-          transformOrigin: 'center center',
-          scale: 1,
-          rotation: 0,
-          filter: 'brightness(1) saturate(1)'
-        },
-        {
-          x: dx,
-          y: dy,
-          scale: 1.1,
-          rotation: dx > 0 ? 5 : -5, // Slight rotation based on direction
-          opacity: 1,
-          filter: 'brightness(1.2) saturate(1.3)',
-          duration: duration * 0.6,
-          ease: 'power2.out'
-        }
-      )
+      // Smooth fade out and in animation with scale
+      tl.set(ghost, {
+        transformOrigin: 'center center'
+      })
       .to(ghost, {
-        scale: 1,
-        rotation: 0,
-        filter: 'brightness(1) saturate(1)',
+        opacity: 0,
+        scale: 0.3,
+        rotation: 360,
+        filter: 'brightness(2) blur(5px)',
         duration: duration * 0.4,
-        ease: 'power2.inOut'
+        ease: 'power2.in'
+      })
+      .set(ghost, {
+        x: dx,
+        y: dy,
+        rotation: 0,
+        filter: 'brightness(2) blur(5px)'
+      })
+      .to(ghost, {
+        opacity: 1,
+        scale: 1,
+        filter: 'brightness(1) blur(0px)',
+        duration: duration * 0.6,
+        ease: 'back.out(1.7)'
       });
     };
 
