@@ -99,18 +99,18 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10 max-w-7xl mx-auto">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex h-[32rem] w-full items-center justify-center sm:h-[41rem] lg:min-h-[32.5rem]"
+              className="flex h-[45rem] w-full items-center justify-center lg:h-[50rem]"
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-10 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[40vh] max-w-[500px]">
+                <div className="relative mb-6 flex h-[25vh] w-full items-center justify-center overflow-hidden sm:h-[30vh] lg:h-[35vh]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
@@ -121,36 +121,36 @@ const Projects = () => {
                   />
                 </div>
                 
-                <h1 className="line-clamp-1 text-base font-bold md:text-xl lg:text-2xl text-white">
+                <h1 className="text-lg font-bold md:text-xl lg:text-2xl text-white mb-3 leading-tight">
                   {title}
                 </h1>
                 
                 <div
                   className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                    expandedId === id ? 'h-auto' : 'h-16'
+                    expandedId === id ? 'h-auto' : 'h-20'
                   }`}
                 >
                   <p
-                    className="text-sm font-light lg:text-xl lg:font-normal text-gray-300 my-2"
+                    className="text-sm font-light lg:text-base text-gray-300 leading-relaxed"
                   >
                     {description}
                   </p>
                 </div>
                 
                 <span
-                  className="text-accent-blue cursor-pointer hover:text-white transition-colors"
+                  className="text-accent-blue cursor-pointer hover:text-white transition-colors text-sm mb-4 block"
                   onClick={() => handleExpandClick(id)}
                 >
                   {expandedId === id ? 'Show less' : 'More...'}
                 </span>
                 
-                <div className="mb-3 mt-7 flex items-center justify-between">
+                <div className="mb-3 mt-4 flex items-center justify-between">
                   <div className="flex items-center">
                     {technologies.map((tech, index) => (
                       <div
                         key={tech}
-                        className="flex size-8 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:size-10"
-                        style={{ transform: `translateX(-${5 * index + 2}px)` }}
+                        className="flex size-9 items-center justify-center rounded-full border border-white/[0.2] bg-black lg:size-11"
+                        style={{ transform: `translateX(-${4 * index}px)` }}
                         title={tech}
                       >
                         {getTechIcon(tech)}
@@ -163,11 +163,11 @@ const Projects = () => {
                       href={liveDemoLink} 
                       target="_blank" 
                       rel="noopener noreferrer"
-                      className="text-accent-blue flex text-sm md:text-xs lg:text-xl hover:text-white transition-colors"
+                      className="text-accent-blue flex text-base font-medium hover:text-white transition-colors"
                     >
                       Visit Site
                     </a>
-                    <FaExternalLinkAlt className="ms-3 text-accent-blue" />
+                    <FaExternalLinkAlt className="ms-2 text-accent-blue" />
                   </div>
                 </div>
               </PinContainer>
