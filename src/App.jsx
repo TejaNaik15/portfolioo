@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-import LightRays from './components/LightRays';
+
 import GooeyNav from './components/GooeyNav';
 import Home from './sections/Home';
 import { useTheme } from './context/ThemeContext.jsx';
@@ -17,11 +17,9 @@ import SmoothCursor from './components/SmoothCursor';
 
 function App() {
   const { theme } = useTheme();
-  const rays = theme === 'light' ? '#000000' : '#ffffff';
   return (
     <Router>
-      <div className="relative flex flex-col min-h-screen bg-primary-dark" style={{ ['--rays-color']: rays }}>
-        <LightRays raysColor={rays} />
+      <div className="relative flex flex-col min-h-screen bg-primary-dark">
         <SmoothCursor />
         <div className="fixed top-0 left-0 right-0 z-40 flex justify-center pt-4">
           <GooeyNav
