@@ -5,6 +5,7 @@ import Particles from '../components/Particles';
 import { GridGlobe } from '../components/ui/GridGlobe';
 import { BackgroundGradientAnimation } from '../components/ui/GradientBg';
 import MagicButton from '../components/MagicButton';
+import '../styles/animations.css';
 
 const BentoGrid = ({ className, children }) => {
   return (
@@ -253,15 +254,25 @@ const gridItems = [
 ];
 
 const About = () => {
-  const [copied, setCopied] = useState(false);
+  const [emailCopied, setEmailCopied] = useState(false);
+  const [phoneCopied, setPhoneCopied] = useState(false);
+  const [resumeDownloaded, setResumeDownloaded] = useState(false);
+  const [isRotating, setIsRotating] = useState(false);
   const leftLists = ["NextJs", "ReactJs", "Typescript"];
   const rightLists = ["Golang", "NodeJs", "Docker"];
 
-  const handleCopy = () => {
-    const text = "tejanaik15@gmail.com";
+  const handleEmailCopy = () => {
+    const text = "tinkuteja740@gmail.com";
     navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
+    setEmailCopied(true);
+    setTimeout(() => setEmailCopied(false), 2000);
+  };
+
+  const handlePhoneCopy = () => {
+    const text = "+91 7569474682";
+    navigator.clipboard.writeText(text);
+    setPhoneCopied(true);
+    setTimeout(() => setPhoneCopied(false), 2000);
   };
 
   const handleResumeDownload = () => {
@@ -270,6 +281,15 @@ const About = () => {
     link.href = resumeUrl;
     link.download = "Teja_Naik_Resume.pdf";
     link.click();
+    setResumeDownloaded(true);
+    setTimeout(() => setResumeDownloaded(false), 2000);
+  };
+
+  const handlePhotoHover = () => {
+    if (!isRotating) {
+      setIsRotating(true);
+      setTimeout(() => setIsRotating(false), 1000);
+    }
   };
 
   return (
@@ -292,9 +312,9 @@ const About = () => {
             }}
           >
             <div className="flex flex-col items-center justify-center space-y-8">
-              {/* Rotating Photo */}
-              <div className="relative">
-                <div className="w-80 h-80 rounded-full overflow-hidden border-4 border-[#00dfd8] shadow-2xl animate-spin-slow" style={{ animationDuration: '10s' }}>
+              {/* Hover Rotating Photo */}
+              <div className="relative" onMouseEnter={handlePhotoHover}>
+                <div className={`w-80 h-80 rounded-full overflow-hidden border-4 border-[#00dfd8] shadow-2xl transition-transform duration-1000 ${isRotating ? 'rotate-360' : ''}`}>
                   <img
                     src="/assets/TEJANAIK.png"
                     alt="Teja Naik"
@@ -317,16 +337,19 @@ const About = () => {
               {/* Contact Buttons */}
               <div className="flex flex-col gap-4 w-full max-w-sm">
                 <button
-                  onClick={handleCopy}
+                  onClick={handleEmailCopy}
                   className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
                 >
-                  <FaEnvelope className="text-[#00dfd8]" />
-                  <span className="text-white">{copied ? "Email Copied!" : "tejanaik15@gmail.com"}</span>
+                  {emailCopied ? <IoCopyOutline className="text-[#00dfd8]" /> : <FaEnvelope className="text-[#00dfd8]" />}
+                  <span className="text-white">{emailCopied ? "Email Copied!" : "tinkuteja740@gmail.com"}</span>
                 </button>
                 
-                <button className="flex items-center justify-center gap-3 bg-[#161a31] px-6 py-3 rounded-lg border border-[#00dfd8]/30">
-                  <FaPhone className="text-[#00dfd8]" />
-                  <span className="text-white">+91 1234567890</span>
+                <button 
+                  onClick={handlePhoneCopy}
+                  className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
+                >
+                  {phoneCopied ? <IoCopyOutline className="text-[#00dfd8]" /> : <FaPhone className="text-[#00dfd8]" />}
+                  <span className="text-white">{phoneCopied ? "Phone Copied!" : "+91 7569474682"}</span>
                 </button>
                 
                 <button
@@ -334,7 +357,7 @@ const About = () => {
                   className="flex items-center justify-center gap-3 bg-[#00dfd8] hover:bg-[#00dfd8]/80 px-6 py-3 rounded-lg transition-colors"
                 >
                   <FaDownload className="text-white" />
-                  <span className="text-white">Download Resume</span>
+                  <span className="text-white">{resumeDownloaded ? "Resume Downloaded!" : "Download Resume"}</span>
                 </button>
               </div>
             </div>
@@ -382,9 +405,11 @@ const About = () => {
               
               {/* Additional Info */}
               <div className="mt-8 text-center">
-                <div className="text-4xl mb-4">💻</div>
                 <p className="text-white font-medium">Tech enthusiast with a passion for development</p>
                 <p className="text-[#c1c2d3] mt-2">Available across all time zones</p>
+                <div className="mt-4">
+                  <GridGlobe />
+                </div>
               </div>
             </div>
           </div>
@@ -407,11 +432,11 @@ const About = () => {
                 Do you want to start a project together?
               </h3>
               <MagicButton
-                title={copied ? "Email is Copied!" : "Copy my email"}
+                title={emailCopied ? "Email is Copied!" : "Copy my email"}
                 icon={<IoCopyOutline />}
                 position="left"
                 otherClasses="!bg-[#161a31]"
-                handleClick={handleCopy}
+                handleClick={handleEmailCopy}
               />
             </div>
           </div>
