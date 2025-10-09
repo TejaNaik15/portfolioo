@@ -1,77 +1,285 @@
-import React from 'react';
-import useScrollReveal from '../hooks/useScrollReveal';
-import ShinyText from '../components/ShinyText';
+import React, { useState } from 'react';
+import { cn } from '../utils/cn';
+import { IoCopyOutline } from 'react-icons/io5';
+import { FaDownload, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Particles from '../components/Particles';
-import SocialIcons from '../components/SocialIcons';
-import ScrollReveal from '../components/ScrollReveal';
-import AnimatedName from '../components/AnimatedName';
-import { BorderBeam } from '../components/magicui/border-beam.jsx';
-import BoxReveal from '../components/BoxReveal';
 
-const About = () => {
-  const sectionRef = useScrollReveal({ threshold: 0.1 });
-  const containerRef = sectionRef;
+const BentoGrid = ({ className, children }) => {
+  return (
+    <div
+      className={cn(
+        "grid grid-cols-1 md:grid-cols-6 gap-4 mx-auto lg:grid-cols-5 md:grid-row-7 lg:gap-8",
+        className
+      )}
+    >
+      {children}
+    </div>
+  );
+};
 
-  const from = "'wght' 350, 'opsz' 14";
-  const to = "'wght' 900, 'opsz' 72";
+const BentoGridItem = ({
+  id,
+  className,
+  title,
+  description,
+  img,
+  imgClassName,
+  titleClassName,
+  spareImg,
+}) => {
+  const [copied, setCopied] = useState(false);
+  
+  const leftLists = ["NextJs", "ReactJs", "Typescript"];
+  const rightLists = ["Golang", "NodeJs", "Docker"];
+
+  const handleCopy = () => {
+    const text = "tejanaik15@gmail.com";
+    navigator.clipboard.writeText(text);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  const handleResumeDownload = () => {
+    const resumeUrl = "/assets/resume.pdf";
+    const link = document.createElement('a');
+    link.href = resumeUrl;
+    link.download = "Teja_Naik_Resume.pdf";
+    link.click();
+  };
 
   return (
-    <section id="about" ref={sectionRef} className="relative py-16 text-white px-4 bg-primary-dark overflow-hidden scroll-mt-28 md:scroll-mt-40">
+    <div
+      className={cn(
+        "row-span-1 relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none justify-between flex flex-col space-y-4",
+        className
+      )}
+      style={{
+        background: "rgb(4,7,29)",
+        backgroundColor:
+          "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
+      }}
+    >
+      <div className={`${id === 6 && "flex justify-center"} h-full`}>
+        <div className="absolute size-full">
+          {img && (
+            <img
+              src={img}
+              alt={img}
+              className={cn(imgClassName, "object-cover object-center")}
+            />
+          )}
+        </div>
+        <div
+          className={`absolute -bottom-5 right-0 ${
+            id === 5 && "w-full opacity-80"
+          }`}
+        >
+          {spareImg && (
+            <img
+              src={spareImg}
+              alt={spareImg}
+              className="size-full object-cover object-center"
+            />
+          )}
+        </div>
+
+        <div
+          className={cn(
+            titleClassName,
+            "group-hover/bento:scale-105 transition duration-300 relative md:h-full min-h-40 flex flex-col px-5 p-5 lg:p-10"
+          )}
+        >
+          <div className="z-10 font-sans text-sm font-extralight text-[#c1c2d3] md:max-w-32 md:text-xs lg:text-base">
+            {description}
+          </div>
+          <div className="z-10 max-w-96 font-sans text-lg font-bold lg:text-3xl text-white">
+            {title}
+          </div>
+
+          {/* Profile Grid - ID 1 */}
+          {id === 1 && (
+            <div className="flex flex-col items-center justify-center mt-4">
+              <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-[#00dfd8]">
+                <img
+                  src="/assets/teja-naik-photo.jpg"
+                  alt="Teja Naik"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="flex flex-col gap-3 w-full">
+                <button
+                  onClick={handleCopy}
+                  className="flex items-center justify-center gap-2 bg-[#161a31] hover:bg-[#1a1f3a] px-4 py-2 rounded-lg transition-colors"
+                >
+                  <FaEnvelope className="text-[#00dfd8]" />
+                  <span className="text-sm text-white">{copied ? "Email Copied!" : "tejanaik15@gmail.com"}</span>
+                </button>
+                <div className="flex items-center justify-center gap-2 bg-[#161a31] px-4 py-2 rounded-lg">
+                  <FaPhone className="text-[#00dfd8]" />
+                  <span className="text-sm text-white">+91 9876543210</span>
+                </div>
+                <button
+                  onClick={handleResumeDownload}
+                  className="flex items-center justify-center gap-2 bg-[#00dfd8] hover:bg-[#00dfd8]/80 px-4 py-2 rounded-lg transition-colors"
+                >
+                  <FaDownload className="text-white" />
+                  <span className="text-sm text-white">Download Resume</span>
+                </button>
+              </div>
+            </div>
+          )}
+
+          {/* Globe Grid - ID 2 */}
+          {id === 2 && (
+            <div className="flex items-center justify-center mt-8">
+              <div className="text-center">
+                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#00dfd8] to-purple-600 flex items-center justify-center">
+                  <span className="text-2xl">🌍</span>
+                </div>
+                <p className="text-white font-medium">Available across all time zones</p>
+              </div>
+            </div>
+          )}
+
+          {/* Tech Stack Grid - ID 3 */}
+          {id === 3 && (
+            <div className="absolute -right-0 flex w-fit gap-1 lg:-right-0 lg:gap-3">
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-3">
+                {leftLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-80 lg:p-3 lg:text-base text-white"
+                  >
+                    {item}
+                  </span>
+                ))}
+                <span className="rounded-lg bg-[#10132e] px-3 py-4 text-center lg:py-3" />
+              </div>
+              <div className="flex flex-col gap-2 md:gap-3 lg:gap-3">
+                <span className="rounded-lg bg-[#10132e] px-3 py-4 text-center lg:py-3" />
+                {rightLists.map((item, i) => (
+                  <span
+                    key={i}
+                    className="rounded-lg bg-[#10132E] px-3 py-2 text-center text-xs opacity-80 lg:p-3 lg:text-base text-white"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* Passion Grid - ID 4 */}
+          {id === 4 && (
+            <div className="flex items-center justify-center mt-8">
+              <div className="text-center">
+                <div className="text-4xl mb-4">💻</div>
+                <p className="text-white font-medium">Tech enthusiast with a passion for development</p>
+              </div>
+            </div>
+          )}
+
+          {/* Contact Grid - ID 6 */}
+          {id === 6 && (
+            <div className="relative mt-5">
+              <div className="text-center mb-6">
+                <h3 className="text-xl font-bold text-white mb-2">
+                  Do you want to start a project together?
+                </h3>
+              </div>
+              <button
+                onClick={handleCopy}
+                className="flex items-center justify-center gap-2 w-full bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors"
+              >
+                <IoCopyOutline className="text-white" />
+                <span className="text-white">{copied ? "Email is Copied!" : "Copy my email"}</span>
+              </button>
+            </div>
+          )}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const gridItems = [
+  {
+    id: 1,
+    title: "Teja Naik",
+    description: "Full Stack Developer",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 2,
+    title: "I'm flexible across all time zones",
+    description: "Available for remote collaboration",
+    className: "lg:col-span-1 md:col-span-2 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 3,
+    title: "My tech stack",
+    description: "I constantly try to improve",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+    imgClassName: "",
+    titleClassName: "justify-center",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 4,
+    title: "Tech enthusiast with a passion for development",
+    description: "Building innovative solutions",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "justify-start",
+    img: "",
+    spareImg: "",
+  },
+  {
+    id: 6,
+    title: "",
+    description: "",
+    className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+    imgClassName: "",
+    titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+    img: "",
+    spareImg: "",
+  },
+];
+
+const About = () => {
+  return (
+    <section id="about" className="relative py-20 bg-primary-dark text-white overflow-hidden scroll-mt-28 md:scroll-mt-40">
       <div className="absolute inset-0 z-0 pointer-events-none">
         <Particles className="w-full h-full" alphaParticles={true} particleCount={120} speed={0.08} particleBaseSize={60} sizeRandomness={1} />
       </div>
-      <div className="relative z-10 container mx-auto max-w-6xl grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-        <div id="profile-about-slot" className="min-h-[320px] order-1 md:order-none" />
-        <div className="order-2 md:order-none">
-          <h2 className="text-4xl md:text-5xl font-bold mb-2 text-accent-blue">About Me</h2>
-          <div className="mb-6">
-            <ShinyText text="A glimpse into who I am" speed={6} className="text-2xl md:text-3xl" />
-          </div>
-          <div className="space-y-3 text-text-muted leading-normal">
-            <BoxReveal boxColor="#00dfd8" duration={0.6} delay={0} direction="ltr">
-              <p className="max-w-prose text-base md:text-lg">
-                I'm a passionate recent graduate embarking on my journey as a MERN stack developer. Currently honing my skills in <span className="font-semibold text-[#00dfd8]">MongoDB</span>, <span className="font-semibold text-[#00dfd8]">Express.js</span>, <span className="font-semibold text-[#00dfd8]">React</span>, and <span className="font-semibold text-[#00dfd8]">Node.js</span>, I'm also strengthening my foundation in <span className="font-semibold text-[#00dfd8]">Data Structures and Algorithms</span>.
-              </p>
-            </BoxReveal>
-            <BoxReveal boxColor="#945DD6" duration={0.6} delay={0.15} direction="rtl" overlayStyle={{ background: 'linear-gradient(90deg, #945DD6 0%, #00dfd8 100%)' }}>
-              <p className="max-w-prose text-base md:text-lg">
-                As a fresher eager to make my mark in the tech world, I bring fresh perspectives, boundless enthusiasm, and a genuine love for problem-solving through code. I'm always excited to learn new technologies, collaborate on innovative projects, and contribute meaningfully to development teams.
-              </p>
-            </BoxReveal>
-            <BoxReveal boxColor="#00dfd8" duration={0.6} delay={0.3} direction="ltr" overlayStyle={{ background: 'linear-gradient(90deg, #00dfd8 0%, rgba(0,223,216,0.6) 60%, transparent 100%)' }}>
-              <p className="max-w-prose text-base md:text-lg">
-                My goal is to build user-friendly applications that make a real difference while continuously growing as a developer. What truly drives me is the constant evolution of technology and the endless possibilities it brings.
-              </p>
-            </BoxReveal>
-          </div>
-          
-          {/* Funny Quote Section */}
-          <div className="mt-8 mb-6 p-4 bg-accent-blue/10 border border-accent-blue/30 rounded-lg">
-            <p className="text-center text-xl md:text-2xl font-black text-accent-blue leading-relaxed">
-              "I speak fluent JavaScript, but I'm still learning to communicate with humans." 
-            </p>
-          </div>
-
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <a
-              href="/assets/resume.pdf"
-              download
-              className="relative inline-flex items-center gap-2 bg-accent-blue text-white px-6 py-3 rounded-full text-lg hover:bg-white/20 border border-accent-blue/40 transition-colors duration-300 overflow-hidden"
-            >
-              <span className="relative z-10 inline-flex items-center gap-2">
-                <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 3a1 1 0 0 1 1 1v9.586l2.293-2.293a1 1 0 1 1 1.414 1.414l-4 4a1 1 0 0 1-1.414 0l-4-4a1 1 0 1 1 1.414-1.414L11 13.586V4a1 1 0 0 1 1-1z"/><path d="M5 20a2 2 0 0 1-2-2v-2a1 1 0 1 1 2 0v2h14v-2a1 1 0 1 1 2 0v2a2 2 0 0 1-2 2H5z"/></svg>
-                 Resume
-              </span>
-              <span className="absolute inset-0 rounded-full pointer-events-none" aria-hidden>
-                <BorderBeam duration={8} size={120} colors={["#13ADC7","#945DD6","#FF3C78"]} />
-              </span>
-            </a>
-            <div className="flex items-center gap-3">
-              <SocialIcons type="instagram" link="https://www.instagram.com/eren_yeager9_" />
-              <SocialIcons type="twitter" link="https://x.com/TEJA_NAIKK" />
-            </div>
-          </div>
-        </div>
+      <div className="relative z-10 container mx-auto px-8">
+        <h2 className="text-4xl md:text-5xl font-bold mb-16 text-center text-[#00dfd8]">
+          About <span className="text-white">Me</span>
+        </h2>
+        <BentoGrid className="w-full">
+          {gridItems.map((item, i) => (
+            <BentoGridItem
+              id={item.id}
+              key={i}
+              title={item.title}
+              description={item.description}
+              className={item.className}
+              img={item.img}
+              imgClassName={item.imgClassName}
+              titleClassName={item.titleClassName}
+              spareImg={item.spareImg}
+            />
+          ))}
+        </BentoGrid>
       </div>
     </section>
   );
