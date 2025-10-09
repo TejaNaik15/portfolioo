@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { IoCopyOutline } from 'react-icons/io5';
 import { FaDownload, FaPhone, FaEnvelope } from 'react-icons/fa';
 import Particles from '../components/Particles';
+import { GridGlobe } from '../components/ui/GridGlobe';
 
 const BentoGrid = ({ className, children }) => {
   return (
@@ -125,13 +126,8 @@ const BentoGridItem = ({
 
           {/* Globe Grid - ID 2 */}
           {id === 2 && (
-            <div className="flex items-center justify-center mt-8">
-              <div className="text-center">
-                <div className="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-r from-[#00dfd8] to-purple-600 flex items-center justify-center">
-                  <span className="text-2xl">🌍</span>
-                </div>
-                <p className="text-white font-medium">Available across all time zones</p>
-              </div>
+            <div className="flex flex-col items-center justify-center mt-4">
+              <GridGlobe />
             </div>
           )}
 
