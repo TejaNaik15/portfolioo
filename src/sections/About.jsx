@@ -305,11 +305,7 @@ const About = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center min-h-[600px]">
           {/* Left Side - Profile Photo and Contact */}
           <div 
-            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8"
-            style={{
-              background: "rgb(4,7,29)",
-              backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8 bg-[#13162d]"
           >
             <div className="flex flex-col items-center justify-center space-y-8">
               {/* Hover Rotating Photo */}
@@ -364,11 +360,7 @@ const About = () => {
           
           {/* Right Side - Tech Stack */}
           <div 
-            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8"
-            style={{
-              background: "rgb(4,7,29)",
-              backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none flex flex-col justify-center p-8 bg-[#13162d]"
           >
             <div className="flex flex-col items-center justify-center">
               <div className="text-center mb-8">
@@ -417,11 +409,7 @@ const About = () => {
         {/* Bottom Contact Section */}
         <div className="mt-16 text-center">
           <div 
-            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-8"
-            style={{
-              background: "rgb(4,7,29)",
-              backgroundColor: "linear-gradient(90deg, rgba(4,7,29,1) 0%, rgba(12,14,35,1) 100%)",
-            }}
+            className="relative overflow-hidden rounded-3xl border border-white/[0.1] group/bento hover:shadow-xl transition duration-200 shadow-input dark:shadow-none p-8 bg-[#13162d]"
           >
             <BackgroundGradientAnimation>
               <div className="pointer-events-none absolute inset-0 z-50 flex items-center justify-center px-4 text-center text-3xl font-bold text-white md:text-4xl lg:text-7xl"></div>
