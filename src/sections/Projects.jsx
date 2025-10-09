@@ -93,24 +93,24 @@ const Projects = () => {
         <Particles className="w-full h-full" alphaParticles={true} particleCount={160} speed={0.1} particleBaseSize={70} sizeRandomness={1} />
       </div>
       
-      <div className="relative z-10 container mx-auto px-4">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4 text-center text-accent-blue">
+      <div className="relative z-10 container mx-auto px-8">
+        <h1 className="text-4xl md:text-5xl font-bold mb-12 text-center text-accent-blue relative z-20">
           A small selection of{' '}
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-32 gap-y-12 mt-10 max-w-none mx-auto px-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-20 mt-16 max-w-6xl mx-auto">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex w-full items-center justify-center"
+              className="flex w-full items-center justify-center p-8"
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-8 flex h-[35vh] w-full items-center justify-center overflow-hidden sm:h-[40vh] lg:h-[45vh] min-w-[800px]">
+                <div className="relative mb-8 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[40vh] max-w-[600px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
@@ -121,7 +121,7 @@ const Projects = () => {
                   />
                 </div>
                 
-                <div className="w-full min-w-[800px]">
+                <div className="w-full max-w-[600px]">
                   <h1 className="text-xl font-bold md:text-2xl lg:text-3xl text-white mb-4 leading-tight">
                     {title}
                   </h1>
