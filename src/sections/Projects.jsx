@@ -99,18 +99,18 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="flex flex-wrap items-center justify-center gap-x-24 gap-y-8 p-4 mt-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-10 max-w-7xl mx-auto">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex h-[32rem] w-[80vw] items-center justify-center sm:h-[41rem] sm:w-[570px] lg:min-h-[32.5rem]"
+              className="flex h-[32rem] w-full items-center justify-center sm:h-[41rem] lg:min-h-[32.5rem]"
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-10 flex h-[30vh] w-[80vw] items-center justify-center overflow-hidden sm:h-[40vh] sm:w-[570px]">
+                <div className="relative mb-10 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[40vh] max-w-[500px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
