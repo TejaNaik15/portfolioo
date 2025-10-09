@@ -99,7 +99,7 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 gap-y-12 mt-10 max-w-7xl mx-auto px-4">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-24 gap-y-12 mt-10 max-w-7xl mx-auto px-4">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
