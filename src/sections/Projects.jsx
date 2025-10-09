@@ -94,23 +94,23 @@ const Projects = () => {
       </div>
       
       <div className="relative z-10 container mx-auto px-8">
-        <h1 className="text-4xl md:text-5xl font-bold mb-16 md:mb-20 text-center text-accent-blue relative z-20">
+        <h1 className="text-4xl md:text-5xl font-bold mb-16 md:mb-20 lg:mb-12 text-center text-accent-blue relative z-20">
           A small selection of{' '}
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-48 md:gap-y-56 lg:gap-x-24 lg:gap-y-40 mt-16 md:mt-20 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-12 gap-y-48 md:gap-y-56 lg:gap-x-16 lg:gap-y-24 mt-16 md:mt-20 lg:mt-8 max-w-7xl mx-auto">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex w-full items-center justify-center p-4 md:p-8 lg:p-10 h-auto lg:h-[60rem] mb-8 md:mb-12"
+              className="flex w-full items-center justify-center p-4 md:p-8 lg:p-6 h-auto lg:h-[50rem] mb-8 md:mb-12 lg:mb-6">
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-6 md:mb-8 lg:mb-10 flex h-[25vh] md:h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[42vh] min-w-[90vw] md:min-w-[95vw] lg:min-w-[650px]">
+                <div className="relative mb-6 md:mb-8 lg:mb-8 flex h-[25vh] md:h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[35vh] min-w-[90vw] md:min-w-[95vw] lg:min-w-[550px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
