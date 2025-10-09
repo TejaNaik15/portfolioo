@@ -35,7 +35,8 @@ const SharedProfileCard = () => {
       const startOffscreen = start.bottom < 0 || start.top > viewportH || start.right < 0 || start.left > viewportW;
       if (endOffscreen || startOffscreen) {
         target.appendChild(container);
-        container.style.visibility = '';
+        container.style.opacity = '1';
+        container.style.transform = 'scale(1)';
         currentSlot.current = target;
         return;
       }
@@ -50,11 +51,13 @@ const SharedProfileCard = () => {
         height: `${start.height}px`,
         zIndex: 1000,
         pointerEvents: 'none',
-        willChange: 'transform, filter',
+        willChange: 'transform',
         backfaceVisibility: 'hidden'
       });
       (document.querySelector('#root') || document.body).appendChild(ghost);
-      container.style.visibility = 'hidden';
+      container.style.opacity = '0';
+      container.style.transform = 'scale(0.8)';
+      container.style.transition = 'none';
 
 
       const dx = end.left - start.left;
@@ -68,7 +71,9 @@ const SharedProfileCard = () => {
       const tl = gsap.timeline({
         onComplete: () => {
           target.appendChild(container);
-          container.style.visibility = '';
+          container.style.opacity = '1';
+          container.style.transform = 'scale(1)';
+          container.style.transition = 'opacity 0.3s ease, transform 0.3s ease';
           ghost.remove();
           currentSlot.current = target;
         }
