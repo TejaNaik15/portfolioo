@@ -6,6 +6,7 @@ import { GridGlobe } from '../components/ui/GridGlobe';
 import { BackgroundGradientAnimation } from '../components/ui/GradientBg';
 import MagicButton from '../components/MagicButton';
 import TrueFocus from '../components/TrueFocus';
+import GlitchText from '../components/GlitchText';
 import '../styles/animations.css';
 
 const BentoGrid = ({ className, children }) => {
@@ -375,20 +376,24 @@ const About = () => {
                 />
               </div>
               
-              <div className="space-y-4 max-w-md">
-                <p className="text-white light:text-black leading-relaxed">
-                  I'm a passionate MERN stack developer with a love for creating innovative web solutions. 
-                  Currently exploring the latest technologies and building projects that make a difference.
-                </p>
+              <div className="space-y-6 max-w-lg">
+                <GlitchText 
+                  enableOnHover={true}
+                  speed={0.8}
+                  className="text-sm leading-relaxed text-white light:text-black"
+                  style={{ fontSize: '0.9rem', fontWeight: '400', whiteSpace: 'normal', lineHeight: '1.6' }}
+                >
+                  I'm a passionate MERN stack developer with a love for creating innovative web solutions. Currently exploring the latest technologies and building projects that make a difference.
+                </GlitchText>
                 
-                <p className="text-[#c1c2d3] light:text-gray-600 leading-relaxed">
-                  When I'm not coding, you'll find me learning new frameworks, contributing to open source, 
-                  or brainstorming the next big idea. I believe in clean code, user-centered design, and continuous learning.
-                </p>
-                
-                <p className="text-white light:text-black font-medium">
-                  Available across all time zones for remote collaboration.
-                </p>
+                <GlitchText 
+                  enableOnHover={true}
+                  speed={1}
+                  className="text-sm leading-relaxed text-[#c1c2d3] light:text-gray-600"
+                  style={{ fontSize: '0.85rem', fontWeight: '300', whiteSpace: 'normal', lineHeight: '1.6' }}
+                >
+                  When I'm not coding, you'll find me learning new frameworks, contributing to open source, or brainstorming the next big idea. I believe in clean code, user-centered design, and continuous learning.
+                </GlitchText>
               </div>
               
               <div className="mt-6">
