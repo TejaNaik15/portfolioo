@@ -333,7 +333,7 @@ const About = () => {
               <div className="flex flex-col gap-4 w-full max-w-sm">
                 <button
                   onClick={handleEmailCopy}
-                  className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
+                  className="flex items-center justify-center gap-3 bg-[#161a31] theme-light:bg-gray-200 hover:bg-[#1a1f3a] theme-light:hover:bg-gray-300 px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
                 >
                   {emailCopied ? <IoCopyOutline className="text-[#00dfd8] theme-light:text-[#00dfd8]" /> : <FaEnvelope className="text-[#00dfd8] theme-light:text-[#00dfd8]" />}
                   <span className="text-white theme-light:text-black">{emailCopied ? "Email Copied!" : "tinkuteja740@gmail.com"}</span>
@@ -341,7 +341,7 @@ const About = () => {
                 
                 <button 
                   onClick={handlePhoneCopy}
-                  className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
+                  className="flex items-center justify-center gap-3 bg-[#161a31] theme-light:bg-gray-200 hover:bg-[#1a1f3a] theme-light:hover:bg-gray-300 px-6 py-3 rounded-lg transition-colors border border-[#00dfd8]/30"
                 >
                   {phoneCopied ? <IoCopyOutline className="text-[#00dfd8] theme-light:text-[#00dfd8]" /> : <FaPhone className="text-[#00dfd8] theme-light:text-[#00dfd8]" />}
                   <span className="text-white theme-light:text-black">{phoneCopied ? "Phone Copied!" : "+91 7569474682"}</span>
@@ -364,8 +364,8 @@ const About = () => {
           >
             <div className="flex flex-col items-center justify-center">
               <div className="text-center mb-8">
-                <h3 className="text-2xl font-bold text-white mb-2">My Tech Stack</h3>
-                <p className="text-[#c1c2d3]">I constantly try to improve</p>
+                <h3 className="text-2xl font-bold text-white theme-light:text-black mb-2">My Tech Stack</h3>
+                <p className="text-[#c1c2d3] theme-light:text-gray-600">I constantly try to improve</p>
               </div>
               
               <div className="flex gap-6">
@@ -373,7 +373,7 @@ const About = () => {
                   {leftLists.map((item, i) => (
                     <span
                       key={i}
-                      className="rounded-lg bg-[#10132E] px-6 py-3 text-center text-white border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
+                      className="rounded-lg bg-[#10132E] theme-light:bg-gray-200 px-6 py-3 text-center text-white theme-light:text-black border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
                     >
                       {item}
                     </span>
@@ -386,7 +386,7 @@ const About = () => {
                   {rightLists.map((item, i) => (
                     <span
                       key={i}
-                      className="rounded-lg bg-[#10132E] px-6 py-3 text-center text-white border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
+                      className="rounded-lg bg-[#10132E] theme-light:bg-gray-200 px-6 py-3 text-center text-white theme-light:text-black border border-[#00dfd8]/20 hover:border-[#00dfd8]/50 transition-colors"
                     >
                       {item}
                     </span>
