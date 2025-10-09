@@ -99,18 +99,18 @@ const Projects = () => {
           <span className="text-white">recent projects</span>
         </h1>
         
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 mt-10 max-w-none mx-auto px-8">
           {projectsData.map(({ id, title, description, image, technologies, githubLink, liveDemoLink }) => (
             <div
               key={id}
-              className="flex h-[55rem] w-full items-center justify-center lg:h-[60rem]"
+              className="flex h-[50rem] w-full items-center justify-center lg:h-[55rem]"
             >
               <PinContainer
                 title="GitHub"
                 href={githubLink}
                 icon={<FaGithub />}
               >
-                <div className="relative mb-8 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[40vh]">
+                <div className="relative mb-8 flex h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[40vh] min-w-[600px] lg:min-w-[700px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
                     <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/20 to-purple-600/20" />
                   </div>
@@ -121,30 +121,31 @@ const Projects = () => {
                   />
                 </div>
                 
-                <h1 className="text-xl font-bold md:text-2xl lg:text-3xl text-white mb-4 leading-tight">
-                  {title}
-                </h1>
-                
-                <div
-                  className={`overflow-hidden transition-all duration-700 ease-in-out ${
-                    expandedId === id ? 'h-auto' : 'h-24'
-                  }`}
-                >
-                  <p
-                    className="text-base font-light lg:text-lg text-gray-300 leading-relaxed"
+                <div className="w-full min-w-[600px] lg:min-w-[700px]">
+                  <h1 className="text-xl font-bold md:text-2xl lg:text-3xl text-white mb-4 leading-tight">
+                    {title}
+                  </h1>
+                  
+                  <div
+                    className={`overflow-hidden transition-all duration-700 ease-in-out ${
+                      expandedId === id ? 'h-auto' : 'h-24'
+                    }`}
                   >
-                    {description}
-                  </p>
-                </div>
-                
-                <span
-                  className="text-accent-blue cursor-pointer hover:text-white transition-colors text-base mb-6 block"
-                  onClick={() => handleExpandClick(id)}
-                >
-                  {expandedId === id ? 'Show less' : 'More...'}
-                </span>
-                
-                <div className="mb-4 mt-6 flex items-center justify-between">
+                    <p
+                      className="text-base font-light lg:text-lg text-gray-300 leading-relaxed"
+                    >
+                      {description}
+                    </p>
+                  </div>
+                  
+                  <span
+                    className="text-accent-blue cursor-pointer hover:text-white transition-colors text-base mb-6 block"
+                    onClick={() => handleExpandClick(id)}
+                  >
+                    {expandedId === id ? 'Show less' : 'More...'}
+                  </span>
+                  
+                  <div className="mb-4 mt-6 flex items-center justify-between w-full">
                   <div className="flex items-center">
                     {technologies.map((tech, index) => (
                       <div
@@ -168,6 +169,7 @@ const Projects = () => {
                       Visit Site
                     </a>
                     <FaExternalLinkAlt className="ms-3 text-accent-blue text-base" />
+                  </div>
                   </div>
                 </div>
               </PinContainer>
