@@ -1,25 +1,17 @@
 import React, { useState } from 'react';
 import { FaEnvelope, FaPhone, FaDownload } from 'react-icons/fa';
 import Particles from '../components/Particles';
+import ProfileCard from '../components/ProfileCard';
+import { BentoGrid, BentoGridItem } from '../components/ui/BentoGrid';
 
 const About = () => {
-  const [emailCopied, setEmailCopied] = useState(false);
-  const [phoneCopied, setPhoneCopied] = useState(false);
-  const [resumeDownloaded, setResumeDownloaded] = useState(false);
-  const [isRotating, setIsRotating] = useState(false);
+  const [copied, setCopied] = useState(false);
 
-  const handleEmailCopy = () => {
+  const handleCopy = () => {
     const text = "tinkuteja740@gmail.com";
     navigator.clipboard.writeText(text);
-    setEmailCopied(true);
-    setTimeout(() => setEmailCopied(false), 2000);
-  };
-
-  const handlePhoneCopy = () => {
-    const text = "+91 7569474682";
-    navigator.clipboard.writeText(text);
-    setPhoneCopied(true);
-    setTimeout(() => setPhoneCopied(false), 2000);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
   };
 
   const handleResumeDownload = () => {
@@ -28,16 +20,64 @@ const About = () => {
     link.href = resumeUrl;
     link.download = "Teja_Naik_Resume.pdf";
     link.click();
-    setResumeDownloaded(true);
-    setTimeout(() => setResumeDownloaded(false), 2000);
   };
 
-  const handlePhotoHover = () => {
-    if (!isRotating) {
-      setIsRotating(true);
-      setTimeout(() => setIsRotating(false), 1000);
-    }
+  const handleContactClick = () => {
+    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
   };
+
+  const gridItems = [
+    {
+      id: 1,
+      title: "Teja Naik",
+      description: "Full Stack Developer",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+      imgClassName: "",
+      titleClassName: "justify-start",
+      img: "",
+      spareImg: "",
+    },
+    {
+      id: 2,
+      title: "I'm flexible across all time zones",
+      description: "Available for remote collaboration",
+      className: "lg:col-span-1 md:col-span-2 md:row-span-1",
+      imgClassName: "",
+      titleClassName: "justify-start",
+      img: "",
+      spareImg: "",
+    },
+    {
+      id: 3,
+      title: "My tech stack",
+      description: "I constantly try to improve",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-2",
+      imgClassName: "",
+      titleClassName: "justify-center",
+      img: "",
+      spareImg: "",
+    },
+    {
+      id: 4,
+      title: "Tech enthusiast with a passion for development",
+      description: "Building innovative solutions",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+      imgClassName: "",
+      titleClassName: "justify-start",
+      img: "",
+      spareImg: "",
+    },
+    {
+      id: 6,
+      title: "",
+      description: "",
+      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
+      imgClassName: "",
+      titleClassName: "justify-center md:max-w-full max-w-60 text-center",
+      img: "",
+      spareImg: "",
+    },
+  ];
 
   return (
     <section id="about" className="relative py-20 bg-primary-dark text-white overflow-hidden scroll-mt-28 md:scroll-mt-40">
@@ -49,106 +89,34 @@ const About = () => {
           About <span className="text-white light:text-black">Me</span>
         </h2>
         
-        <div className="max-w-4xl mx-auto">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            {/* Profile Section */}
-            <div className="flex flex-col items-center text-center">
-              <div 
-                className={`w-64 h-64 rounded-full overflow-hidden mb-6 border-4 border-[#00dfd8] transition-transform duration-1000 ${isRotating ? 'rotate-360' : ''}`}
-                onMouseEnter={handlePhotoHover}
-              >
-                <img
-                  src="/assets/TEJANAIK.png"
-                  alt="Teja Naik"
-                  className="w-full h-full object-cover"
-                  onError={(e) => {
-                    e.target.style.display = 'none';
-                    e.target.parentElement.innerHTML = '<span class="text-6xl text-white flex items-center justify-center h-full">👤</span>';
-                  }}
-                />
-              </div>
-              <h3 className="text-3xl font-bold mb-2 text-[#00dfd8]">Teja Naik</h3>
-              <p className="text-xl text-gray-300 mb-6">Full Stack Developer</p>
-              
-              {/* Contact Buttons */}
-              <div className="flex flex-col gap-4 w-full max-w-sm">
-                <button
-                  onClick={handleEmailCopy}
-                  className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors"
-                >
-                  <FaEnvelope className="text-[#00dfd8]" />
-                  <span className="text-white">{emailCopied ? "Email Copied!" : "tinkuteja740@gmail.com"}</span>
-                </button>
-                <button
-                  onClick={handlePhoneCopy}
-                  className="flex items-center justify-center gap-3 bg-[#161a31] hover:bg-[#1a1f3a] px-6 py-3 rounded-lg transition-colors"
-                >
-                  <FaPhone className="text-[#00dfd8]" />
-                  <span className="text-white">{phoneCopied ? "Phone Copied!" : "+91 7569474682"}</span>
-                </button>
-                <button
-                  onClick={handleResumeDownload}
-                  className="flex items-center justify-center gap-3 bg-[#00dfd8] hover:bg-[#00dfd8]/80 px-6 py-3 rounded-lg transition-colors"
-                >
-                  <FaDownload className="text-white" />
-                  <span className="text-white">{resumeDownloaded ? "Downloaded!" : "Download Resume"}</span>
-                </button>
-              </div>
-            </div>
-
-            {/* About Content */}
-            <div className="space-y-6">
-              <div>
-                <h4 className="text-2xl font-bold mb-4 text-[#00dfd8]">About Me</h4>
-                <p className="text-gray-300 leading-relaxed mb-4">
-                  I'm a passionate Full Stack Developer with expertise in modern web technologies. 
-                  I love creating innovative solutions and bringing ideas to life through code.
-                </p>
-                <p className="text-gray-300 leading-relaxed">
-                  With a strong foundation in both frontend and backend development, I'm always 
-                  eager to learn new technologies and take on challenging projects.
-                </p>
-              </div>
-
-              <div>
-                <h4 className="text-2xl font-bold mb-4 text-[#00dfd8]">Tech Stack</h4>
-                <div className="grid grid-cols-2 gap-4">
-                  <div>
-                    <h5 className="text-lg font-semibold mb-2 text-white">Frontend</h5>
-                    <div className="space-y-2">
-                      {["React.js", "Next.js", "TypeScript"].map((tech, index) => (
-                        <span key={index} className="inline-block bg-[#10132E] px-3 py-1 rounded-lg text-sm text-white mr-2 mb-2">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                  <div>
-                    <h5 className="text-lg font-semibold mb-2 text-white">Backend</h5>
-                    <div className="space-y-2">
-                      {["Node.js", "Golang", "Docker"].map((tech, index) => (
-                        <span key={index} className="inline-block bg-[#10132E] px-3 py-1 rounded-lg text-sm text-white mr-2 mb-2">
-                          {tech}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div>
-                <h4 className="text-2xl font-bold mb-4 text-[#00dfd8]">What I Do</h4>
-                <ul className="space-y-2 text-gray-300">
-                  <li>• Full Stack Web Development</li>
-                  <li>• Responsive UI/UX Design</li>
-                  <li>• API Development & Integration</li>
-                  <li>• Database Design & Management</li>
-                  <li>• Performance Optimization</li>
-                </ul>
-              </div>
+        <div className="max-w-6xl mx-auto mb-16">
+          <div className="flex justify-center">
+            <div className="w-full max-w-sm">
+              <ProfileCard 
+                name="Teja Naik" 
+                title="MERN Developer" 
+                handle="tejanaik"
+                onContactClick={handleContactClick}
+              />
             </div>
           </div>
         </div>
+
+        <BentoGrid className="w-full">
+          {gridItems.map((item, i) => (
+            <BentoGridItem
+              id={item.id}
+              key={i}
+              title={item.title}
+              description={item.description}
+              className={item.className}
+              img={item.img}
+              imgClassName={item.imgClassName}
+              titleClassName={item.titleClassName}
+              spareImg={item.spareImg}
+            />
+          ))}
+        </BentoGrid>
       </div>
     </section>
   );

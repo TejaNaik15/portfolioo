@@ -1,4 +1,5 @@
-import React, { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { cn } from "../../utils/cn";
 
 export const BackgroundGradientAnimation = ({
   gradientBackgroundStart = "rgb(108, 0, 162)",
@@ -59,16 +60,26 @@ export const BackgroundGradientAnimation = ({
   }, []);
 
   return (
-    <div className={`h-full w-full absolute overflow-hidden top-0 left-0 bg-gradient-to-br from-purple-900 to-blue-900 ${containerClassName || ''}`}>
-      <div className={className}>{children}</div>
-      <div className={`gradients-container h-full w-full blur-lg ${isSafari ? "blur-2xl" : ""}`}>
-        <div className="absolute bg-gradient-radial from-blue-500 to-transparent w-4/5 h-4/5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-pulse opacity-100"></div>
-        <div className="absolute bg-gradient-radial from-purple-500 to-transparent w-4/5 h-4/5 top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 animate-bounce opacity-80"></div>
+    <div
+      className={cn(
+        "h-full w-full absolute overflow-hidden top-0 left-0 bg-[linear-gradient(40deg,var(--gradient-background-start),var(--gradient-background-end))]",
+        containerClassName
+      )}
+    >
+      <div className={cn("", className)}>{children}</div>
+      <div
+        className={cn(
+          "gradients-container h-full w-full blur-lg",
+          isSafari ? "blur-2xl" : "[filter:url(#blurMe)_blur(40px)]"
+        )}
+      >
+        <div className="absolute bg-gradient-to-r from-purple-500 to-blue-500 w-[80%] h-[80%] top-[10%] left-[10%] rounded-full opacity-30 animate-pulse" />
+        <div className="absolute bg-gradient-to-r from-pink-500 to-purple-500 w-[60%] h-[60%] top-[20%] left-[20%] rounded-full opacity-20 animate-pulse" />
         {interactive && (
           <div
             ref={interactiveRef}
             onMouseMove={handleMouseMove}
-            className="absolute bg-gradient-radial from-cyan-500 to-transparent w-full h-full -top-1/2 -left-1/2 opacity-70"
+            className="absolute bg-gradient-to-r from-blue-400 to-purple-600 w-full h-full -top-1/2 -left-1/2 opacity-70 rounded-full"
           />
         )}
       </div>
