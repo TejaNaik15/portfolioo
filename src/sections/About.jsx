@@ -21,19 +21,20 @@ $ cat about_me.md
 - 🌟 Create user-friendly experiences
 
 ## My Journey:
-Started coding at 18, fell in love with JavaScript,
-now building full-stack applications with MERN.
+Started coding at 18, thought HTML was a programming language,
+now I argue with semicolons for a living! 😅
 
 $ ls current_projects/
-portfolio/  e-commerce-app/  chat-application/
+ai-content-generator/  portfolio/  ai-resume-analyzer/
 
 $ echo "Fun Fact"
-I debug code faster than I debug my life! 😄
+I have a better relationship with my code editor
+than with my alarm clock! ⏰💻
 
 $ git status
-On branch: continuous-learning
-Commits: 1000+ problems solved
-Status: Ready for new challenges!
+On branch: caffeine-driven-development
+Commits: "Fixed bug" x247, "It works on my machine" x89
+Status: Turning coffee into features since 2021!
 
 $ _`;
 
@@ -103,7 +104,7 @@ $ _`;
 
           {/* Funny Quote Section */}
           <div className="flex justify-center">
-            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-2xl shadow-2xl max-w-2xl text-center transform hover:scale-105 transition-transform duration-300">
+            <div className="bg-gradient-to-r from-[#00dfd8] to-[#0066cc] p-6 rounded-2xl shadow-2xl max-w-2xl text-center transform hover:scale-105 transition-transform duration-300">
               <div className="text-2xl mb-2">💬</div>
               <p className="text-xl font-semibold text-white mb-2">
                 "I speak fluent JavaScript, but now I'm learning to speak to humans"
