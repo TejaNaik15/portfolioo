@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import TextPlugin from 'gsap/TextPlugin';
-
+import ProfileCard from '../components/ProfileCard';
 import SocialIcons from '../components/SocialIcons';
 import ShinyText from '../components/ShinyText';
 import AnimatedName from '../components/AnimatedName.jsx';
@@ -74,7 +74,11 @@ const Home = () => {
             <MusicToggle />
           </div>
         </div>
-
+        <div className="md:justify-self-end min-h-[360px]">
+          <div className="w-full max-w-sm">
+            <ProfileCard name="Teja Naik" title="MERN Developer" handle="tejanaik" />
+          </div>
+        </div>
       </div>
     </section>
   );

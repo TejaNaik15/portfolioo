@@ -1,7 +1,5 @@
 import React, { useState } from 'react';
-import { FaEnvelope, FaPhone, FaDownload } from 'react-icons/fa';
 import Particles from '../components/Particles';
-import ProfileCard from '../components/ProfileCard';
 import { BentoGrid, BentoGridItem } from '../components/ui/BentoGrid';
 
 const About = () => {
@@ -22,15 +20,13 @@ const About = () => {
     link.click();
   };
 
-  const handleContactClick = () => {
-    document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
-  };
+
 
   const gridItems = [
     {
       id: 1,
-      title: "Teja Naik",
-      description: "Full Stack Developer",
+      title: "About Me",
+      description: "Hi, I'm Teja Naik, a 22-year-old passionate Full Stack Developer with expertise in the MERN stack. I love creating innovative solutions and bringing ideas to life through clean, efficient code.",
       className: "lg:col-span-2 md:col-span-3 md:row-span-2",
       imgClassName: "",
       titleClassName: "justify-start",
@@ -40,8 +36,8 @@ const About = () => {
     {
       id: 2,
       title: "I'm flexible across all time zones",
-      description: "Available for remote collaboration",
-      className: "lg:col-span-1 md:col-span-2 md:row-span-1",
+      description: "Available for remote collaboration worldwide",
+      className: "lg:col-span-3 md:col-span-3 md:row-span-2",
       imgClassName: "",
       titleClassName: "justify-start",
       img: "",
@@ -89,20 +85,7 @@ const About = () => {
           About <span className="text-white light:text-black">Me</span>
         </h2>
         
-        <div className="max-w-6xl mx-auto mb-16">
-          <div className="flex justify-center">
-            <div className="w-full max-w-sm">
-              <ProfileCard 
-                name="Teja Naik" 
-                title="MERN Developer" 
-                handle="tejanaik"
-                onContactClick={handleContactClick}
-              />
-            </div>
-          </div>
-        </div>
-
-        <BentoGrid className="w-full">
+        <BentoGrid className="w-full max-w-7xl mx-auto">
           {gridItems.map((item, i) => (
             <BentoGridItem
               id={item.id}
