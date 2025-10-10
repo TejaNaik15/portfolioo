@@ -76,6 +76,7 @@ $ _`;
                   imageWidth="300px"
                   scaleOnHover={1.05}
                   rotateAmplitude={12}
+                  showMobileWarning={false}
                 />
               </div>
             </div>

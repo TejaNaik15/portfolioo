@@ -9,20 +9,36 @@
   justify-content: center;
 }
 
-.tilted-card-mobile-alert {
-  position: absolute;
-  top: 1rem;
-  text-align: center;
-  font-size: 0.875rem;
-  display: none;
+@media (max-width: 768px) {
+  .tilted-card-figure {
+    perspective: 600px;
+  }
+  
+  .tilted-card-inner {
+    width: 250px !important;
+    height: 300px !important;
+  }
+  
+  .tilted-card-img {
+    width: 250px !important;
+    height: 300px !important;
+  }
+  
+  .tilted-card-caption {
+    font-size: 12px;
+    padding: 6px 12px;
+  }
 }
 
-@media (max-width: 640px) {
-  .tilted-card-mobile-alert {
-    display: block;
+@media (max-width: 480px) {
+  .tilted-card-inner {
+    width: 200px !important;
+    height: 250px !important;
   }
-  .tilted-card-caption {
-    display: none;
+  
+  .tilted-card-img {
+    width: 200px !important;
+    height: 250px !important;
   }
 }
 
@@ -56,10 +72,13 @@
   left: 0;
   top: 0;
   border-radius: 4px;
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(4px);
   padding: 4px 10px;
   font-size: 10px;
   color: #2d2d2d;
   opacity: 0;
   z-index: 3;
+  white-space: nowrap;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
