@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import Particles from '../components/Particles';
-import ProfileCard from '../components/ProfileCard';
+import TiltedCard from '../components/TiltedCard';
 
 const About = () => {
   const [terminalText, setTerminalText] = useState('');
@@ -64,13 +64,18 @@ $ _`;
         
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
-            {/* Profile Card Section */}
+            {/* Tilted Card Section */}
             <div className="flex justify-center">
               <div className="w-full max-w-sm">
-                <ProfileCard 
-                  name="Teja Naik" 
-                  title="MERN Developer" 
-                  handle="tejanaik"
+                <TiltedCard 
+                  imageSrc="/assets/TEJANAIK.png"
+                  altText="Teja Naik"
+                  captionText="Teja Naik - MERN Developer"
+                  containerHeight="400px"
+                  imageHeight="350px"
+                  imageWidth="300px"
+                  scaleOnHover={1.05}
+                  rotateAmplitude={12}
                 />
               </div>
             </div>
