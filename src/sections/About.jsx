@@ -1,79 +1,55 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Particles from '../components/Particles';
-import { BentoGrid, BentoGridItem } from '../components/ui/BentoGrid';
+import ProfileCard from '../components/ProfileCard';
 
 const About = () => {
-  const [copied, setCopied] = useState(false);
+  const [terminalText, setTerminalText] = useState('');
+  const fullText = `$ whoami
+teja@developer:~$ Teja Naik
 
-  const handleCopy = () => {
-    const text = "tinkuteja740@gmail.com";
-    navigator.clipboard.writeText(text);
-    setCopied(true);
-    setTimeout(() => setCopied(false), 2000);
-  };
+$ cat about_me.md
+# Teja Naik - Full Stack Developer
 
-  const handleResumeDownload = () => {
-    const resumeUrl = "/assets/resume.pdf";
-    const link = document.createElement('a');
-    link.href = resumeUrl;
-    link.download = "Teja_Naik_Resume.pdf";
-    link.click();
-  };
+**Age:** 22 years old
+**Location:** India 🇮🇳
+**Status:** Passionate Developer & Problem Solver
 
+## What I Do:
+- 🚀 Build scalable web applications
+- 💡 Turn ideas into digital reality
+- 🎯 Focus on clean, efficient code
+- 🌟 Create user-friendly experiences
 
+## My Journey:
+Started coding at 18, fell in love with JavaScript,
+now building full-stack applications with MERN.
 
-  const gridItems = [
-    {
-      id: 1,
-      title: "About Me",
-      description: "Hi, I'm Teja Naik, a 22-year-old passionate Full Stack Developer with expertise in the MERN stack. I love creating innovative solutions and bringing ideas to life through clean, efficient code.",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-      imgClassName: "",
-      titleClassName: "justify-start",
-      img: "",
-      spareImg: "",
-    },
-    {
-      id: 2,
-      title: "I'm flexible across all time zones",
-      description: "Available for remote collaboration worldwide",
-      className: "lg:col-span-3 md:col-span-3 md:row-span-2",
-      imgClassName: "",
-      titleClassName: "justify-start",
-      img: "",
-      spareImg: "",
-    },
-    {
-      id: 3,
-      title: "My tech stack",
-      description: "I constantly try to improve",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-2",
-      imgClassName: "",
-      titleClassName: "justify-center",
-      img: "",
-      spareImg: "",
-    },
-    {
-      id: 4,
-      title: "Tech enthusiast with a passion for development",
-      description: "Building innovative solutions",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-      imgClassName: "",
-      titleClassName: "justify-start",
-      img: "",
-      spareImg: "",
-    },
-    {
-      id: 6,
-      title: "",
-      description: "",
-      className: "lg:col-span-2 md:col-span-3 md:row-span-1",
-      imgClassName: "",
-      titleClassName: "justify-center md:max-w-full max-w-60 text-center",
-      img: "",
-      spareImg: "",
-    },
-  ];
+$ ls current_projects/
+portfolio/  e-commerce-app/  chat-application/
+
+$ echo "Fun Fact"
+I debug code faster than I debug my life! 😄
+
+$ git status
+On branch: continuous-learning
+Commits: 1000+ problems solved
+Status: Ready for new challenges!
+
+$ _`;
+
+  useEffect(() => {
+    let index = 0;
+    const timer = setInterval(() => {
+      if (index < fullText.length) {
+        setTerminalText(fullText.slice(0, index + 1));
+        index++;
+      } else {
+        clearInterval(timer);
+      }
+    }, 50);
+
+    return () => clearInterval(timer);
+  }, []);
 
   return (
     <section id="about" className="relative py-20 bg-primary-dark text-white overflow-hidden scroll-mt-28 md:scroll-mt-40">
@@ -85,21 +61,59 @@ const About = () => {
           About <span className="text-white light:text-black">Me</span>
         </h2>
         
-        <BentoGrid className="w-full max-w-7xl mx-auto">
-          {gridItems.map((item, i) => (
-            <BentoGridItem
-              id={item.id}
-              key={i}
-              title={item.title}
-              description={item.description}
-              className={item.className}
-              img={item.img}
-              imgClassName={item.imgClassName}
-              titleClassName={item.titleClassName}
-              spareImg={item.spareImg}
-            />
-          ))}
-        </BentoGrid>
+        <div className="max-w-6xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
+            {/* Profile Card Section */}
+            <div className="flex justify-center">
+              <div className="w-full max-w-sm">
+                <ProfileCard 
+                  name="Teja Naik" 
+                  title="MERN Developer" 
+                  handle="tejanaik"
+                />
+              </div>
+            </div>
+
+            {/* Terminal Section */}
+            <div className="flex justify-center">
+              <div className="w-full max-w-lg">
+                <div className="bg-gray-900 rounded-lg shadow-2xl border border-gray-700">
+                  {/* Terminal Header */}
+                  <div className="flex items-center justify-between bg-gray-800 px-4 py-3 rounded-t-lg">
+                    <div className="flex space-x-2">
+                      <div className="w-3 h-3 bg-red-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-yellow-500 rounded-full"></div>
+                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
+                    </div>
+                    <div className="text-gray-400 text-sm font-mono">terminal</div>
+                    <div className="w-12"></div>
+                  </div>
+                  
+                  {/* Terminal Content */}
+                  <div className="p-6 font-mono text-sm leading-relaxed">
+                    <pre className="text-green-400 whitespace-pre-wrap">
+                      {terminalText}
+                      <span className="animate-pulse">|</span>
+                    </pre>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Funny Quote Section */}
+          <div className="flex justify-center">
+            <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-6 rounded-2xl shadow-2xl max-w-2xl text-center transform hover:scale-105 transition-transform duration-300">
+              <div className="text-2xl mb-2">💬</div>
+              <p className="text-xl font-semibold text-white mb-2">
+                "I speak fluent JavaScript, but now I'm learning to speak to humans"
+              </p>
+              <div className="text-sm text-gray-200 opacity-80">
+                - Still debugging social interactions 🐛
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   );
