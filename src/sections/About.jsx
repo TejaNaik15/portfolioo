@@ -11,25 +11,25 @@ $ cat about_me.md
 # Teja Naik - Full Stack Developer
 
 **Age:** 22 years old
-**Location:** India 🇮🇳
+**Location:** India 
 **Status:** Passionate Developer & Problem Solver
 
 ## What I Do:
-- 🚀 Build scalable web applications
-- 💡 Turn ideas into digital reality
-- 🎯 Focus on clean, efficient code
-- 🌟 Create user-friendly experiences
+-  Build scalable web applications
+-  Turn ideas into digital reality
+-  Focus on clean, efficient code
+-  Create user-friendly experiences
 
 ## My Journey:
 Started coding at 18, thought HTML was a programming language,
-now I argue with semicolons for a living! 😅
+now I argue with semicolons for a living! 
 
 $ ls current_projects/
 ai-content-generator/  portfolio/  ai-resume-analyzer/
 
 $ echo "Fun Fact"
 I have a better relationship with my code editor
-than with my alarm clock! ⏰💻
+than with my alarm clock! ss
 
 $ git status
 On branch: caffeine-driven-development
@@ -64,11 +64,11 @@ $ _`;
         
         <div className="max-w-6xl mx-auto">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-12">
-            {/* Tilted Card Section */}
+            
             <div className="flex justify-center">
               <div className="w-full max-w-sm">
                 <TiltedCard 
-                  imageSrc="/assets/TEJANAIK.png"
+                  imageSrc="/assets/TINKU.png"
                   altText="Teja Naik"
                   captionText="Teja Naik - MERN Developer"
                   containerHeight="400px"
@@ -81,11 +81,11 @@ $ _`;
               </div>
             </div>
 
-            {/* Terminal Section */}
+            
             <div className="flex justify-center">
               <div className="w-full max-w-lg">
                 <div className="bg-gray-900 rounded-lg shadow-2xl border border-gray-700">
-                  {/* Terminal Header */}
+                  
                   <div className="flex items-center justify-between bg-gray-800 px-4 py-3 rounded-t-lg">
                     <div className="flex space-x-2">
                       <div className="w-3 h-3 bg-red-500 rounded-full"></div>
@@ -96,7 +96,7 @@ $ _`;
                     <div className="w-12"></div>
                   </div>
                   
-                  {/* Terminal Content */}
+                  
                   <div className="p-6 font-mono text-sm leading-relaxed">
                     <pre className="text-green-400 whitespace-pre-wrap">
                       {terminalText}
@@ -108,7 +108,7 @@ $ _`;
             </div>
           </div>
 
-          {/* Funny Quote Section */}
+          
           <div className="flex justify-center">
             <div className="bg-gradient-to-r from-[#00dfd8] to-[#0066cc] p-6 rounded-2xl shadow-2xl max-w-2xl text-center transform hover:scale-105 transition-transform duration-300">
               <div className="text-2xl mb-2">💬</div>
