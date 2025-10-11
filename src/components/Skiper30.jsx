@@ -14,9 +14,9 @@ const Column = ({ images, y }) => {
         const href = typeof it === 'string' ? undefined : it.href;
         return (
           <div key={i} className="group relative aspect-square w-full overflow-hidden rounded-xl bg-black/20 ring-1 ring-white/5">
-            {/* Clickable area */}
+          
             <a href={href} target={href ? '_blank' : undefined} rel={href ? 'noopener noreferrer' : undefined} aria-label={label || 'skill'} className="absolute inset-0">
-              {/* Themed gradient overlay */}
+            
               <div className="pointer-events-none absolute inset-0 bg-gradient-to-br from-cyan-400/10 via-purple-500/10 to-transparent" />
               <img src={src} alt={label || 'image'} className="pointer-events-none h-full w-full object-contain p-4 sm:p-6" />
             </a>
@@ -32,9 +32,7 @@ const Column = ({ images, y }) => {
   );
 };
 
-// Skiper30 Parallax Gallery
-// props: images: string[]
-// items: array of strings or {src,label}
+
 const Skiper30 = ({ images = [] }) => {
   const gallery = useRef(null);
   const [dimension, setDimension] = useState({ width: 0, height: 0 });
@@ -45,8 +43,8 @@ const Skiper30 = ({ images = [] }) => {
   });
 
   const { height, width } = dimension;
-  const isSmall = width < 640; // Tailwind sm breakpoint
-  const f1 = isSmall ? 0.6 : 1.0;  // gentler parallax
+  const isSmall = width < 640; 
+  const f1 = isSmall ? 0.6 : 1.0;  
   const f2 = isSmall ? 0.9 : 1.6;
   const f3 = isSmall ? 0.5 : 0.9;
   const f4 = isSmall ? 0.8 : 1.4;
@@ -68,7 +66,7 @@ const Skiper30 = ({ images = [] }) => {
   }, []);
 
   const pool = images.length ? images : [];
-  // Split into unique columns without duplication
+  
   const cols = 4;
   const perCol = Math.ceil(pool.length / cols);
   const col1 = pool.slice(0, perCol);
