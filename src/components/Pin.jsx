@@ -14,7 +14,7 @@ export const PinContainer = ({
   const onMouseEnter = () => {
     setTransform('translate(-50%,-50%) rotateX(40deg) scale(0.8)');
   };
-  
+
   const onMouseLeave = () => {
     setTransform('translate(-50%,-50%) rotateX(0deg) scale(1)');
   };
@@ -41,6 +41,7 @@ export const PinContainer = ({
           <div className={`relative z-50 ${className}`}>{children}</div>
         </div>
       </div>
+      
       <PinPerspective title={title} href={href} icon={icon} />
     </div>
   );
@@ -48,14 +49,15 @@ export const PinContainer = ({
 
 export const PinPerspective = ({ title, href, icon }) => {
   return (
-    <motion.div className="pointer-events-none z-[60] flex h-80 w-full items-center justify-center opacity-0 transition duration-500 group-hover/pin:opacity-100">
+    <motion.div className="z-[60] flex h-80 w-full items-center justify-center opacity-0 transition duration-500 group-hover/pin:opacity-100">
       <div className="inset-0 -mt-7 size-full flex-none">
-        <div className="absolute inset-x-0 top-0 flex justify-center">
+        
+        <div className="absolute inset-x-0 top-0 flex justify-center pointer-events-auto">
           <a
             href={href}
             target="_blank"
             rel="noopener noreferrer"
-            className="relative z-10 flex items-center space-x-2 rounded-full bg-zinc-950 px-3 py-0.5 ring-1 ring-white/10"
+            className="relative z-50 flex items-center space-x-2 rounded-full bg-zinc-950 px-3 py-0.5 ring-1 ring-white/10 hover:ring-accent-blue/40 transition"
           >
             <span className="relative z-20 flex items-center justify-center gap-1 py-0.5 text-xs font-bold text-white">
               {icon} {title}
@@ -64,6 +66,7 @@ export const PinPerspective = ({ title, href, icon }) => {
           </a>
         </div>
 
+        
         <div
           style={{
             perspective: '1000px',
@@ -71,65 +74,18 @@ export const PinPerspective = ({ title, href, icon }) => {
           }}
           className="absolute left-1/2 top-1/2 ml-[0.09375rem] mt-4 -translate-x-1/2 -translate-y-1/2"
         >
-          <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0,
-              x: '-50%',
-              y: '-50%',
-            }}
-            animate={{
-              opacity: [0, 1, 0.5, 0],
-              scale: 1,
-              z: 0,
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              delay: 0,
-            }}
-            className="absolute left-1/2 top-1/2 size-[11.25rem] rounded-[50%] bg-accent-blue/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-          />
-          <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0,
-              x: '-50%',
-              y: '-50%',
-            }}
-            animate={{
-              opacity: [0, 1, 0.5, 0],
-              scale: 1,
-              z: 0,
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              delay: 2,
-            }}
-            className="absolute left-1/2 top-1/2 size-[11.25rem] rounded-[50%] bg-accent-blue/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-          />
-          <motion.div
-            initial={{
-              opacity: 0,
-              scale: 0,
-              x: '-50%',
-              y: '-50%',
-            }}
-            animate={{
-              opacity: [0, 1, 0.5, 0],
-              scale: 1,
-              z: 0,
-            }}
-            transition={{
-              duration: 6,
-              repeat: Infinity,
-              delay: 4,
-            }}
-            className="absolute left-1/2 top-1/2 size-[11.25rem] rounded-[50%] bg-accent-blue/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
-          />
+          {[0, 2, 4].map((delay) => (
+            <motion.div
+              key={delay}
+              initial={{ opacity: 0, scale: 0, x: '-50%', y: '-50%' }}
+              animate={{ opacity: [0, 1, 0.5, 0], scale: 1, z: 0 }}
+              transition={{ duration: 6, repeat: Infinity, delay }}
+              className="absolute left-1/2 top-1/2 size-[11.25rem] rounded-full bg-accent-blue/[0.08] shadow-[0_8px_16px_rgb(0_0_0/0.4)]"
+            />
+          ))}
         </div>
 
+        
         <motion.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-accent-blue blur-[2px] group-hover/pin:h-40" />
         <motion.div className="absolute bottom-1/2 right-1/2 h-20 w-px translate-y-[14px] bg-gradient-to-b from-transparent to-accent-blue group-hover/pin:h-40" />
         <motion.div className="absolute bottom-1/2 right-1/2 z-40 size-[4px] translate-x-[1.5px] translate-y-[14px] rounded-full bg-accent-blue blur-[3px]" />
