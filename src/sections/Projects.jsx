@@ -20,7 +20,7 @@ const projectsData = [
     title: 'Portfolio Website',
     description: 'Personal portfolio showcasing projects, animations, and interactive UI components.',
     image: '/assets/port.png',
-    technologies: ['React', 'Tailwind CSS', 'GSAP'],
+    technologies: ['React', 'Tailwind CSS', 'Gsap'],
     githubLink: 'https://github.com/TejaNaik15/React-Portfolio',
     liveDemoLink: 'https://portfolioo-two-wheat.vercel.app/',
   },
@@ -47,7 +47,7 @@ const projectsData = [
     title: 'AI Content Generator',
     description: 'An AI-powered SaaS platform that helps users instantly generate SEO-friendly blog posts, social media captions, and marketing content using AI.',
     image: '/assets/aicont.png',
-    technologies: ['React.js', 'Node.js', 'Tailwind CSS', 'Express.js, Mongodb'],
+    technologies: ['React.js', 'Node.js', 'Tailwind CSS', 'Express.js, Mongodb, three.js, Framer motion, Vite'],
     githubLink: 'https://github.com/TejaNaik15/AI-Content-Generator',
     liveDemoLink: 'https://ai-content-generator-woad-nine.vercel.app/',
   },
@@ -75,6 +75,9 @@ const getTechIcon = (tech) => {
     case 'vite': return <SiVite {...iconProps} color="#646CFF" />;
     case 'gsap': return <SiJavascript {...iconProps} color="#88CE02" />;
     case 'react router v7': return <SiReact {...iconProps} color="#CA4245" />;
+    case 'framer motion': return <SiFramer {...iconProps} color="#e2495e" />;
+    case 'mongodb': return <SiJavascript {...iconProps} color="#47A248" />;
+    case 'three.js': return <SiThreedotjs {...iconProps} color="#000000" />;
     default: return <div className="w-4 h-4 bg-accent-blue rounded-full" />;
   }
 };
