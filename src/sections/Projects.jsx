@@ -31,12 +31,13 @@ const projectsData = [
   },
   {
     id: 2,
-    title: 'Portfolio Website',
-    description: 'Personal portfolio showcasing projects, animations, and interactive UI components.',
-    image: '/assets/port.png',
-    technologies: ['React', 'Tailwind CSS', 'gsap','Vite'],
-    githubLink: 'https://github.com/TejaNaik15/React-Portfolio',
-    liveDemoLink: 'https://portfolioo-two-wheat.vercel.app/',
+    title: 'AI Content Generator',
+    description: 'An AI-powered SaaS platform that helps users instantly generate SEO-friendly blog posts, social media captions, and marketing content using AI.',
+    image: '/assets/aicont.png',
+    technologies: ['React', 'Node.js', 'Tailwind CSS', 'express.js', 'mongodb', 'three.js', 'Framer motion', 'Vite'],
+    githubLink: 'https://github.com/TejaNaik15/AI-Content-Generator',
+    liveDemoLink: 'https://ai-content-generator-woad-nine.vercel.app/',
+    
   },
   {
     id: 3,
@@ -58,12 +59,13 @@ const projectsData = [
   },
   {
     id: 5,
-    title: 'AI Content Generator',
-    description: 'An AI-powered SaaS platform that helps users instantly generate SEO-friendly blog posts, social media captions, and marketing content using AI.',
-    image: '/assets/aicont.png',
-    technologies: ['React', 'Node.js', 'Tailwind CSS', 'express.js', 'mongodb', 'three.js', 'Framer motion', 'Vite'],
-    githubLink: 'https://github.com/TejaNaik15/AI-Content-Generator',
-    liveDemoLink: 'https://ai-content-generator-woad-nine.vercel.app/',
+    title: 'Portfolio Website',
+    description: 'Personal portfolio showcasing projects, animations, and interactive UI components.',
+    image: '/assets/port.png',
+    technologies: ['React', 'Tailwind CSS', 'gsap','Vite'],
+    githubLink: 'https://github.com/TejaNaik15/React-Portfolio',
+    liveDemoLink: 'https://portfolioo-two-wheat.vercel.app/',
+    
   },
   {
     id: 6,
@@ -199,3 +201,9 @@ const Projects = () => {
 };
 
 export default Projects;
+
+
+
+
+
+
