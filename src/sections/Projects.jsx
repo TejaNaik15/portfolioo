@@ -2,7 +2,21 @@ import React, { useState } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import { PinContainer } from '../components/Pin';
 import { FaGithub, FaExternalLinkAlt } from 'react-icons/fa';
-import { SiReact, SiNodedotjs, SiExpress, SiTailwindcss, SiTypescript, SiJavascript, SiFirebase, SiVite } from 'react-icons/si';
+import { 
+  SiReact, 
+  SiNodedotjs, 
+  SiExpress, 
+  SiTailwindcss, 
+  SiTypescript, 
+  SiJavascript, 
+  SiFirebase, 
+  SiVite, 
+  SiFramer, 
+  SiGreensock, 
+  SiThreedotjs, 
+  SiReactrouter, 
+  SiMongodb 
+} from "react-icons/si";
 import Particles from '../components/Particles';
 
 const projectsData = [
@@ -47,7 +61,7 @@ const projectsData = [
     title: 'AI Content Generator',
     description: 'An AI-powered SaaS platform that helps users instantly generate SEO-friendly blog posts, social media captions, and marketing content using AI.',
     image: '/assets/aicont.png',
-    technologies: ['React', 'Node.js', 'Tailwind CSS', 'express.js', 'mongodb', 'Framer motion', 'Vite'],
+    technologies: ['React', 'Node.js', 'Tailwind CSS', 'express.js', 'mongodb', 'three.js', 'Framer motion', 'Vite'],
     githubLink: 'https://github.com/TejaNaik15/AI-Content-Generator',
     liveDemoLink: 'https://ai-content-generator-woad-nine.vercel.app/',
   },
@@ -76,8 +90,8 @@ const getTechIcon = (tech) => {
     case 'gsap': return <SiJavascript {...iconProps} color="#88CE02" />;
     case 'react router v7': return <SiReact {...iconProps} color="#CA4245" />;
     case 'framer motion': return <SiFramer {...iconProps} color="#e2495e" />;
-    case 'mongodb': return <SiJavascript {...iconProps} color="#47A248" />;
-    
+    case 'mongodb': return <SiMongodb {...iconProps} color="#47A248" />;
+    case 'three.js': return <SiThreedotjs {...iconProps} color="#000000" />;
     default: return <div className="w-4 h-4 bg-accent-blue rounded-full" />;
   }
 };
