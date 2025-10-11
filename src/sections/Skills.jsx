@@ -31,7 +31,7 @@ const Skills = () => {
     { id: 'figma', name: 'Figma', img: cdn('figma/figma-original.svg'), height: 260, url: 'https://www.figma.com' },
   ], []);
 
-  // Build data for OrbitSkills: {src,label,href}
+
   const images = useMemo(() => items.map((it) => ({ src: it.img, label: it.name, href: it.url })), [items]);
 
   return (
@@ -54,16 +54,16 @@ const Skills = () => {
 
       <div className="relative z-10 container mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-accent-blue">My Skills</h1>
-        {/* Orbiting skills visualization */}
+        
         <div className="mx-auto w-full">
           <OrbitSkills
             items={images}
-            ringSizes={[44, 54, 64]} // inner, mid, outer icon sizes
-            ringSpeeds={[16, 22, 30]} // inner faster, outer slower for depth
+            ringSizes={[44, 54, 64]} 
+            ringSpeeds={[16, 22, 30]} 
           />
         </div>
 
-        {/* Responsive legend grid for quick glance on small devices */}
+        
         <div className="mx-auto mt-10 grid w-full max-w-5xl grid-cols-3 gap-3 px-4 sm:grid-cols-4 md:grid-cols-6 lg:grid-cols-8">
           {items.map((it) => (
             <a
