@@ -1,6 +1,6 @@
 import React from 'react';
 
-// Smooth scroll helper function
+
 const smoothScrollTo = (elementId, offset = 80) => {
   const element = document.getElementById(elementId);
   if (element) {
