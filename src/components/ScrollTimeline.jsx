@@ -1,10 +1,7 @@
 import React, { useMemo, useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useSpring, useTransform } from 'framer-motion';
 
-// Fresh, self-contained ScrollTimeline implementation (no external utils)
-// - Smooth gradient progress with comet glow
-// - Alternating cards on desktop, stacked on mobile
-// - Subtle hover and small index-based cascade delay
+
 
 const ScrollTimeline = ({
   events,
@@ -40,7 +37,7 @@ const ScrollTimeline = ({
 
   return (
     <div ref={containerRef} className={cn('relative w-full overflow-visible', className)}>
-      {/* Center connector base */}
+  
       <div className="absolute left-1/2 top-0 -translate-x-1/2 z-10 h-full" style={{ width: progressLineWidth }}>
         <div className="absolute inset-0 bg-white/10 rounded-full" />
         {progressIndicator && (
@@ -49,7 +46,7 @@ const ScrollTimeline = ({
               className="absolute top-0 left-0 right-0 rounded-full"
               style={{ height: progressHeight, background: 'linear-gradient(to bottom, #13ADC7, #945DD6)', boxShadow: '0 0 14px rgba(148,93,214,0.42), 0 0 22px rgba(19,173,199,0.28)', borderRadius: progressLineCap === 'round' ? 9999 : 0, willChange: 'height' }}
             />
-            {/* Traveling comet at the head of progress */}
+            
             <motion.div className="absolute z-20" style={{ top: progressHeight, left: '50%', translateX: '-50%', translateY: '-50%' }}>
               <motion.div
                 className="rounded-full"
@@ -68,7 +65,7 @@ const ScrollTimeline = ({
           const desktopAlt = index % 2 === 0 ? 'lg:justify-start' : 'lg:flex-row-reverse lg:justify-start';
           return (
             <div key={`${event.title}-${index}`} className={cn('relative flex items-center mb-14 md:mb-20 py-2 flex-col lg:flex-row', desktopAlt)}>
-              {/* Center node */}
+              
               <div className="absolute left-1/2 -translate-x-1/2 -translate-y-1/2 top-1/2 z-30">
                 <motion.div
                   className={cn('w-5 h-5 rounded-full border-4 bg-primary-dark flex items-center justify-center', index <= activeIndex ? 'border-accent-blue' : 'border-white/20')}
@@ -77,7 +74,7 @@ const ScrollTimeline = ({
                 />
               </div>
 
-              {/* Card */}
+              
               <motion.div
                 className={cn('relative z-30 rounded-lg border border-white/10 bg-black/20 hover:bg-black/30 transition-all duration-300 w-full lg:w-[calc(50%-44px)]', index % 2 === 0 ? 'lg:mr-[calc(50%+22px)]' : 'lg:ml-[calc(50%+22px)]', 'mt-10 lg:mt-0')}
                 variants={cardVariants}
@@ -114,7 +111,7 @@ const ScrollTimeline = ({
 
 export default ScrollTimeline;
 
-// Minimal className joiner
+
 function cn(...classes) {
   return classes.filter(Boolean).join(' ');
 }
