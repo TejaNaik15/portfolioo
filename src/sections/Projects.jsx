@@ -91,7 +91,7 @@ const getTechIcon = (tech) => {
     case 'react router v7': return <SiReact {...iconProps} color="#CA4245" />;
     case 'framer motion': return <SiFramer {...iconProps} color="#e2495e" />;
     case 'mongodb': return <SiMongodb {...iconProps} color="#47A248" />;
-    case 'three.js': return <SiThreedotjs {...iconProps} color="#000000" />;
+    case 'three.js': return <SiThreedotjs {...iconProps} color="#E5E5E5" />;
     default: return <div className="w-4 h-4 bg-accent-blue rounded-full" />;
   }
 };
