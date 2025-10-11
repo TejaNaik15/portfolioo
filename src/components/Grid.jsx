@@ -39,7 +39,7 @@ const BentoGridItem = ({
   };
 
   const handleResumeDownload = () => {
-    // Replace with your actual resume URL
+    
     const resumeUrl = "/assets/Teja_Naik_Resume.pdf";
     const link = document.createElement('a');
     link.href = resumeUrl;
@@ -96,12 +96,12 @@ const BentoGridItem = ({
             {title}
           </div>
 
-          {/* Profile Grid - ID 1 */}
+        
           {id === 1 && (
             <div className="flex flex-col items-center justify-center mt-4">
               <div className="w-32 h-32 rounded-full overflow-hidden mb-4 border-2 border-accent-blue">
                 <img
-                  src="/assets/teja-naik-photo.jpg" // Replace with your photo path
+                  src="/assets/teja-naik-photo.jpg" 
                   alt="Teja Naik"
                   className="w-full h-full object-cover"
                 />
@@ -112,11 +112,11 @@ const BentoGridItem = ({
                   className="flex items-center justify-center gap-2 bg-[#161a31] hover:bg-[#1a1f3a] px-4 py-2 rounded-lg transition-colors"
                 >
                   <FaEnvelope className="text-accent-blue" />
-                  <span className="text-sm">{copied ? "Email Copied!" : "tejanaik15@gmail.com"}</span>
+                  <span className="text-sm">{copied ? "Email Copied!" : "tinkuteja740@gmail.com"}</span>
                 </button>
                 <div className="flex items-center justify-center gap-2 bg-[#161a31] px-4 py-2 rounded-lg">
                   <FaPhone className="text-accent-blue" />
-                  <span className="text-sm">+91 9876543210</span> {/* Replace with your number */}
+                  <span className="text-sm">+91 7569474682</span> 
                 </div>
                 <button
                   onClick={handleResumeDownload}
@@ -129,7 +129,7 @@ const BentoGridItem = ({
             </div>
           )}
 
-          {/* Globe Grid - ID 2 */}
+          
           {id === 2 && (
             <div className="flex items-center justify-center mt-8">
               <div className="text-center">
@@ -141,7 +141,7 @@ const BentoGridItem = ({
             </div>
           )}
 
-          {/* Tech Stack Grid - ID 3 */}
+          
           {id === 3 && (
             <div className="absolute -right-0 flex w-fit gap-1 lg:-right-0 lg:gap-3">
               <div className="flex flex-col gap-2 md:gap-3 lg:gap-3">
@@ -169,7 +169,7 @@ const BentoGridItem = ({
             </div>
           )}
 
-          {/* Passion Grid - ID 4 */}
+        
           {id === 4 && (
             <div className="flex items-center justify-center mt-8">
               <div className="text-center">
@@ -179,7 +179,7 @@ const BentoGridItem = ({
             </div>
           )}
 
-          {/* Contact Grid - ID 6 */}
+        
           {id === 6 && (
             <div className="relative mt-5">
               <div className="text-center mb-6">
