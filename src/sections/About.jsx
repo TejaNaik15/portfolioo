@@ -113,10 +113,10 @@ $ _`;
             <div className="bg-gradient-to-r from-[#00dfd8] to-[#0066cc] p-6 rounded-2xl shadow-2xl max-w-2xl text-center transform hover:scale-105 transition-transform duration-300">
               <div className="text-2xl mb-2">💬</div>
               <p className="text-xl font-semibold text-white mb-2">
-                "I speak fluent JavaScript, but now I'm learning to speak to humans"
+                "I speak fluent JavaScript, but  I'm still learning to communicate with humans"
               </p>
               <div className="text-sm text-gray-200 opacity-80">
-                - Still debugging social interactions 🐛
+                - Still debugging social interactions
               </div>
             </div>
           </div>
