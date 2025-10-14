@@ -5,14 +5,14 @@ import { FaPhone, FaEnvelope, FaMapMarkedAlt } from 'react-icons/fa';
 import Particles from '../components/Particles';
 import { BorderBeam } from '../components/magicui/border-beam.jsx';
 import Globe from '../components/Globe';
-// Removed @emailjs/browser to avoid build-time dependency issues on Vercel
+
 
 const Contact = () => {
   const sectionRef = useScrollReveal({ threshold: 0.1 }); 
   const formRef = useRef(null);
   const [status, setStatus] = useState('');
   
-  // Add relative positioning to fix scroll offset warning
+  
   React.useEffect(() => {
     if (sectionRef.current) {
       sectionRef.current.style.position = 'relative';
@@ -27,7 +27,7 @@ const Contact = () => {
     e.preventDefault();
     setStatus('');
     try {
-      // TEMP DEBUG: verify env vars presence in runtime (booleans only)
+      
       console.warn('EMAILJS env present?', {
         service: !!SERVICE_ID,
         template: !!TEMPLATE_ID,
@@ -37,7 +37,7 @@ const Contact = () => {
         setStatus('⚠️ Email service not configured.');
         return;
       }
-      // Build form data for EmailJS REST API
+      
       const formData = new FormData(formRef.current);
       formData.append('service_id', SERVICE_ID);
       formData.append('template_id', TEMPLATE_ID);
