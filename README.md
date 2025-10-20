@@ -264,7 +264,7 @@ This portfolio is deployed on **Vercel** with:
 - ✅ Edge network optimization
 - ✅ Analytics integration
 
-**Live Demo**: [https://your-portfolio-url.vercel.app](https://your-portfolio-url.vercel.app)
+**Live Demo**: [https://your-portfolio-url.vercel.app](https://portfolioo-two-wheat.vercel.app/)
 
 ---
 
