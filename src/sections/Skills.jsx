@@ -3,7 +3,7 @@ import { motion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
 import TitleHeader from '../components/TitleHeader';
-import { BallCanvas } from '../components/canvas';
+import { Button } from '../components/ui/MovingBorders';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -58,22 +58,44 @@ const Skills = () => {
           sub="🤝 What I Bring to the Table"
         />
         
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 gap-4 md:gap-6 max-w-5xl mx-auto">
-          {techStackIcons.slice(0, 8).map((technology, index) => (
-            <motion.div 
-              className="w-16 h-16 md:w-20 md:h-20" 
-              key={technology.id}
+        <div className="w-full mt-12 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
+          {techStackIcons.map((skill, index) => (
+            <motion.div
+              key={skill.id}
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ 
                 duration: 0.6, 
-                delay: index * 0.15,
+                delay: index * 0.1,
                 ease: "easeOut"
               }}
-              viewport={{ once: true, margin: "-100px" }}
-              whileHover={{ scale: 1.05 }}
+              viewport={{ once: true }}
             >
-              <BallCanvas icon={technology.img} />
+              <Button
+                duration={Math.floor(Math.random() * 10000) + 10000}
+                borderRadius="1.75rem"
+                style={{
+                  background: "rgba(31, 41, 55, 0.8)",
+                  borderRadius: `calc(1.75rem * 0.96)`,
+                }}
+                className="flex-1 text-white border-white/10 h-24 md:h-28"
+              >
+                <div className="flex items-center justify-center gap-3 p-3">
+                  <img
+                    src={skill.img}
+                    alt={skill.name}
+                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
+                    style={{
+                      filter: /github|express/i.test(skill.name) ? 'invert(1) brightness(1.2)' : 'none'
+                    }}
+                  />
+                  <div className="text-center">
+                    <h3 className="text-sm md:text-base font-semibold text-white">
+                      {skill.name}
+                    </h3>
+                  </div>
+                </div>
+              </Button>
             </motion.div>
           ))}
         </div>
