@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
-import { ThreeDMarquee } from '../components/ThreeDMarquee';
+import SkillsCarousel from '../components/SkillsCarousel';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -55,11 +55,10 @@ const Skills = () => {
       <div className="relative z-10 container mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-accent-blue">My Skills</h1>
         
-        <div className="mx-auto w-full max-w-6xl">
-          <ThreeDMarquee
-            images={images}
-            cols={window.innerWidth < 640 ? 2 : window.innerWidth < 1024 ? 3 : 4}
-            className="skills-marquee"
+        <div className="mx-auto w-full">
+          <SkillsCarousel
+            items={items}
+            className="skills-carousel"
           />
         </div>
 
