@@ -1,82 +1,121 @@
-import React, { Suspense, useRef, useEffect } from 'react';
-import { Canvas, useFrame } from '@react-three/fiber';
-import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
+import React, { Suspense, useRef, useEffect, useState, useCallback } from 'react';
+import { Canvas } from '@react-three/fiber';
+import * as THREE from 'three';
 
 const Ball = ({ imgUrl }) => {
-  const [decal] = useTexture([imgUrl]);
+  const [decal, setDecal] = useState(null);
   const meshRef = useRef();
 
-  useFrame((state) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.1;
-      meshRef.current.rotation.y += 0.01;
-    }
-  });
+  useEffect(() => {
+    const loader = new THREE.TextureLoader();
+    loader.load(
+      imgUrl,
+      (texture) => setDecal(texture),
+      undefined,
+      (error) => console.warn('Texture loading failed:', error)
+    );
+  }, [imgUrl]);
 
   return (
-    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
-      <ambientLight intensity={0.25} />
-      <directionalLight position={[0, 0, 0.05]} />
-      <mesh ref={meshRef} castShadow receiveShadow scale={2.75}>
-        <icosahedronGeometry args={[1, 1]} />
+    <>
+      <ambientLight intensity={0.5} />
+      <directionalLight position={[2, 2, 2]} intensity={0.8} />
+      <mesh ref={meshRef} scale={2.5}>
+        <sphereGeometry args={[1, 32, 32]} />
         <meshStandardMaterial
-          color='#1F2937'
-          polygonOffset
-          polygonOffsetFactor={-5}
-          flatShading
+          color="#13ADC7"
+          roughness={0.1}
+          metalness={0.8}
         />
-        <Decal
-          position={[0, 0, 1]}
-          rotation={[2 * Math.PI, 0, 6.25]}
-          scale={1}
-          map={decal}
-          flatShading
-        />
+        {decal && (
+          <meshBasicMaterial
+            map={decal}
+            transparent
+            opacity={0.9}
+          />
+        )}
       </mesh>
-    </Float>
+    </>
   );
 };
 
+const ErrorFallback = ({ icon }) => (
+  <div className="w-full h-full flex items-center justify-center bg-secondary-dark/50 rounded-full border border-accent-blue/30">
+    <img 
+      src={icon} 
+      alt="skill" 
+      className="w-12 h-12 object-contain"
+      style={{
+        filter: /github|express/i.test(icon) ? 'invert(1) brightness(1.2)' : 'none'
+      }}
+    />
+  </div>
+);
+
 const BallCanvas = ({ icon }) => {
+  const [hasError, setHasError] = useState(false);
   const canvasRef = useRef();
+  const timeoutRef = useRef();
+
+  const handleError = useCallback(() => {
+    setHasError(true);
+  }, []);
 
   useEffect(() => {
+    // Set timeout to fallback if canvas doesn't load
+    timeoutRef.current = setTimeout(() => {
+      setHasError(true);
+    }, 3000);
+
     return () => {
-      // Cleanup WebGL context on unmount
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      // Cleanup WebGL context
       if (canvasRef.current) {
-        const gl = canvasRef.current.getContext('webgl') || canvasRef.current.getContext('experimental-webgl');
-        if (gl && gl.getExtension('WEBGL_lose_context')) {
-          gl.getExtension('WEBGL_lose_context').loseContext();
+        try {
+          const canvas = canvasRef.current.querySelector('canvas');
+          if (canvas) {
+            const gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+            if (gl && gl.getExtension('WEBGL_lose_context')) {
+              gl.getExtension('WEBGL_lose_context').loseContext();
+            }
+          }
+        } catch (e) {
+          console.warn('WebGL cleanup failed:', e);
         }
       }
     };
   }, []);
 
+  if (hasError) {
+    return <ErrorFallback icon={icon} />;
+  }
+
   return (
-    <Canvas
-      ref={canvasRef}
-      frameloop='demand'
-      dpr={[1, 1.5]}
-      gl={{ 
-        preserveDrawingBuffer: true,
-        antialias: false,
-        alpha: true,
-        powerPreference: 'high-performance'
-      }}
-      camera={{ position: [0, 0, 5], fov: 50 }}
-      style={{ background: 'transparent' }}
-    >
-      <Suspense fallback={null}>
-        <OrbitControls 
-          enableZoom={false} 
-          enablePan={false}
-          maxPolarAngle={Math.PI / 2}
-          minPolarAngle={Math.PI / 2}
-        />
-        <Ball imgUrl={icon} />
-      </Suspense>
-      <Preload all />
-    </Canvas>
+    <div ref={canvasRef} className="w-full h-full">
+      <Canvas
+        frameloop="always"
+        dpr={1}
+        gl={{
+          antialias: false,
+          alpha: true,
+          powerPreference: 'default',
+          failIfMajorPerformanceCaveat: false
+        }}
+        camera={{ position: [0, 0, 5], fov: 45 }}
+        onError={handleError}
+        onCreated={() => {
+          if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+          }
+        }}
+      >
+        <Suspense fallback={null}>
+          <Ball imgUrl={icon} />
+        </Suspense>
+      </Canvas>
+    </div>
   );
 };
 
