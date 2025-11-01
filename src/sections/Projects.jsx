@@ -83,7 +83,7 @@ const getTechIcon = (tech) => {
   switch (tech.toLowerCase()) {
     case 'react': return <SiReact {...iconProps} color="#61DAFB" />;
     case 'node.js': return <SiNodedotjs {...iconProps} color="#339933" />;
-    case 'express.js': return <SiExpress {...iconProps} className="text-white theme-light:text-black" />;
+    case 'express.js': return <SiExpress {...iconProps} className="text-white" style={{ color: 'var(--theme-text, #ffffff)' }} />;
     case 'tailwind css': return <SiTailwindcss {...iconProps} color="#06B6D4" />;
     case 'typescript': return <SiTypescript {...iconProps} color="#3178C6" />;
     case 'javascript': return <SiJavascript {...iconProps} color="#F7DF1E" />;
@@ -127,7 +127,7 @@ const Projects = () => {
               <PinContainer
                 title="GitHub"
                 href={githubLink}
-                icon={<FaGithub />}
+                icon={<FaGithub className="text-white" style={{ color: 'var(--theme-text, #ffffff)' }} />}
               >
                 <div className="relative mb-6 md:mb-8 lg:mb-8 flex h-[25vh] md:h-[30vh] w-full items-center justify-center overflow-hidden sm:h-[35vh] lg:h-[35vh] min-w-[90vw] md:min-w-[95vw] lg:min-w-[550px]">
                   <div className="relative size-full overflow-hidden bg-[#13162d] lg:rounded-3xl">
