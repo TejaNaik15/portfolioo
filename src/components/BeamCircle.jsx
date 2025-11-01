@@ -34,6 +34,8 @@ const BeamCircle = ({ size = 400, orbits = [], centerIcon }) => {
         {orbits.map((orbit, index) => {
           const orbitDiameter = size * orbit.radiusFactor;
           const orbitRadius = orbitDiameter / 2;
+          const icons = orbit.icons || [{ icon: orbit.icon }];
+          const angleStep = (2 * Math.PI) / icons.length;
 
           return (
             <React.Fragment key={orbit.id || index}>
@@ -57,25 +59,42 @@ const BeamCircle = ({ size = 400, orbits = [], centerIcon }) => {
                 animate={{ rotate: 360 }}
                 transition={rotationTransition(orbit.speed)}
               >
-                {/* Traveling Icon */}
-                <div
-                  className="absolute"
-                  style={{
-                    top: halfSize,
-                    left: halfSize + orbitRadius,
-                    transform: `translate(-50%, -50%)`,
-                  }}
-                >
-                  <motion.div
-                    className="rounded-full shadow-md grid place-content-center bg-secondary-dark/80 backdrop-blur-sm border border-white/10 hover:border-accent-blue/50 transition-colors"
-                    style={{ width: orbit.iconSize, height: orbit.iconSize }}
-                    animate={{ rotate: -360 }}
-                    transition={rotationTransition(orbit.speed)}
-                    whileHover={{ scale: 1.1 }}
-                  >
-                    {orbit.icon}
-                  </motion.div>
-                </div>
+                {/* Multiple Icons */}
+                {icons.map((iconData, iconIndex) => {
+                  const angle = iconIndex * angleStep;
+                  const x = Math.cos(angle) * orbitRadius;
+                  const y = Math.sin(angle) * orbitRadius;
+                  
+                  return (
+                    <div
+                      key={iconIndex}
+                      className="absolute"
+                      style={{
+                        top: halfSize + y,
+                        left: halfSize + x,
+                        transform: `translate(-50%, -50%)`,
+                      }}
+                    >
+                      <motion.div
+                        className="rounded-full shadow-md grid place-content-center bg-secondary-dark/80 backdrop-blur-sm border border-white/10 hover:border-accent-blue/50 transition-colors"
+                        style={{ width: orbit.iconSize, height: orbit.iconSize }}
+                        animate={{ rotate: -360 }}
+                        transition={rotationTransition(orbit.speed)}
+                        whileHover={{ scale: 1.1 }}
+                        title={iconData.label}
+                      >
+                        <img 
+                          src={iconData.src} 
+                          alt={iconData.label} 
+                          className="w-6 h-6 object-contain"
+                          style={{
+                            filter: /github|express/i.test(iconData.label || '') ? 'invert(1) brightness(1.2)' : 'none'
+                          }}
+                        />
+                      </motion.div>
+                    </div>
+                  );
+                })}
               </motion.div>
             </React.Fragment>
           );

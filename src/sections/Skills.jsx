@@ -59,41 +59,35 @@ const Skills = () => {
           <BeamCircle
             size={window.innerWidth < 768 ? 300 : 450}
             orbits={[
+              // Inner ring - Frontend
               {
                 id: 1,
-                radiusFactor: 0.2,
-                speed: 8,
-                icon: <img src={images[0]?.src} alt={images[0]?.label} className="w-6 h-6" />,
-                iconSize: 40,
+                radiusFactor: 0.25,
+                speed: 10,
+                icons: [images[0], images[1], images[2], images[4]], // HTML, CSS, JS, React
+                iconSize: 36,
                 orbitColor: "rgba(19, 173, 199, 0.4)",
                 orbitThickness: 1.5,
               },
+              // Middle ring - Backend & Tools
               {
                 id: 2,
-                radiusFactor: 0.35,
-                speed: 12,
-                icon: <img src={images[4]?.src} alt={images[4]?.label} className="w-7 h-7" />,
-                iconSize: 44,
+                radiusFactor: 0.4,
+                speed: 15,
+                icons: [images[5], images[7], images[8], images[10], images[11]], // Node, MongoDB, Express, Next, Git
+                iconSize: 40,
                 orbitColor: "rgba(148, 93, 214, 0.4)",
                 orbitThickness: 1.5,
               },
+              // Outer ring - Languages & Frameworks
               {
                 id: 3,
-                radiusFactor: 0.5,
-                speed: 15,
-                icon: <img src={images[5]?.src} alt={images[5]?.label} className="w-8 h-8" />,
-                iconSize: 48,
+                radiusFactor: 0.55,
+                speed: 20,
+                icons: [images[3], images[6], images[9], images[16], images[17], images[19]], // TS, Java, Tailwind, Python, Firebase, Figma
+                iconSize: 44,
                 orbitColor: "rgba(255, 60, 120, 0.4)",
                 orbitThickness: 2,
-              },
-              {
-                id: 4,
-                radiusFactor: 0.65,
-                speed: 18,
-                icon: <img src={images[7]?.src} alt={images[7]?.label} className="w-9 h-9" />,
-                iconSize: 52,
-                orbitColor: "rgba(244, 208, 63, 0.4)",
-                orbitThickness: 1,
               },
             ]}
             centerIcon={
