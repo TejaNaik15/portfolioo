@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
-import BeamCircle from '../components/BeamCircle';
+import { ThreeDMarquee } from '../components/ThreeDMarquee';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -55,47 +55,11 @@ const Skills = () => {
       <div className="relative z-10 container mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-accent-blue">My Skills</h1>
         
-        <div className="mx-auto w-full max-w-2xl">
-          <BeamCircle
-            size={window.innerWidth < 768 ? 300 : 450}
-            orbits={[
-              // Inner ring - Frontend
-              {
-                id: 1,
-                radiusFactor: 0.25,
-                speed: 10,
-                icons: [images[0], images[1], images[2], images[4]], // HTML, CSS, JS, React
-                iconSize: 36,
-                orbitColor: "rgba(19, 173, 199, 0.4)",
-                orbitThickness: 1.5,
-              },
-              // Middle ring - Backend & Tools
-              {
-                id: 2,
-                radiusFactor: 0.4,
-                speed: 15,
-                icons: [images[5], images[7], images[8], images[10], images[11]], // Node, MongoDB, Express, Next, Git
-                iconSize: 40,
-                orbitColor: "rgba(148, 93, 214, 0.4)",
-                orbitThickness: 1.5,
-              },
-              // Outer ring - Languages & Frameworks
-              {
-                id: 3,
-                radiusFactor: 0.55,
-                speed: 20,
-                icons: [images[3], images[6], images[9], images[16], images[17], images[19]], // TS, Java, Tailwind, Python, Firebase, Figma
-                iconSize: 44,
-                orbitColor: "rgba(255, 60, 120, 0.4)",
-                orbitThickness: 2,
-              },
-            ]}
-            centerIcon={
-              <div className="text-white font-bold text-sm text-center">
-                <div className="text-accent-blue">My</div>
-                <div>Skills</div>
-              </div>
-            }
+        <div className="mx-auto w-full max-w-6xl">
+          <ThreeDMarquee
+            images={images}
+            cols={window.innerWidth < 640 ? 2 : window.innerWidth < 1024 ? 3 : 4}
+            className="skills-marquee"
           />
         </div>
 
