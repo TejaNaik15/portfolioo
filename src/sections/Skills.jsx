@@ -58,20 +58,21 @@ const Skills = () => {
           sub="🤝 What I Bring to the Table"
         />
         
-        <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-6 xl:grid-cols-8 gap-4 md:gap-6">
-          {techStackIcons.map((technology, index) => (
+        <div className="flex flex-row flex-wrap justify-center gap-6 md:gap-8 max-w-4xl mx-auto">
+          {techStackIcons.slice(0, 12).map((technology, index) => (
             <motion.div 
-              className="w-16 h-16 md:w-20 md:h-20" 
+              className="w-20 h-20 md:w-24 md:h-24" 
               key={technology.id}
               initial={{ scale: 0, opacity: 0 }}
               whileInView={{ scale: 1, opacity: 1 }}
               transition={{ 
-                duration: 0.6, 
-                delay: index * 0.05,
-                ease: "easeOut"
+                duration: 0.8, 
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 100
               }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
+              viewport={{ once: true, margin: "-50px" }}
+              whileHover={{ scale: 1.1 }}
             >
               <BallCanvas icon={technology.img} />
             </motion.div>

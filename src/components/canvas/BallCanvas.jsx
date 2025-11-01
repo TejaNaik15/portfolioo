@@ -1,18 +1,82 @@
-import React from 'react';
+import React, { Suspense, useRef, useEffect } from 'react';
+import { Canvas, useFrame } from '@react-three/fiber';
+import { Decal, Float, OrbitControls, Preload, useTexture } from '@react-three/drei';
+
+const Ball = ({ imgUrl }) => {
+  const [decal] = useTexture([imgUrl]);
+  const meshRef = useRef();
+
+  useFrame((state) => {
+    if (meshRef.current) {
+      meshRef.current.rotation.x = Math.sin(state.clock.elapsedTime) * 0.1;
+      meshRef.current.rotation.y += 0.01;
+    }
+  });
+
+  return (
+    <Float speed={1.75} rotationIntensity={1} floatIntensity={2}>
+      <ambientLight intensity={0.25} />
+      <directionalLight position={[0, 0, 0.05]} />
+      <mesh ref={meshRef} castShadow receiveShadow scale={2.75}>
+        <icosahedronGeometry args={[1, 1]} />
+        <meshStandardMaterial
+          color='#1F2937'
+          polygonOffset
+          polygonOffsetFactor={-5}
+          flatShading
+        />
+        <Decal
+          position={[0, 0, 1]}
+          rotation={[2 * Math.PI, 0, 6.25]}
+          scale={1}
+          map={decal}
+          flatShading
+        />
+      </mesh>
+    </Float>
+  );
+};
 
 const BallCanvas = ({ icon }) => {
+  const canvasRef = useRef();
+
+  useEffect(() => {
+    return () => {
+      // Cleanup WebGL context on unmount
+      if (canvasRef.current) {
+        const gl = canvasRef.current.getContext('webgl') || canvasRef.current.getContext('experimental-webgl');
+        if (gl && gl.getExtension('WEBGL_lose_context')) {
+          gl.getExtension('WEBGL_lose_context').loseContext();
+        }
+      }
+    };
+  }, []);
+
   return (
-    <div className="w-full h-full flex items-center justify-center bg-secondary-dark/30 backdrop-blur-sm rounded-full border border-white/10 hover:border-accent-blue/50 transition-all duration-300 group relative">
-      <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 rounded-full" />
-      <img 
-        src={icon} 
-        alt="skill" 
-        className="w-12 h-12 md:w-16 md:h-16 object-contain group-hover:scale-110 transition-transform duration-300 relative z-10"
-        style={{
-          filter: /github|express/i.test(icon) ? 'invert(1) brightness(1.2)' : 'none'
-        }}
-      />
-    </div>
+    <Canvas
+      ref={canvasRef}
+      frameloop='demand'
+      dpr={[1, 1.5]}
+      gl={{ 
+        preserveDrawingBuffer: true,
+        antialias: false,
+        alpha: true,
+        powerPreference: 'high-performance'
+      }}
+      camera={{ position: [0, 0, 5], fov: 50 }}
+      style={{ background: 'transparent' }}
+    >
+      <Suspense fallback={null}>
+        <OrbitControls 
+          enableZoom={false} 
+          enablePan={false}
+          maxPolarAngle={Math.PI / 2}
+          minPolarAngle={Math.PI / 2}
+        />
+        <Ball imgUrl={icon} />
+      </Suspense>
+      <Preload all />
+    </Canvas>
   );
 };
 
