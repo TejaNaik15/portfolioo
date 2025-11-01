@@ -8,19 +8,19 @@ const educationCards = [
     subtitle: 'B.Tech (AI & Data Science) • 2021 – 2025',
     badge: 'Current',
     content: (
-      <div className="max-w-2xl">
-        <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <div className="w-full">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">
           CMR Institute of Technology
         </h3>
-        <p className="text-xl text-accent-blue mb-3 font-semibold">
+        <p className="text-lg sm:text-xl text-accent-blue mb-2 md:mb-3 font-semibold">
           B.Tech (Artificial Intelligence & Data Science)
         </p>
-        <p className="text-lg text-white/80 mb-4">
+        <p className="text-sm sm:text-base md:text-lg text-white/80 mb-3 md:mb-4">
           Coursework in Web Development, Data Structures, Algorithms, DBMS, Operating Systems, and ML. Built multiple MERN projects and led tech fests.
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 md:gap-2">
           {['Web Development', 'Data Structures', 'Machine Learning', 'DBMS'].map((skill) => (
-            <span key={skill} className="px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-sm border border-accent-blue/30">
+            <span key={skill} className="px-2 md:px-3 py-1 bg-accent-blue/20 text-accent-blue rounded-full text-xs md:text-sm border border-accent-blue/30">
               {skill}
             </span>
           ))}
@@ -33,19 +33,19 @@ const educationCards = [
     subtitle: 'Intermediate (MPC) • 2019 – 2021',
     badge: 'Completed',
     content: (
-      <div className="max-w-2xl">
-        <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <div className="w-full">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">
           Sri Chaitanya Junior College
         </h3>
-        <p className="text-xl text-accent-purple mb-3 font-semibold">
+        <p className="text-lg sm:text-xl text-accent-purple mb-2 md:mb-3 font-semibold">
           Intermediate (Mathematics, Physics, Chemistry)
         </p>
-        <p className="text-lg text-white/80 mb-4">
+        <p className="text-sm sm:text-base md:text-lg text-white/80 mb-3 md:mb-4">
           Focused on Mathematics and Physics fundamentals. Participated in science exhibitions and olympiads.
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 md:gap-2">
           {['Mathematics', 'Physics', 'Chemistry', 'Problem Solving'].map((subject) => (
-            <span key={subject} className="px-3 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-sm border border-accent-purple/30">
+            <span key={subject} className="px-2 md:px-3 py-1 bg-accent-purple/20 text-accent-purple rounded-full text-xs md:text-sm border border-accent-purple/30">
               {subject}
             </span>
           ))}
@@ -58,19 +58,19 @@ const educationCards = [
     subtitle: 'SSC • Up to 2019',
     badge: 'Foundation',
     content: (
-      <div className="max-w-2xl">
-        <h3 className="text-3xl md:text-4xl font-bold text-white mb-4">
+      <div className="w-full">
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-3 md:mb-4">
           Montessori High School, Khammam
         </h3>
-        <p className="text-xl text-accent-yellow mb-3 font-semibold">
+        <p className="text-lg sm:text-xl text-accent-yellow mb-2 md:mb-3 font-semibold">
           Secondary School Certificate (SSC)
         </p>
-        <p className="text-lg text-white/80 mb-4">
+        <p className="text-sm sm:text-base md:text-lg text-white/80 mb-3 md:mb-4">
           Excelled in academics and extracurriculars; developed strong problem-solving foundations.
         </p>
-        <div className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-1.5 md:gap-2">
           {['Academic Excellence', 'Extracurriculars', 'Leadership', 'Foundation'].map((achievement) => (
-            <span key={achievement} className="px-3 py-1 bg-accent-yellow/20 text-accent-yellow rounded-full text-sm border border-accent-yellow/30">
+            <span key={achievement} className="px-2 md:px-3 py-1 bg-accent-yellow/20 text-accent-yellow rounded-full text-xs md:text-sm border border-accent-yellow/30">
               {achievement}
             </span>
           ))}
@@ -110,8 +110,8 @@ const Education = () => {
         <ScrollStack
           cards={educationCards}
           backgroundColor="bg-primary-dark"
-          cardHeight="65vh"
-          sectionHeightMultiplier={2.5}
+          cardHeight="60vh"
+          sectionHeightMultiplier={2.2}
           className="education-scroll-stack"
         />
       </div>

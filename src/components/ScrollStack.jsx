@@ -1,24 +1,6 @@
 "use client";
 import React, { useEffect, useRef, useState } from "react";
 
-export interface ScrollStackCard {
-  title: string;
-  subtitle?: string;
-  badge?: string;
-  backgroundImage?: string;
-  content?: React.ReactNode;
-}
-
-interface ScrollStackProps {
-  cards: ScrollStackCard[];
-  backgroundColor?: string;
-  cardHeight?: string;
-  animationDuration?: string;
-  sectionHeightMultiplier?: number;
-  intersectionThreshold?: number;
-  className?: string;
-}
-
 const ScrollStack = ({
   cards,
   backgroundColor = "bg-primary-dark",
@@ -104,11 +86,12 @@ const ScrollStack = ({
 
   const getCardTransform = (index) => {
     const isVisible = isIntersecting && activeCardIndex >= index;
-    const scale = 0.9 + index * 0.05;
-    let translateY = "100px";
+    const isMobile = window.innerWidth < 768;
+    const scale = isMobile ? 0.95 + index * 0.02 : 0.9 + index * 0.05;
+    let translateY = isMobile ? "50px" : "100px";
 
     if (isVisible) {
-      translateY = `${90 - index * 30}px`;
+      translateY = isMobile ? `${40 - index * 15}px` : `${90 - index * 30}px`;
     }
 
     return {
@@ -122,8 +105,8 @@ const ScrollStack = ({
   return (
     <section
       ref={scrollableSectionRef}
-      className="relative max-h-screen w-full lg:w-[100%] overflow-y-scroll 
-      scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300"
+      className="relative max-h-screen w-full overflow-y-scroll 
+      scrollbar-thin scrollbar-thumb-gray-500 scrollbar-track-gray-300 md:scrollbar-track-transparent"
     >
       <div
         ref={sectionRef}
@@ -134,11 +117,11 @@ const ScrollStack = ({
           className={`sticky top-0 w-full h-screen flex items-center 
             justify-center overflow-hidden ${backgroundColor}`}
         >
-          <div className="container px-6 lg:px-8 mx-auto h-full flex flex-col justify-center">
+          <div className="container px-4 md:px-6 lg:px-8 mx-auto h-full flex flex-col justify-center">
             <div
               ref={cardsContainerRef}
               className="relative w-full max-w-5xl mx-auto flex-shrink-0"
-              style={{ height: cardHeight }}
+              style={{ height: window.innerWidth < 768 ? '50vh' : cardHeight }}
             >
               {cards.slice(0, 5).map((card, index) => {
                 const cardTransform = getCardTransform(index);
@@ -147,7 +130,8 @@ const ScrollStack = ({
                   <div
                     key={index}
                     className="absolute z-50 overflow-hidden shadow-xl 
-                      transition-all duration-300 border border-white/10 bg-secondary-dark/70 backdrop-blur-sm"
+                      transition-all duration-300 border border-white/10 bg-secondary-dark/70 backdrop-blur-sm
+                      mx-2 md:mx-0"
                     style={{
                       ...cardStyle,
                       top: 0,
@@ -180,16 +164,16 @@ const ScrollStack = ({
                       </div>
                     )}
 
-                    <div className="relative z-10 p-5 sm:p-6 md:p-8 h-full flex items-center">
+                    <div className="relative z-10 p-4 sm:p-6 md:p-8 h-full flex items-center">
                       {card.content ? (
-                        card.content
+                        <div className="w-full">{card.content}</div>
                       ) : (
-                        <div className="max-w-lg">
-                          <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white leading-tight mb-4">
+                        <div className="max-w-lg w-full">
+                          <h3 className="text-xl sm:text-2xl md:text-3xl lg:text-4xl font-bold text-white leading-tight mb-3 md:mb-4">
                             {card.title}
                           </h3>
                           {card.subtitle && (
-                            <p className="text-lg text-white/80">
+                            <p className="text-base sm:text-lg text-white/80">
                               {card.subtitle}
                             </p>
                           )}
