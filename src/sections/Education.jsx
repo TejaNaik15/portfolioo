@@ -81,12 +81,10 @@ const Education = () => {
               <div key={card.title} className="flex flex-col xl:flex-row gap-8 xl:gap-12">
                 <div className="xl:w-2/6">
                   <GlowCard card={card} index={index}>
-                    <div className="flex justify-center">
-                      <img 
-                        src={card.imgPath} 
-                        alt="education" 
-                        className="w-20 h-20 md:w-24 md:h-24 rounded-full object-cover border-2 border-accent-blue/30"
-                      />
+                    <div className="flex justify-center items-center h-16">
+                      <div className="text-4xl">
+                        🎓
+                      </div>
                     </div>
                   </GlowCard>
                 </div>
@@ -106,11 +104,9 @@ const Education = () => {
                       viewport={{ once: true }}
                     >
                       <div className="flex-shrink-0">
-                        <img 
-                          src={card.logoPath} 
-                          alt="logo" 
-                          className="w-12 h-12 md:w-16 md:h-16 rounded-full object-cover border border-white/20"
-                        />
+                        <div className="w-12 h-12 md:w-16 md:h-16 rounded-full bg-accent-blue/20 border border-accent-blue/30 flex items-center justify-center text-2xl">
+                          📚
+                        </div>
                       </div>
                       
                       <div className="flex-1">

@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
 import TitleHeader from '../components/TitleHeader';
+import { BallCanvas } from '../components/canvas';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -57,49 +58,32 @@ const Skills = () => {
           sub="🤝 What I Bring to the Table"
         />
         
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-4 md:gap-6">
-          {techStackIcons.map((techStackIcon, index) => (
-            <motion.div
-              key={techStackIcon.id}
-              className="tech-card group relative overflow-hidden rounded-xl xl:rounded-2xl border border-white/10 bg-secondary-dark/30 backdrop-blur-sm hover:border-accent-blue/50 transition-all duration-300 cursor-pointer"
-              initial={{ y: 50, opacity: 0 }}
-              whileInView={{ y: 0, opacity: 1 }}
+        <motion.div 
+          className="flex flex-row flex-wrap justify-center gap-6 md:gap-10"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          {techStackIcons.map((technology, index) => (
+            <motion.div 
+              className="w-20 h-20 md:w-28 md:h-28" 
+              key={technology.name}
+              initial={{ scale: 0, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
               transition={{ 
                 duration: 0.6, 
-                ease: "easeOut", 
-                delay: index * 0.1 
+                delay: index * 0.1,
+                type: "spring",
+                stiffness: 100
               }}
               viewport={{ once: true }}
-              whileHover={{ 
-                scale: 1.05, 
-                y: -5,
-                boxShadow: "0 20px 40px rgba(19, 173, 199, 0.3)"
-              }}
-              onClick={() => window.open(techStackIcon.url, '_blank')}
+              whileHover={{ scale: 1.1 }}
             >
-              <div className="absolute inset-0 bg-gradient-to-br from-accent-blue/10 to-accent-purple/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              
-              <div className="relative p-4 md:p-6 flex flex-col items-center text-center h-full">
-                <div className="w-12 h-12 md:w-16 md:h-16 mb-3 md:mb-4 flex items-center justify-center">
-                  <img 
-                    src={techStackIcon.img} 
-                    alt={techStackIcon.name}
-                    className="w-full h-full object-contain group-hover:scale-110 transition-transform duration-300"
-                    style={{
-                      filter: /github|express/i.test(techStackIcon.name) ? 'invert(1) brightness(1.2)' : 'none'
-                    }}
-                  />
-                </div>
-                
-                <div className="w-full">
-                  <p className="text-white text-sm md:text-base font-medium group-hover:text-accent-blue transition-colors duration-300">
-                    {techStackIcon.name}
-                  </p>
-                </div>
-              </div>
+              <BallCanvas icon={technology.img} />
             </motion.div>
           ))}
-        </div>
+        </motion.div>
       </div>
     </section>
   );
