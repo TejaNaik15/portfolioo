@@ -1,7 +1,7 @@
 import React, { useMemo } from 'react';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
-import OrbitSkills from '../components/OrbitSkills';
+import BeamCircle from '../components/BeamCircle';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -55,11 +55,53 @@ const Skills = () => {
       <div className="relative z-10 container mx-auto text-center">
         <h1 className="text-4xl md:text-5xl font-bold mb-10 text-accent-blue">My Skills</h1>
         
-        <div className="mx-auto w-full">
-          <OrbitSkills
-            items={images}
-            ringSizes={[44, 54, 64]} 
-            ringSpeeds={[16, 22, 30]} 
+        <div className="mx-auto w-full max-w-2xl">
+          <BeamCircle
+            size={window.innerWidth < 768 ? 300 : 450}
+            orbits={[
+              {
+                id: 1,
+                radiusFactor: 0.2,
+                speed: 8,
+                icon: <img src={images[0]?.src} alt={images[0]?.label} className="w-6 h-6" />,
+                iconSize: 40,
+                orbitColor: "rgba(19, 173, 199, 0.4)",
+                orbitThickness: 1.5,
+              },
+              {
+                id: 2,
+                radiusFactor: 0.35,
+                speed: 12,
+                icon: <img src={images[4]?.src} alt={images[4]?.label} className="w-7 h-7" />,
+                iconSize: 44,
+                orbitColor: "rgba(148, 93, 214, 0.4)",
+                orbitThickness: 1.5,
+              },
+              {
+                id: 3,
+                radiusFactor: 0.5,
+                speed: 15,
+                icon: <img src={images[5]?.src} alt={images[5]?.label} className="w-8 h-8" />,
+                iconSize: 48,
+                orbitColor: "rgba(255, 60, 120, 0.4)",
+                orbitThickness: 2,
+              },
+              {
+                id: 4,
+                radiusFactor: 0.65,
+                speed: 18,
+                icon: <img src={images[7]?.src} alt={images[7]?.label} className="w-9 h-9" />,
+                iconSize: 52,
+                orbitColor: "rgba(244, 208, 63, 0.4)",
+                orbitThickness: 1,
+              },
+            ]}
+            centerIcon={
+              <div className="text-white font-bold text-sm text-center">
+                <div className="text-accent-blue">My</div>
+                <div>Skills</div>
+              </div>
+            }
           />
         </div>
 
