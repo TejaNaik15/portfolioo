@@ -1,9 +1,7 @@
 import React, { useMemo } from 'react';
-import { motion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
-import TitleHeader from '../components/TitleHeader';
-import { Button } from '../components/ui/MovingBorders';
+import Masonry from '../components/Masonry';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -53,52 +51,16 @@ const Skills = () => {
       </div>
 
       <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <TitleHeader
-          title="How I Can Contribute & My Key Skills"
-          sub="🤝 What I Bring to the Table"
-        />
-        
-        <div className="w-full mt-12 grid lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-6">
-          {techStackIcons.map((skill, index) => (
-            <motion.div
-              key={skill.id}
-              initial={{ scale: 0, opacity: 0 }}
-              whileInView={{ scale: 1, opacity: 1 }}
-              transition={{ 
-                duration: 0.6, 
-                delay: index * 0.1,
-                ease: "easeOut"
-              }}
-              viewport={{ once: true }}
-            >
-              <Button
-                duration={Math.floor(Math.random() * 10000) + 10000}
-                borderRadius="1.75rem"
-                style={{
-                  background: "rgba(31, 41, 55, 0.8)",
-                  borderRadius: `calc(1.75rem * 0.96)`,
-                }}
-                className="flex-1 text-white border-white/10 h-24 md:h-28"
-              >
-                <div className="flex items-center justify-center gap-3 p-3">
-                  <img
-                    src={skill.img}
-                    alt={skill.name}
-                    className="w-8 h-8 md:w-10 md:h-10 object-contain"
-                    style={{
-                      filter: /github|express/i.test(skill.name) ? 'invert(1) brightness(1.2)' : 'none'
-                    }}
-                  />
-                  <div className="text-center">
-                    <h3 className="text-sm md:text-base font-semibold text-white">
-                      {skill.name}
-                    </h3>
-                  </div>
-                </div>
-              </Button>
-            </motion.div>
-          ))}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-accent-blue">
+            My Skills
+          </h1>
+          <p className="text-text-muted max-w-2xl mx-auto">
+            Technologies and tools I work with to bring ideas to life.
+          </p>
         </div>
+        
+        <Masonry items={techStackIcons} />
       </div>
     </section>
   );

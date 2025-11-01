@@ -70,10 +70,14 @@ const Education = () => {
       </div>
       
       <div className="relative z-10 w-full max-w-7xl mx-auto">
-        <TitleHeader
-          title="Educational Journey"
-          sub="🎓 My Academic Background"
-        />
+        <div className="text-center mb-12">
+          <h1 className="text-4xl md:text-5xl font-bold mb-3 text-accent-blue">
+            Education
+          </h1>
+          <p className="text-text-muted max-w-2xl mx-auto">
+            My educational journey and academic achievements that shaped my career.
+          </p>
+        </div>
         
         <div className="mt-16 md:mt-32 relative">
           <div className="relative z-50 xl:space-y-20 space-y-10">
