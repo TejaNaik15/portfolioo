@@ -1,6 +1,5 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { motion, useInView } from 'framer-motion';
-import { Search, X } from 'lucide-react';
 
 const Input = (props) => (
   <input {...props} />
@@ -213,7 +212,9 @@ const SkillsCarousel = ({ items, className = '' }) => {
                 }}
                 className="flex-grow outline-none text-white bg-secondary-dark/80 backdrop-blur-sm px-4 placeholder-text-muted text-base rounded-full border border-white/20 pr-10 pl-10 py-2 cursor-pointer focus:border-accent-blue/50 transition-colors"
               />
-              <Search className="absolute text-text-muted w-4 h-4 left-6 pointer-events-none" />
+              <svg className="absolute text-text-muted w-4 h-4 left-6 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+              </svg>
               {searchTerm && (
                 <button
                   onClick={() => {
@@ -224,7 +225,9 @@ const SkillsCarousel = ({ items, className = '' }) => {
                   }}
                   className="absolute right-6 text-text-muted hover:text-white transition-colors"
                 >
-                  <X size={16} />
+                  <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
                 </button>
               )}
             </div>
