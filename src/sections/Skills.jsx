@@ -30,6 +30,11 @@ const Skills = () => {
     { id: 'firebase', name: 'Firebase', img: cdn('firebase/firebase-plain.svg'), url: 'https://firebase.google.com' },
     { id: 'reactrouter', name: 'React Router', img: cdn('reactrouter/reactrouter-plain.svg'), url: 'https://reactrouter.com' },
     { id: 'figma', name: 'Figma', img: cdn('figma/figma-original.svg'), url: 'https://www.figma.com' },
+    { id: 'postman', name: 'Postman', img: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg', url: 'https://www.postman.com' },
+    { id: 'gsap', name: 'GSAP', img: 'https://greensock.com/uploads/monthly_2020_03/tweenmax.svg.cf27916e8e5e6c5c8c8b5e4b1b7e8b8e.svg', url: 'https://greensock.com/gsap/' },
+    { id: 'zustand', name: 'Zustand', img: 'https://raw.githubusercontent.com/pmndrs/zustand/main/bear.jpg', url: 'https://zustand-demo.pmnd.rs' },
+    { id: 'redux', name: 'Redux', img: cdn('redux/redux-original.svg'), url: 'https://redux.js.org' },
+    { id: 'framermotion', name: 'Framer Motion', img: 'https://www.framer.com/images/favicons/favicon.svg', url: 'https://www.framer.com/motion' },
   ], []);
 
 
