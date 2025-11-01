@@ -1,3 +1,3 @@
-import BallCanvas from "./BallCanvas";
+import BallCanvas from './BallCanvas';
 
 export { BallCanvas };
