@@ -34,8 +34,8 @@ const useMeasure = () => {
 
 const Masonry = ({ items }) => {
   const columns = useMedia(
-    ['(min-width:1200px)', '(min-width:768px)', '(min-width:480px)'],
-    [5, 4, 3],
+    ['(min-width:1200px)', '(min-width:768px)', '(min-width:640px)', '(min-width:480px)'],
+    [5, 4, 3, 2],
     2
   );
 
@@ -45,13 +45,15 @@ const Masonry = ({ items }) => {
     if (!width) return [];
 
     const colHeights = new Array(columns).fill(0);
-    const columnWidth = width / columns;
-    const gap = 16;
+    const gap = columns <= 2 ? 6 : 8;
+    const columnWidth = (width - gap * (columns - 1)) / columns;
+    const baseHeight = columns <= 2 ? 90 : 100;
+    const randomHeight = columns <= 2 ? 40 : 60;
 
-    return items.map(child => {
+    return items.map((child, index) => {
       const col = colHeights.indexOf(Math.min(...colHeights));
-      const x = (columnWidth + gap) * col;
-      const height = 120 + Math.random() * 80; // Random heights for masonry effect
+      const x = col * (columnWidth + gap);
+      const height = baseHeight + (index % 3) * (randomHeight / 3);
       const y = colHeights[col];
 
       colHeights[col] += height + gap;
@@ -60,8 +62,10 @@ const Masonry = ({ items }) => {
     });
   }, [columns, items, width]);
 
+  const maxHeight = Math.max(...grid.map(item => item.y + item.h)) + 20;
+
   return (
-    <div ref={containerRef} className="list" style={{ height: '80vh' }}>
+    <div ref={containerRef} className="list" style={{ height: `${maxHeight}px`, minHeight: '60vh' }}>
       {grid.map((item, index) => (
         <motion.div
           key={item.id}
@@ -76,23 +80,23 @@ const Masonry = ({ items }) => {
           animate={{ opacity: 1, scale: 1, y: item.y }}
           transition={{ 
             duration: 0.6, 
-            delay: index * 0.1,
+            delay: index * 0.05,
             ease: "easeOut"
           }}
-          whileHover={{ scale: 1.05, y: item.y - 5 }}
+          whileHover={{ scale: 1.03, y: item.y - 3 }}
           onClick={() => window.open(item.url, '_blank')}
         >
           <div className="item-img">
-            <div className="flex flex-col items-center justify-center h-full p-4">
+            <div className="flex flex-col items-center justify-center h-full p-1 sm:p-2">
               <img
                 src={item.img}
                 alt={item.name}
-                className="w-12 h-12 md:w-16 md:h-16 object-contain mb-2"
+                className="w-6 h-6 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain mb-1 flex-shrink-0"
                 style={{
                   filter: /github|express/i.test(item.name) ? 'invert(1) brightness(1.2)' : 'none'
                 }}
               />
-              <span className="text-white text-sm md:text-base font-medium text-center">
+              <span className="text-white text-[10px] sm:text-xs md:text-sm font-medium text-center leading-tight px-1">
                 {item.name}
               </span>
             </div>

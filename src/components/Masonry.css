@@ -8,11 +8,19 @@
 .item-wrapper {
   position: absolute;
   cursor: pointer;
-  border-radius: 12px;
+  border-radius: 8px;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
   transition: all 0.3s ease;
+  min-height: 80px;
+}
+
+@media (max-width: 640px) {
+  .item-wrapper {
+    border-radius: 6px;
+    min-height: 70px;
+  }
 }
 
 .item-wrapper:hover {
