@@ -1,7 +1,8 @@
 import React, { useMemo } from 'react';
+import { motion } from 'framer-motion';
 import useScrollReveal from '../hooks/useScrollReveal';
 import Particles from '../components/Particles';
-import Masonry from '../components/Masonry';
+import SkillTiltedCard from '../components/SkillTiltedCard';
 
 const cdn = (path) => `https://cdn.jsdelivr.net/gh/devicons/devicon/icons/${path}`;
 
@@ -60,7 +61,26 @@ const Skills = () => {
           </p>
         </div>
         
-        <Masonry items={techStackIcons} />
+        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 gap-6 md:gap-8 max-w-6xl mx-auto">
+          {techStackIcons.map((skill, index) => (
+            <motion.div
+              key={skill.id}
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ 
+                duration: 0.5, 
+                delay: index * 0.05,
+                ease: "easeOut"
+              }}
+              viewport={{ once: true }}
+            >
+              <SkillTiltedCard 
+                skill={skill}
+                containerSize={window.innerWidth < 768 ? '80px' : '100px'}
+              />
+            </motion.div>
+          ))}
+        </div>
       </div>
     </section>
   );
